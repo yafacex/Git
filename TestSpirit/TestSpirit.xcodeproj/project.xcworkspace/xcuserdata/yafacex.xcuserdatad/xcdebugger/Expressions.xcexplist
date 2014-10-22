@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Skill::SkillCfg::ActionFeature(char const*, char const*):SkillCfg.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Spirit::Match Spirit::Range&lt;unsigned char&gt;::Parse&lt;Spirit::Scanner&lt;Spirit::Space_, char const*&gt; &gt;(Spirit::Scanner&lt;Spirit::Space_, char const*&gt;&amp;) const:Spirit_Primitives.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "first">
+            </PersistentString>
+            <PersistentString
+               value = "last">
+            </PersistentString>
+            <PersistentString
+               value = "*scanner">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VM::VmParamString(char const*, char const*):VM.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "param-&gt;data.value.str">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BuiltInFunc::doCall(std::string, std::vector&lt;VmNs::VariantTable_*, std::allocator&lt;VmNs::VariantTable_*&gt; &gt;&amp;):BuiltInFunc.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "paramTables[1]">
+            </PersistentString>
+            <PersistentString
+               value = "paramTables[0]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Integer::operator()(char const*, char const*) const:main.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "str">
+            </PersistentString>
+            <PersistentString
+               value = "r">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Skill::SkillCfg::setDataRuleDatas(std::string):SkillCfg.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "mCurDataRule">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Table::getDatasByAttr(std::string):ProgData.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "m_tableData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VM::VmCallFuncBuiltin(char const*, char const*):VM.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "_str">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VM::getBuiltinVariant(std::string):VM.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "variantTables[name]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "BuiltInFunc::doCall(std::string, std::deque&lt;VmNs::VariantTable_*, std::allocator&lt;VmNs::VariantTable_*&gt; &gt;&amp;):BuiltInFunc.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "paramTables.at(0)-&gt;data.value.str">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VM::VmCallFuncEndBuiltin(char const*, char const*):VM.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "curFuncName">
+            </PersistentString>
+            <PersistentString
+               value = "curFuncType">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Skill::SkillCfg::DescriptionName(char const*, char const*):SkillCfg.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "l">
+            </PersistentString>
+            <PersistentString
+               value = "r">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "VM::VmParamBuildin(char const*, char const*):VM.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "paramTables">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Table::record(float):ProgData.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "curAttr">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SkillCfg:SkillCfg.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "s_featureHash">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

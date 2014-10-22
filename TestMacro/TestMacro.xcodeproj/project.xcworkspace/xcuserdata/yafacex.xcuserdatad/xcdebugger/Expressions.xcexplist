@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "TestEfficience::test():TestEfficience.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "nei">
+            </PersistentString>
+            <PersistentString
+               value = "i">
+            </PersistentString>
+            <PersistentString
+               value = "pEnd">
+            </PersistentString>
+            <PersistentString
+               value = "a[i-1]">
+            </PersistentString>
+            <PersistentString
+               value = "a">
+            </PersistentString>
+            <PersistentString
+               value = "a[i]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ObserverNS::Subject&lt;msg2&gt;::notify(msg2&amp;):ObserverPatternMini.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "mObservers">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "pair&lt;int &amp;, int &amp;, void&gt; [inlined]:map">
+         <PersistentStrings>
+            <PersistentString
+               value = "__x">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TestEfficience::noTemplate() [inlined]:TestEfficience.h">
+      </ContextState>
+      <ContextState
+         contextName = "TestEfficience::withTemplate() [inlined]:stl_iterator.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "this-&gt;i">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ObserverNS::Subject&lt;msg&gt;::notify(msg&amp;):ObserverPatternMini.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "mObservers">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "std::map&lt;std::pair&lt;int, int&gt;, bool, std::less&lt;std::pair&lt;int, int&gt; &gt;, std::allocator&lt;std::pair&lt;std::pair&lt;int, int&gt; const, bool&gt; &gt; &gt;::find(std::pair&lt;int, int&gt; const&amp;):stl_map.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "*this">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "std::_Rb_tree_iterator&lt;std::pair&lt;std::pair&lt;int, int&gt; const, bool&gt; &gt;::operator==(std::_Rb_tree_iterator&lt;std::pair&lt;std::pair&lt;int, int&gt; const, bool&gt; &gt; const&amp;) const:stl_tree.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "_M_node">
+            </PersistentString>
+            <PersistentString
+               value = "__x._M_node">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "std::_Rb_tree&lt;std::pair&lt;int, int&gt;, std::pair&lt;std::pair&lt;int, int&gt; const, bool&gt;, std::_Select1st&lt;std::pair&lt;std::pair&lt;int, int&gt; const, bool&gt; &gt;, std::less&lt;std::pair&lt;int, int&gt; &gt;, std::allocator&lt;std::pair&lt;std::pair&lt;int, int&gt; const, bool&gt; &gt; &gt;::find(std::pair&lt;int, int&gt; const&amp;):stl_tree.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "__x">
+            </PersistentString>
+            <PersistentString
+               value = "_M_impl">
+            </PersistentString>
+            <PersistentString
+               value = "end()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "void TestRegex::heuristicSearch2d&lt;bool (*)(int, int)&gt;(int, int, std::map&lt;std::pair&lt;int, int&gt;, bool, std::less&lt;std::pair&lt;int, int&gt; &gt;, std::allocator&lt;std::pair&lt;std::pair&lt;int, int&gt; const, bool&gt; &gt; &gt;&amp;, int, bool (*)(int, int)):TestRegex.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "itr">
+            </PersistentString>
+            <PersistentString
+               value = "itrEnd">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TestEfficience::withTemplate() [inlined]:TestEfficience.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "itr">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

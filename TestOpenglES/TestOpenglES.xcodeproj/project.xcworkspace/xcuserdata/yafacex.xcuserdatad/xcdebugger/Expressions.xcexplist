@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Render::updateData():Render.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "_normalMatrix">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ImageOpen(char const*):BWReader.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "fileName">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Render::setup(CSize_, char const*):Render.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "g_CubeVertexData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

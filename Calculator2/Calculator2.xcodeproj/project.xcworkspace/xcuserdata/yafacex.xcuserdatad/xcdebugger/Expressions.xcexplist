@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "FormulaNS::Formula::parse(char*):Formula.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "opStack">
+            </PersistentString>
+            <PersistentString
+               value = "vStack">
+            </PersistentString>
+            <PersistentString
+               value = "curType">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FormulaNS::Formula::parse(char*):vector">
+         <PersistentStrings>
+            <PersistentString
+               value = "__end_">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FormulaNS::Formula::calcByString(char*, bool):Formula.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "opStack">
+            </PersistentString>
+            <PersistentString
+               value = "vStack">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "FormulaNS::Formula::dealOp(FormulaNS::TokenType, FormulaNS::VAL_&amp;, FormulaNS::VAL_&amp;):Formula.cpp">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "CppRender::render():CppRender.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "-[MyOpenglView update]:MyOpenglView.mm">
+         <PersistentStrings>
+            <PersistentString
+               value = "*obj">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "_PerformanceLog::_PerformanceLog(char*, int, char*):glYF.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "charSize">
+            </PersistentString>
+            <PersistentString
+               value = "*(file + i)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Terrian::initHeightMap():TerrianTest.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "heightMap[0]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "WikiTest::filetobuf(char const*, char*):WikiTest.h">
+      </ContextState>
+      <ContextState
+         contextName = "WikiTest::WikiTest():WikiTest.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "vertexSource">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Terrian::getQuadNumber():TerrianTest.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "mW">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "Terrian::initIndicesForStrip():TerrianTest.h">
+         <PersistentStrings>
+            <PersistentString
+               value = "r">
+            </PersistentString>
+            <PersistentString
+               value = "mW">
+            </PersistentString>
+            <PersistentString
+               value = "mL">
+            </PersistentString>
+            <PersistentString
+               value = "mIndexN">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

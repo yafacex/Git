@@ -1,0 +1,401 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E1704A4B18BB3333004C6353 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1704A4A18BB3333004C6353 /* Cocoa.framework */; };
+		E1704A5518BB3333004C6353 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1704A5318BB3333004C6353 /* InfoPlist.strings */; };
+		E1704A5718BB3333004C6353 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E1704A5618BB3333004C6353 /* main.m */; };
+		E1704A5B18BB3333004C6353 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = E1704A5918BB3333004C6353 /* Credits.rtf */; };
+		E1704A5E18BB3333004C6353 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E1704A5D18BB3333004C6353 /* AppDelegate.m */; };
+		E1704A6118BB3333004C6353 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1704A5F18BB3333004C6353 /* MainMenu.xib */; };
+		E1704A6C18BB3559004C6353 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1704A6B18BB3559004C6353 /* OpenGL.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		E1704A6F18BB3610004C6353 /* CppRender.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E1704A6D18BB3610004C6353 /* CppRender.cpp */; };
+		E1704A7118BB38E3004C6353 /* MyOpenglView.mm in Sources */ = {isa = PBXBuildFile; fileRef = E1704A7018BB38E3004C6353 /* MyOpenglView.mm */; };
+		E182A7CF1973BF8200443765 /* TestWater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E182A7CA1973BF8200443765 /* TestWater.cpp */; };
+		E182A7D01973BF8200443765 /* BWReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E182A7CD1973BF8200443765 /* BWReader.cpp */; };
+		E18C66D919338646005D476E /* vert.vsh in Sources */ = {isa = PBXBuildFile; fileRef = E18C66D819338646005D476E /* vert.vsh */; };
+		E18C66DB19338655005D476E /* frag.fsh in Sources */ = {isa = PBXBuildFile; fileRef = E18C66DA19338655005D476E /* frag.fsh */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		E130C09818EEAA94005A1AF1 /* hash.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
+		E13447A6192C5C1900416137 /* TerrianTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TerrianTest.h; sourceTree = "<group>"; };
+		E13F1ECD18E2AE7200137284 /* glYF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = glYF.h; sourceTree = "<group>"; };
+		E1704A4718BB3333004C6353 /* TestOpenglView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestOpenglView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1704A4A18BB3333004C6353 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		E1704A4D18BB3333004C6353 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		E1704A4E18BB3333004C6353 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E1704A4F18BB3333004C6353 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E1704A5218BB3333004C6353 /* TestOpenglView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TestOpenglView-Info.plist"; sourceTree = "<group>"; };
+		E1704A5418BB3333004C6353 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E1704A5618BB3333004C6353 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E1704A5818BB3333004C6353 /* TestOpenglView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TestOpenglView-Prefix.pch"; sourceTree = "<group>"; };
+		E1704A5A18BB3333004C6353 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		E1704A5C18BB3333004C6353 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E1704A5D18BB3333004C6353 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E1704A6018BB3333004C6353 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E1704A6818BB339F004C6353 /* MyOpenglView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyOpenglView.h; sourceTree = "<group>"; };
+		E1704A6B18BB3559004C6353 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		E1704A6D18BB3610004C6353 /* CppRender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CppRender.cpp; sourceTree = "<group>"; };
+		E1704A6E18BB3610004C6353 /* CppRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CppRender.h; sourceTree = "<group>"; };
+		E1704A7018BB38E3004C6353 /* MyOpenglView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyOpenglView.mm; sourceTree = "<group>"; };
+		E178C6161926086D00043704 /* QuadTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuadTest.h; sourceTree = "<group>"; };
+		E178C61719260BFE00043704 /* PolyTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PolyTest.h; sourceTree = "<group>"; };
+		E182A7CA1973BF8200443765 /* TestWater.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestWater.cpp; sourceTree = "<group>"; };
+		E182A7CB1973BF8200443765 /* TestWater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestWater.h; sourceTree = "<group>"; };
+		E182A7CD1973BF8200443765 /* BWReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BWReader.cpp; sourceTree = "<group>"; };
+		E182A7CE1973BF8200443765 /* BWReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWReader.h; sourceTree = "<group>"; };
+		E18C66CB19332FE3005D476E /* WikiTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WikiTest.h; sourceTree = "<group>"; };
+		E18C66D719338102005D476E /* Shader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		E18C66D819338646005D476E /* vert.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = vert.vsh; sourceTree = "<group>"; };
+		E18C66DA19338655005D476E /* frag.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = frag.fsh; sourceTree = "<group>"; };
+		E18C66DC193397AF005D476E /* RestartIndexTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RestartIndexTest.h; sourceTree = "<group>"; };
+		E1B864D9192CB41700C0E87D /* VBOTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VBOTest.h; sourceTree = "<group>"; };
+		E1B864DC192E3C1500C0E87D /* Bitmap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bitmap.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E1704A4418BB3333004C6353 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1704A6C18BB3559004C6353 /* OpenGL.framework in Frameworks */,
+				E1704A4B18BB3333004C6353 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E130C09718EEAA81005A1AF1 /* data_support */ = {
+			isa = PBXGroup;
+			children = (
+				E130C09818EEAA94005A1AF1 /* hash.h */,
+			);
+			path = data_support;
+			sourceTree = "<group>";
+		};
+		E13F1EC418E2AD9800137284 /* YFGL_Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E13F1ECD18E2AE7200137284 /* glYF.h */,
+				E1B864DC192E3C1500C0E87D /* Bitmap.h */,
+				E18C66D719338102005D476E /* Shader.h */,
+			);
+			path = YFGL_Utils;
+			sourceTree = "<group>";
+		};
+		E1704A3E18BB3333004C6353 = {
+			isa = PBXGroup;
+			children = (
+				E1704A5018BB3333004C6353 /* TestOpenglView */,
+				E1704A4918BB3333004C6353 /* Frameworks */,
+				E1704A4818BB3333004C6353 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E1704A4818BB3333004C6353 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E1704A4718BB3333004C6353 /* TestOpenglView.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E1704A4918BB3333004C6353 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1704A6B18BB3559004C6353 /* OpenGL.framework */,
+				E1704A4A18BB3333004C6353 /* Cocoa.framework */,
+				E1704A4C18BB3333004C6353 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E1704A4C18BB3333004C6353 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1704A4D18BB3333004C6353 /* AppKit.framework */,
+				E1704A4E18BB3333004C6353 /* CoreData.framework */,
+				E1704A4F18BB3333004C6353 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		E1704A5018BB3333004C6353 /* TestOpenglView */ = {
+			isa = PBXGroup;
+			children = (
+				E182A7CA1973BF8200443765 /* TestWater.cpp */,
+				E182A7CB1973BF8200443765 /* TestWater.h */,
+				E182A7CC1973BF8200443765 /* TextureReader */,
+				E130C09718EEAA81005A1AF1 /* data_support */,
+				E13F1EC418E2AD9800137284 /* YFGL_Utils */,
+				E1704A6718BB336F004C6353 /* GlFiles */,
+				E1704A5C18BB3333004C6353 /* AppDelegate.h */,
+				E1704A5D18BB3333004C6353 /* AppDelegate.m */,
+				E1704A5F18BB3333004C6353 /* MainMenu.xib */,
+				E1704A5118BB3333004C6353 /* Supporting Files */,
+			);
+			path = TestOpenglView;
+			sourceTree = "<group>";
+		};
+		E1704A5118BB3333004C6353 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E1704A5218BB3333004C6353 /* TestOpenglView-Info.plist */,
+				E1704A5318BB3333004C6353 /* InfoPlist.strings */,
+				E1704A5618BB3333004C6353 /* main.m */,
+				E1704A5818BB3333004C6353 /* TestOpenglView-Prefix.pch */,
+				E1704A5918BB3333004C6353 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E1704A6718BB336F004C6353 /* GlFiles */ = {
+			isa = PBXGroup;
+			children = (
+				E1704A7018BB38E3004C6353 /* MyOpenglView.mm */,
+				E1704A6818BB339F004C6353 /* MyOpenglView.h */,
+				E1704A6D18BB3610004C6353 /* CppRender.cpp */,
+				E1704A6E18BB3610004C6353 /* CppRender.h */,
+				E178C6161926086D00043704 /* QuadTest.h */,
+				E178C61719260BFE00043704 /* PolyTest.h */,
+				E13447A6192C5C1900416137 /* TerrianTest.h */,
+				E1B864D9192CB41700C0E87D /* VBOTest.h */,
+				E18C66CB19332FE3005D476E /* WikiTest.h */,
+				E18C66D819338646005D476E /* vert.vsh */,
+				E18C66DA19338655005D476E /* frag.fsh */,
+				E18C66DC193397AF005D476E /* RestartIndexTest.h */,
+			);
+			name = GlFiles;
+			sourceTree = "<group>";
+		};
+		E182A7CC1973BF8200443765 /* TextureReader */ = {
+			isa = PBXGroup;
+			children = (
+				E182A7CD1973BF8200443765 /* BWReader.cpp */,
+				E182A7CE1973BF8200443765 /* BWReader.h */,
+			);
+			path = TextureReader;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E1704A4618BB3333004C6353 /* TestOpenglView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E1704A6418BB3333004C6353 /* Build configuration list for PBXNativeTarget "TestOpenglView" */;
+			buildPhases = (
+				E1704A4318BB3333004C6353 /* Sources */,
+				E1704A4418BB3333004C6353 /* Frameworks */,
+				E1704A4518BB3333004C6353 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TestOpenglView;
+			productName = TestOpenglView;
+			productReference = E1704A4718BB3333004C6353 /* TestOpenglView.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E1704A3F18BB3333004C6353 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = yafacex;
+			};
+			buildConfigurationList = E1704A4218BB3333004C6353 /* Build configuration list for PBXProject "TestOpenglView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = E1704A3E18BB3333004C6353;
+			productRefGroup = E1704A4818BB3333004C6353 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E1704A4618BB3333004C6353 /* TestOpenglView */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E1704A4518BB3333004C6353 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1704A5518BB3333004C6353 /* InfoPlist.strings in Resources */,
+				E1704A5B18BB3333004C6353 /* Credits.rtf in Resources */,
+				E1704A6118BB3333004C6353 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E1704A4318BB3333004C6353 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E182A7CF1973BF8200443765 /* TestWater.cpp in Sources */,
+				E182A7D01973BF8200443765 /* BWReader.cpp in Sources */,
+				E1704A5718BB3333004C6353 /* main.m in Sources */,
+				E1704A5E18BB3333004C6353 /* AppDelegate.m in Sources */,
+				E1704A6F18BB3610004C6353 /* CppRender.cpp in Sources */,
+				E1704A7118BB38E3004C6353 /* MyOpenglView.mm in Sources */,
+				E18C66D919338646005D476E /* vert.vsh in Sources */,
+				E18C66DB19338655005D476E /* frag.fsh in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		E1704A5318BB3333004C6353 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1704A5418BB3333004C6353 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		E1704A5918BB3333004C6353 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1704A5A18BB3333004C6353 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		E1704A5F18BB3333004C6353 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1704A6018BB3333004C6353 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E1704A6218BB3333004C6353 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E1704A6318BB3333004C6353 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E1704A6518BB3333004C6353 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TestOpenglView/TestOpenglView-Prefix.pch";
+				INFOPLIST_FILE = "TestOpenglView/TestOpenglView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E1704A6618BB3333004C6353 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TestOpenglView/TestOpenglView-Prefix.pch";
+				INFOPLIST_FILE = "TestOpenglView/TestOpenglView-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E1704A4218BB3333004C6353 /* Build configuration list for PBXProject "TestOpenglView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1704A6218BB3333004C6353 /* Debug */,
+				E1704A6318BB3333004C6353 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E1704A6418BB3333004C6353 /* Build configuration list for PBXNativeTarget "TestOpenglView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E1704A6518BB3333004C6353 /* Debug */,
+				E1704A6618BB3333004C6353 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E1704A3F18BB3333004C6353 /* Project object */;
+}

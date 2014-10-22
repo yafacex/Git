@@ -1,0 +1,162 @@
+/////////////////////////////////////////////////////////
+
+		Pattern Test For Spirit...
+
+/////////////////////////////////////////////////////////
+
+strings
+
+		joel	Pass
+		joelo	Fail
+		    ^
+		joal	Fail
+		^
+		joe	Fail
+		^
+
+no case strings
+
+		joel	Pass
+		JOEL	Pass
+		joAl	Fail
+		^
+		JoEl	Pass
+
+any >> string
+
+		dart	Pass
+		cart	Pass
+		tart	Pass
+		art	Fail
+		^
+		hurt	Fail
+		^
+		dark	Fail
+		^
+
+one or more
+
+		ab	Pass
+		aaab	Pass
+		b	Fail
+		^
+		baaa	Fail
+		^
+
+zero or more
+		b	Pass
+		ab	Pass
+		aaab	Pass
+		baaa	Fail
+		 ^
+
+repeat
+		aaaaaa	Pass
+		abcabcabcabc	Pass
+		abcabcabcabcc	Fail
+		            ^
+
+any and repeat
+		fo	Pass
+		foo	Pass
+		fooo	Pass
+		foobar	Pass
+		foox	Pass
+
+sequence
+		0x3FFF	Pass
+		0x3GFF	Fail
+		   ^
+
+optional
+		3.666	Pass
+		3.666e25	Pass
+		3.6A6	Fail
+		   ^
+
+or
+		joel	Pass
+		mariel	Pass
+		tenji	Fail
+		^
+
+and
+		xxxxxxxxxx	Pass
+		xxxxxaxxxx	Fail
+		     ^
+		aaaaaaa	Fail
+		^
+
+diff
+		abcdefg	Fail
+		^
+		bcdefgh	Pass
+
+xor
+		0	Pass
+		1	Pass
+		2	Pass
+		3	Pass
+		4	Pass
+		5	Pass
+		6	Pass
+		7	Pass
+		8	Pass
+		9	Pass
+		a	Fail
+		^
+		b	Fail
+		^
+		c	Fail
+		^
+		d	Fail
+		^
+		e	Fail
+		^
+		f	Fail
+		^
+		g	Pass
+		h	Pass
+		i	Pass
+
+repeat exact 8
+		abcdefg	Fail
+		^
+		abcdefgh	Pass
+		abcdefghi	Fail
+		        ^
+		abcdefg	Fail
+		^
+		a	Fail
+		^
+repeat 2 to 8
+		abcdefg	Pass
+		abcdefgh	Pass
+		abcdefghi	Fail
+		        ^
+		abcdefg	Pass
+		a	Fail
+		^
+repeat 2 or more
+		abcdefg	Pass
+		abcdefgh	Pass
+		abcdefghi	Pass
+		abcdefg	Pass
+		a	Fail
+		^
+longest parse
+		123456	Pass
+		456.1245	Pass
+		123456A	Fail
+		      ^
+Back Tracking
+	Should parse OK...
+		ABEFH	Pass
+		ADEFH	Pass
+		ABEGH	Pass
+
+	Should fail parsing...
+		AEFH	Fail
+		^
+		ADEGH	Fail
+		^

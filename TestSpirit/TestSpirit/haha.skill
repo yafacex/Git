@@ -1,0 +1,24 @@
+Description = {
+    Name : cnm
+    Effect : nb skill
+};
+/*
+ alian enmey
+ soldier hero building
+ nearest farest in(?) out(?)
+ hp movespd attackspd
+ */
+Target = {
+    Realtionship : enmey
+    TarSet : soldier hero
+    TarRange : nearest
+    TarAttr : hp
+};
+/*
+ Times 必须是整数
+ */
+Trigger = {
+    Times:5
+    Delay:2.0
+    Time:1.0
+};

@@ -1,0 +1,1462 @@
+<html>
+<head>
+<title>Spirit</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<body bgcolor="#FFFFFF" background="images/rose.jpg">
+<table width="16%" border="0" align="center">
+  <tr> 
+    <td width="23%"><font size="4" color="#1822CD"><img src="images/spirit.gif" width="42" height="64"></font></td>
+    <td width="77%"> <font size="7" color="#1822CD" face="Arial, Helvetica, sans-serif"><b>pirit</b></font></td>
+  </tr>
+</table>
+<p align="center"><b>Version 1.1</b></p>
+<p align="center">Copyright &copy; 2001, Joel de Guzman<br>
+  <a href="http://isis-tech.n3.net">Isis Technologies</a>. All rights reserved.<br>
+  <a href="mailto:djowel@gmx.co.uk">Email: djowel@gmx.co.uk</a> <br>
+  [ Edited by Sylvia de Guzman ]</p>
+<blockquote> 
+  <h1 align="left"><font color="#000000">About Spirit:</font></h1>
+  <blockquote> 
+    <div align="left"> 
+      <p><font size="4" color="#000000">Spirit is an object oriented recursive 
+        descent parser generator framework implemented using template meta-programming 
+        techniques. Expression templates <font size="3">[<a href="#R1">R1</a>]</font> 
+        allow us to approximate the syntax of Extended Backus Normal Form (EBNF) 
+        <font size="3">[<a href="#R2">R2</a>]</font> completely in C++. <br>
+        <br>
+        The Spirit framework enables a target grammar to be written exclusively 
+        in C++. Inline EBNF grammar specifications can mix freely with other C++ 
+        code and, thanks to the generative power of C++ templates, are immediately 
+        executable. In retrospect, conventional compiler-compilers or parser-generators 
+        have to perform an additional translation step from the source EBNF code 
+        to C or C++ code.</font></p>
+    </div>
+    <div align="left"> 
+      <p><font size="4" color="#000000">A simple EBNF grammar snippet:</font></p>
+    </div>
+    <blockquote> 
+      <div align="left"> 
+        <pre align="left"><font size="4" face="Courier New, Courier, mono" color="#000000">group   ::= '(' expr ')'
+expr1   ::= integer | group
+expr2   ::= expr1 (('*' expr1) | ('/' expr1))*
+expr    ::= expr2 (('+' expr2) | ('-' expr2))*</font></pre>
+      </div>
+    </blockquote>
+    <div align="left"> 
+      <p><font size="4" color="#000000">is approximated using Spirit's facilities 
+        as seen in this code snippet:</font></p>
+    </div>
+    <blockquote> 
+      <div align="left"> 
+        <pre><font size="4" face="Courier New, Courier, mono" color="#000000">group   = '(' >> expr >> ')';
+expr1   = integer | group;
+expr2   = expr1 >> *(('*' >> expr1) | ('/' >> expr1));
+expr    = expr2 >> *(('+' >> expr2) | ('-' >> expr2));</font></pre>
+      </div>
+    </blockquote>
+    <div align="left"> 
+      <p><font size="4" color="#000000">Through the magic of expression templates, 
+        this is perfectly valid C++ code that can be executed. The production 
+        rule named <font face="Courier New, Courier, mono">expr</font> is in fact 
+        an object that has a member function <font face="Courier New, Courier, mono">Parse(...)</font> 
+        that does the work given a source code written in the grammar that we 
+        have just declared.</font></p>
+    </div>
+    <div align="left"> 
+      <p><font size="4" color="#000000">Certainly we have done some modifications 
+        to the original EBNF syntax. This is done so as to conform to C++ syntax 
+        rules. Most notably we see the abundance of shift (<font face="Courier New, Courier, mono">>></font>) 
+        operators. Since there are no 'empty' operators in C++, it is simply not 
+        possible to write something like:</font></p>
+    </div>
+    <blockquote> 
+      <blockquote> 
+        <div align="left"> 
+          <pre><font size="4" face="Courier New, Courier, mono" color="#000000">a b</font></pre>
+        </div>
+      </blockquote>
+    </blockquote>
+    <div align="left"> 
+      <p><font size="4" color="#000000">as seen in Math syntax, for example, to 
+        mean multiplication or, in our case, as seen in EBNF syntax to mean sequencing 
+        (<font face="Courier New, Courier, mono">b</font> should follow <font face="Courier New, Courier, mono">a</font>). 
+        The framework uses the shift (<font face="Courier New, Courier, mono">>></font>) 
+        operator instead for this purpose. We take the (<font face="Courier New, Courier, mono">>></font>) 
+        operator, with arrows pointing to the right, to mean "is followed by" 
+        <font size="3">[<a href="#N1">N1</a>]</font>.</font></p>
+    </div>
+    <div align="left"> 
+      <p><font size="4" color="#000000">The alternative operator (<font face="Courier New, Courier, mono">|</font>) 
+        and the parentheses (grouping) remain as is. The assignment operator (<font face="Courier New, Courier, mono">=</font>) 
+        is used in place of BNF's (<font face="Courier New, Courier, mono">::=</font>) 
+        Last but not least, the Kleene star (<font face="Courier New, Courier, mono">*</font>) 
+        which used to be a postfix operator in EBNF becomes a prefix. Instead 
+        of:</font></p>
+    </div>
+    <blockquote> 
+      <blockquote> 
+        <div align="left"> 
+          <pre><font face="Courier New, Courier, mono" size="4" color="#000000">a*   ... in EBNF syntax,</font></pre>
+        </div>
+      </blockquote>
+    </blockquote>
+    <div align="left"><font size="4" color="#000000">we write:</font></div>
+    <blockquote> 
+      <blockquote> 
+        <div align="left"> 
+          <pre><font face="Courier New, Courier, mono" size="4" color="#000000">*a   ... in Spirit.</font></pre>
+        </div>
+      </blockquote>
+    </blockquote>
+    <div align="left"> 
+      <p><font size="4" color="#000000">There are no postfix stars (<font face="Courier New, Courier, mono">*</font>) 
+        in C/C++.</font></p>
+    </div>
+    <div align="left"></div>
+  </blockquote>
+  <div align="left"></div>
+  <div align="left"> 
+    <h1><font color="#000000">Now what makes Spirit tick?</font></h1>
+  </div>
+  <blockquote> 
+    <div align="left"><font size="4" color="#000000">First, some concepts. A parser 
+      object is the most basic entity in the framework. Basically, a parser accepts 
+      an input stream and returns a <font face="Courier New, Courier, mono">Match</font> 
+      object as its result. The <font face="Courier New, Courier, mono">Match</font> 
+      object evaluates to <font face="Courier New, Courier, mono">true</font> 
+      if some criteria or algorithm matches a portion of the data at the current 
+      stream position. If a match is found, the stream is advanced accordingly.<br>
+      <br>
+      </font></div>
+    <div align="left"><font size="4" color="#000000">All parsers inherit from 
+      the base template class, <font face="Courier New, Courier, mono">Parser.</font> 
+      This class is a protocol base class for all parsers. This is essentially 
+      an interface contract. The <font face="Courier New, Courier, mono">Parser</font> 
+      class does not really know how to parse anything but instead relies on its 
+      sole template parameter <font face="Courier New, Courier, mono">Derived</font> 
+      <font size="3">[<a href="#N2">N2</a>]</font> (which obviously must be a 
+      subclass of <font face="Courier New, Courier, mono">Parser</font>) to do 
+      the actual parsing. Concrete subclasses inheriting from <font face="Courier New, Courier, mono">Parser</font> 
+      must have a corresponding member function <font face="Courier New, Courier, mono">Parse(...)</font> 
+      compatible with the conceptual interface:</font></div>
+    <blockquote> 
+      <div align="left"> 
+        <pre><font size="4" face="Courier New, Courier, mono" color="#000000">template &lt;typename ScannerT&gt;
+Match
+Parse(ScannerT& scanner) const;</font></pre>
+      </div>
+    </blockquote>
+    <div align="left"><font size="4" color="#000000">The <font face="Courier New, Courier, mono">Scanner</font> 
+      template parameter is just another form of an iterator that points to the 
+      current input stream position. We shall elaborate on this <a href="#scanner">later</a>. 
+      For now, think of the scanner as just another STL compliant forward iterator. 
+      It is passed by reference to allow the function to 'move' its position accordingly 
+      when a match is found. The parse is considered successful if a portion of 
+      the input starting at the current scanner position is matched. The Parse 
+      function terminates as soon as the scanner finds anything that the parser 
+      does not recognize.</font></div>
+    <div align="left"><font size="4" color="#000000"><br>
+      A parser can be quite simple. Here is a sample parser that accepts all characters:</font></div>
+    <blockquote> 
+      <div align="left"> 
+        <pre><font face="Courier New, Courier, mono" size="4" color="#000000"><anychar_>struct AllChars : public Parser&lt;AllChars&gt;<anychar_> {
+
+    template &lt;typename ScannerT&gt;
+    Match
+    Parse(ScannerT& scanner) const
+    {
+        ++scanner;
+        return Match(1);
+    }
+};</font></pre>
+      </div>
+    </blockquote>
+    <div align="left"><font size="4" color="#000000">A <font face="Courier New, Courier, mono">Match</font> 
+      object is returned by the <font face="Courier New, Courier, mono">Parse</font> 
+      function. Most importantly, the <font face="Courier New, Courier, mono">Match</font> 
+      object reports the success of the parse; i.e. evaluates to true if the <font face="Courier New, Courier, mono">Parse</font> 
+      function is successful, false otherwise. If the parse is successful, the 
+      <font face="Courier New, Courier, mono">Match</font> object may also be 
+      queried to report the number of characters matched (<font face="Courier New, Courier, mono">match.Length()</font>). 
+      The length is positive if the match is successful, otherwise a negative 
+      value is reported (typically, -1). Here is a code snippet:</font></div>
+    <blockquote> 
+      <div align="left"> 
+        <pre><font size="4" face="Courier New, Courier, mono" color="#000000">Match  match = Parse(scanner);
+bool   success = match;
+int    length = match.Length();</font></pre>
+      </div>
+      <div align="left"> 
+        <blockquote> 
+          <blockquote> 
+            <div align="left"></div>
+          </blockquote>
+        </blockquote>
+      </div>
+    </blockquote>
+  </blockquote>
+  <div align="left"> 
+    <div align="left"> 
+      <h1><font color="#000000">Primitives: </font></h1>
+    </div>
+  </div>
+  <blockquote> 
+    <div align="left"> 
+      <div align="left"></div>
+    </div>
+    <div align="left"></div>
+    <div align="left"><font size="4" color="#000000">The framework predefines 
+      some parser primitives. Here are some examples:</font></div>
+    <blockquote> 
+      <div align="left"> 
+        <pre><font size="4" face="Courier New, Courier, mono" color="#000000">ChLit:  Character literal.  Example: ChLit<>('X');
+Range:  Character range.    Example: Range<>('0','9');
+StrLit: String literal.     Example: StrLit<>("Hello");</font></pre>
+      </div>
+    </blockquote>
+    <div align="left"> 
+      <p><font size="4" color="#000000">At this point, as evident in these examples, 
+        it is important to note that contrary to standard practice, the Spirit 
+        framework handles parsing tasks at both the character level as well as 
+        the phrase level <font size="3">[<a href="#N3">N3</a>]</font>. One may 
+        consider that a lexical analyzer is seamlessly integrated in the Spirit 
+        framework.</font></p>
+    </div>
+    <div align="left"> 
+      <p><font size="4" color="#000000">We may now fill in some of the gaps. Going 
+        back to our original example, actually, the character literals <font face="Courier New, Courier, mono">'(', 
+        ')', '+', '-', '*'</font> and <font face="Courier New, Courier, mono">'/'</font> 
+        in the grammar declaration are ChLit objects that are implicitly created 
+        behind the scenes. One may prefer to declare these explicitly as:</font></p>
+    </div>
+    <blockquote> 
+      <div align="left"> 
+        <pre><font face="Courier New, Courier, mono" size="4" color="#000000">ChLit<> plus   ('+');
+ChLit<> minus  ('-');<br>ChLit<> times  ('*');<br>ChLit<> divide ('/');<br>ChLit<> oppar  ('(');<br>ChLit<> clpar  (')');</font></pre>
+      </div>
+    </blockquote>
+    <div align="left"><font size="4" color="#000000">Here is the complete list 
+      of parser primitives:</font></div>
+  </blockquote>
+  <div align="left"></div>
+  <blockquote> 
+    <div align="left"> 
+      <p><font size="4" color="#000000">Basics:</font></p>
+    </div>
+    <blockquote> 
+      <div align="left"> 
+        <table width="105%" border="0">
+          <tr> 
+            <td> 
+              <hr>
+            </td>
+          </tr>
+        </table>
+        <table width="105%" border="0" align="center">
+          <tr> 
+            <td width="27%"><font size="4" color="#000000">ChLit</font></td>
+            <td width="73%"><font size="4" color="#000000">Character literal. 
+              Example: <font face="Courier New, Courier, mono">ChLit<>('X');</font></font></td>
+          </tr>
+          <tr> 
+            <td width="27%"><font size="4" color="#000000">Range</font></td>
+            <td width="73%"><font size="4" color="#000000">Character range. Example: 
+              <font face="Courier New, Courier, mono">Range<>('0','9');</font></font></td>
+          </tr>
+          <tr> 
+            <td width="27%"><font size="4" color="#000000">StrLit</font></td>
+            <td width="73%"><font size="4" color="#000000">String literal. Example: 
+              <font face="Courier New, Courier, mono">StrLit<>("Hello");</font></font></td>
+          </tr>
+        </table>
+        <table width="105%" border="0">
+          <tr> 
+            <td> 
+              <hr>
+            </td>
+          </tr>
+        </table>
+        <table width="105%" border="0">
+          <tr> 
+            <td width="27%"><font size="4" color="#000000">NCChLit</font></td>
+            <td width="73%"><font size="4" color="#000000">Case insensitive character 
+              literal.</font></td>
+          </tr>
+          <tr> 
+            <td width="27%"><font size="4" color="#000000">NCRange</font></td>
+            <td width="73%"><font size="4" color="#000000">Case insensitive character 
+              range.</font></td>
+          </tr>
+          <tr> 
+            <td width="27%"><font size="4" color="#000000">NCStrLit</font></td>
+            <td width="73%"><font size="4" color="#000000">Case insensitive string 
+              literal.</font></td>
+          </tr>
+        </table>
+        <table width="105%" border="0">
+          <tr> 
+            <td> 
+              <hr>
+            </td>
+          </tr>
+        </table>
+        <table width="105%" border="0" height="20">
+          <tr> 
+            <td width="6%">&nbsp;</td>
+            <td width="94%"><font size="4" color="#000000">Note: These classes 
+              are templates parameterized by character type and defaults to <font face="Courier New, Courier, mono">char</font>.</font></td>
+          </tr>
+        </table>
+        <table width="105%" border="0">
+          <tr> 
+            <td> 
+              <hr>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </blockquote>
+    <div align="left"> 
+      <p><font size="4" color="#000000">Predefined parser primitives:</font></p>
+    </div>
+    <blockquote> 
+      <div align="left"> 
+        <div align="left"> 
+          <table width="105%" border="0">
+            <tr> 
+              <td> 
+                <hr>
+              </td>
+            </tr>
+          </table>
+          <table width="105%" border="0">
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">ch_p(ch)</font></td>
+              <td width="72%"><font size="4" color="#000000">Functor version of 
+                ChLit</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">range_p(from, to)</font></td>
+              <td width="72%"><font size="4" color="#000000">Functor version of 
+                Range</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">str_p(str)</font></td>
+              <td width="72%"><font size="4" color="#000000">Functor version of 
+                StrLit</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">ncch_p(ch)</font></td>
+              <td width="72%"><font size="4" color="#000000">Functor version of 
+                NCChLit</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">ncrange_p(from, to)</font></td>
+              <td width="72%"><font size="4" color="#000000">Functor version of 
+                NCRange</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">ncstr_p(str)</font></td>
+              <td width="72%"><font size="4" color="#000000">Functor version of 
+                NCStrLit</font></td>
+            </tr>
+          </table>
+          <table width="105%" border="0" height="19">
+            <tr> 
+              <td> 
+                <hr>
+              </td>
+            </tr>
+          </table>
+          <table width="105%" border="0" height="17">
+            <tr> 
+              <td width="6%" height="33">&nbsp;</td>
+              <td width="94%" height="33"> 
+                <p><font size="4" color="#000000">Note: These function objects 
+                  are designed to be used within expressions <font size="3">[<a href="#N17">N17</a>]</font>. 
+                  Example:</font></p>
+                <pre><font face="Courier New, Courier, mono" size="4" color="#000000">    helloworld = str_p(&quot;hello&quot;) &gt;&gt; str_p(&quot;world&quot;)</font><font size="4" color="#000000">;</font>
+</pre>
+              </td>
+            </tr>
+          </table>
+          <table width="105%" border="0">
+            <tr> 
+              <td> 
+                <hr>
+              </td>
+            </tr>
+          </table>
+          <table width="105%" border="0">
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">anychar</font></td>
+              <td width="72%"><font size="4" color="#000000">Matches any character</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">nothing</font></td>
+              <td width="72%"><font size="4" color="#000000">Matches nothing</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">epsilon</font></td>
+              <td width="72%"><font size="4" color="#000000">The epsilon, always 
+                a sucessful match with 0 length</font></td>
+            </tr>
+          </table>
+          <table width="105%" border="0" height="17">
+            <tr> 
+              <td> 
+                <hr>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div align="left"> 
+          <table width="105%" border="0">
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">alnum</font></td>
+              <td width="72%"><font size="4" color="#000000">Alpha-numeric characters</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">alpha</font></td>
+              <td width="72%"><font size="4" color="#000000">Alphabetic characters</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">cntrl</font></td>
+              <td width="72%"><font size="4" color="#000000">Control characters</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000"><a name="digit"></a>digit</font></td>
+              <td width="72%"><font size="4" color="#000000">Numeric digits</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">graph</font></td>
+              <td width="72%"><font size="4" color="#000000">Non-space printing 
+                characters</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">lower</font></td>
+              <td width="72%"><font size="4" color="#000000">Lower case letters</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">print</font></td>
+              <td width="72%"><font size="4" color="#000000">Printable characters</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">punct</font></td>
+              <td width="72%"><font size="4" color="#000000">Punctuation symbols</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000"><a name="space"></a>space</font></td>
+              <td width="72%"><font size="4" color="#000000">Space, tab, return, 
+                etc.</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">upper</font></td>
+              <td width="72%"><font size="4" color="#000000">Upper case letters</font></td>
+            </tr>
+            <tr> 
+              <td width="28%"><font size="4" color="#000000">xdigit</font></td>
+              <td width="72%"><font size="4" color="#000000">Hexadecimal digits</font></td>
+            </tr>
+          </table>
+          <table width="105%" border="0">
+            <tr> 
+              <td> 
+                <hr>
+              </td>
+            </tr>
+          </table>
+          <table width="105%" border="0">
+            <tr> 
+              <td width="6%">&nbsp;</td>
+              <td width="94%"><font size="4" color="#000000">Note: All predefined 
+                parser objects may be used for <font face="Courier New, Courier, mono">char</font> 
+                and <font face="Courier New, Courier, mono">wchar_t</font> types</font></td>
+            </tr>
+          </table>
+          <table width="105%" border="0">
+            <tr> 
+              <td> 
+                <hr>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </blockquote>
+  </blockquote>
+  <h1><font color="#000000">Numerics:</font></h1>
+  <blockquote> 
+    <p><font size="4" color="#000000">Aside from the predefined primitives listed 
+      above, the framework also provides a couple of predefined objects for parsing 
+      integers and real numbers.</font> </p>
+    <div align="left"> 
+      <p><font size="4" color="#000000">Here is our short list of numeric parsers 
+        <font size="3">[<a href="#N17">N17</a>]</font>:</font></p>
+    </div>
+    <blockquote> 
+      <div align="left"> 
+        <table width="104%" border="0">
+          <tr> 
+            <td width="29%" height="30"><font size="4" face="Courier New, Courier, mono" color="#000000">uint_p(n)</font></td>
+            <td width="71%" height="30"><font size="4" color="#000000">Unsigned 
+              integers</font></td>
+          </tr>
+          <tr> 
+            <td width="29%" height="29"><font size="4" face="Courier New, Courier, mono" color="#000000">int_p(n)</font></td>
+            <td width="71%" height="29"><font size="4" color="#000000">Signed 
+              integers</font></td>
+          </tr>
+          <tr> 
+            <td width="29%"><font size="4" face="Courier New, Courier, mono" color="#000000">real_p(n)</font></td>
+            <td width="71%"><font size="4" color="#000000">Floating point numbers<br>
+              C/C++ format, e.g. 123.456E78</font></td>
+          </tr>
+        </table>
+      </div>
+    </blockquote>
+    <div align="left"> 
+      <p><font size="4" color="#000000">The parameter n is a reference to a numeric 
+        type that will act as a placeholder for the parsed number <font size="3">[<a href="#N18">N18</a>]</font>. 
+        Here's a sample usage:</font></p>
+    </div>
+    <blockquote> 
+      <div align="left"> 
+        <pre><font size="4" face="Courier New, Courier, mono" color="#000000">int       n;
+Rule&lt;&gt;    r = '[' &gt;&gt; int_p(n) &gt;&gt; ']';</font></pre>
+      </div>
+    </blockquote>
+  </blockquote>
+  <h1><font color="#000000">Operators: </font></h1>
+  <blockquote> 
+    <div align="left"><font size="4" color="#000000">Operators are used as a means 
+      for object composition and embedding. Simple parsers may be composed to 
+      form composites through operator overloading, crafted to approximate the 
+      syntax of an Extended Backus-Normal Form (EBNF) variant. An expression such 
+      as:</font></div>
+    <blockquote> 
+      <div align="left"> 
+        <pre><font face="Courier New, Courier, mono" size="4" color="#000000">a | b</font></pre>
+      </div>
+    </blockquote>
+    <div align="left"><font size="4" color="#000000">actually yields a new parser 
+      type which is a composite of its operands, <font face="Courier New, Courier, mono">a</font> 
+      and <font face="Courier New, Courier, mono">b</font>. Taking this example 
+      further, if <font face="Courier New, Courier, mono">a</font> and <font face="Courier New, Courier, mono">b</font> 
+      were of type <font face="Courier New, Courier, mono">ChLit<></font>, the 
+      result would have the composite type:</font></div>
+    <blockquote> 
+      <div align="left"> 
+        <pre><font face="Courier New, Courier, mono" size="4" color="#000000">Alternative &lt;ChLit&lt;&gt;, ChLit<>></font></pre>
+      </div>
+    </blockquote>
+    <div align="left"><font size="4" color="#000000">A suite of operators facilitate 
+      the composition of parsers:</font></div>
+    <ol>
+      <li> 
+        <div align="left"><font size="4" color="#000000">Set-like operators on 
+          parsers <font size="3">[<a href="#N4">N4</a>]</font>:</font> <font color="#000000"><br>
+          <br>
+          </font>
+          <table width="95%" border="0">
+            <tr> 
+              <td width="15%"><font size="4" face="Courier New, Courier, mono" color="#000000">a 
+                | b</font></td>
+              <td width="85%"><font size="4" color="#000000">Union (match <font face="Courier New, Courier, mono">a</font> 
+                or <font face="Courier New, Courier, mono">b</font>. Also referred 
+                to as alternatives) <font size="3">[<a href="#N5">N5</a>]</font></font></td>
+            </tr>
+            <tr> 
+              <td width="15%"><font size="4" face="Courier New, Courier, mono" color="#000000">a 
+                & b</font></td>
+              <td width="85%"><font size="4" color="#000000">Intersection (match 
+                <font face="Courier New, Courier, mono">a</font> and <font face="Courier New, Courier, mono">b</font>) 
+                <font size="3">[<a href="#N6">N6</a>]</font></font></td>
+            </tr>
+            <tr> 
+              <td width="15%"><font size="4" face="Courier New, Courier, mono" color="#000000">a 
+                - b</font></td>
+              <td width="85%"><font size="4" color="#000000">Difference (match 
+                <font face="Courier New, Courier, mono">a</font> but not <font face="Courier New, Courier, mono">b</font>)</font></td>
+            </tr>
+            <tr> 
+              <td width="15%"><font size="4" face="Courier New, Courier, mono" color="#000000">a 
+                ^ b</font></td>
+              <td width="85%"><font size="4" color="#000000">XOR (match <font face="Courier New, Courier, mono">a</font> 
+                or <font face="Courier New, Courier, mono">b</font>, but not both)</font></td>
+            </tr>
+          </table>
+          <font color="#000000"><br>
+          </font></div>
+      </li>
+      <li><font size="4" color="#000000">Sequencing:</font> <font color="#000000"><br>
+        <br>
+        </font>
+        <table width="95%" border="0">
+          <tr> 
+            <td width="15%"><font face="Courier New, Courier, mono" size="4" color="#000000">a 
+              >> b</font></td>
+            <td width="85%"><font size="4" color="#000000">Matches <font face="Courier New, Courier, mono">a</font> 
+              and <font face="Courier New, Courier, mono">b</font> in sequence 
+              <font size="3">[<a href="#N1">N1</a>]</font></font></td>
+          </tr>
+          <tr> 
+            <td width="15%"><font face="Courier New, Courier, mono" size="4" color="#000000">a 
+              &amp;&amp; b</font></td>
+            <td width="85%"><font size="4" color="#000000">Sequential-and operator. 
+              Same as &gt;&gt;. Matches a and b in sequence <font size="3">[<a href="#N13">N13</a>]</font></font></td>
+          </tr>
+          <tr> 
+            <td width="15%"><font face="Courier New, Courier, mono" size="4" color="#000000">a 
+              || b</font></td>
+            <td width="85%"><font size="4" color="#000000">Sequential-or. Matches 
+              a or b in sequence<font face="Courier New, Courier, mono"> </font><font size="3">[<a href="#N13">N13</a>]</font></font></td>
+          </tr>
+        </table>
+        <font color="#000000"><br>
+        </font></li>
+      <li> 
+        <div align="left"><font size="4" color="#000000">Iteration</font><font face="Courier New, Courier, mono" size="4" color="#000000">:</font> 
+          <font color="#000000"><br>
+          <br>
+          </font>
+          <table width="95%" border="0">
+            <tr> 
+              <td width="15%"><font size="4" face="Courier New, Courier, mono" color="#000000">*a</font></td>
+              <td width="85%"><font size="4" color="#000000"> Kleene star. Match 
+                <font face="Courier New, Courier, mono">a</font> zero (0) or more 
+                times</font></td>
+            </tr>
+            <tr> 
+              <td width="15%"><font size="4" face="Courier New, Courier, mono" color="#000000">+a</font></td>
+              <td width="85%"><font size="4" color="#000000"> Positive. Match 
+                <font face="Courier New, Courier, mono">a</font> one (1) or more 
+                times</font></td>
+            </tr>
+            <tr> 
+              <td width="15%"><font size="4" face="Courier New, Courier, mono" color="#000000">!a</font></td>
+              <td width="85%"><font size="4" color="#000000"> Optional. Match 
+                <font face="Courier New, Courier, mono">a</font> zero (0) or one 
+                (1) time</font></td>
+            </tr>
+          </table>
+        </div>
+      </li>
+    </ol>
+    <div align="left"> 
+      <p><font size="4" color="#000000">Operator precedence and grouping:</font></p>
+    </div>
+    <blockquote> 
+      <div align="left"> 
+        <p><font size="4" color="#000000">Since we are defining our meta-language 
+          in C++, we follow C/C++'s operator precedence rules. Groups override 
+          this (e.g., <font face="Courier New, Courier, mono">*(a | b)</font> 
+          reads: match <font face="Courier New, Courier, mono">a</font> or <font face="Courier New, Courier, mono">b</font> 
+          zero (0) or more times). </font></p>
+      </div>
+    </blockquote>
+    <div align="left"><font size="4" color="#000000">For binary operators, one 
+      of the operands (but not both <font size="3">[<a href="#N7">N7</a>]</font>) 
+      may be a <font face="Courier New, Courier, mono">char</font>, <font face="Courier New, Courier, mono">wchar_t</font>, 
+      <font face="Courier New, Courier, mono">char const*</font> or <font face="Courier New, Courier, mono">wchar_t 
+      const*</font>. Examples:</font></div>
+    <blockquote> 
+      <div align="left"> 
+        <pre><font size="4" face="Courier New, Courier, mono" color="#000000">a | 'x';<br>a - "Hello World";</font></pre>
+      </div>
+    </blockquote>
+    <div align="left"><font size="4" color="#000000">A few simple classes, when 
+      composed and structured in a hierarchy, form a very powerful object oriented 
+      recursive descent parsing engine. These classes provide the infrastructure 
+      needed for the construction of more complex parsers. The final parser composite 
+      is a non-deterministic recursive descent parser with infinite look-ahead 
+      LL(INF). Top-down descent traverses the hierarchy, checking each object 
+      for a match, backtracking and checking all possible alternatives.<br>
+      <br>
+      </font></div>
+    <div align="left"><font size="4" color="#000000">The flexibility of object 
+      embedding and composition combined with recursion opens up a unique approach 
+      to parsing. Subclasses are free to form aggregates and algorithms of arbitrary 
+      complexity. Complex parsers can be created with the composition of only 
+      a few primitive classes.<br>
+      <br>
+      </font></div>
+    <div align="left"><font size="4" color="#000000">The framework is designed 
+      to be fully open-ended and extensible. New primitives or composites, from 
+      the trivial to the complex, may be added any time. Composition is totally 
+      static (happens at compile time). This is possible through the expressive 
+      flexibility of C++ template meta- programming.</font></div>
+  </blockquote>
+  <div align="left"> 
+    <h1><font color="#000000">Iterators:</font></h1>
+  </div>
+  <blockquote> 
+    <div align="left"><font size="4" color="#000000">So far we have introduced 
+      a couple of EBNF operators that deal with iteration. We have the (<font face="Courier New, Courier, mono">+</font>) 
+      operator, which matches the preceding symbol one (1) or more times, as well 
+      as the Kleene star (<font face="Courier New, Courier, mono">*</font>) which 
+      matches the preceding symbol zero (0) or more times. <br>
+      <br>
+      If we look more closely, take note that we generalized the optional expression 
+      of the form <b><font face="Courier New, Courier, mono">!a</font></b> above 
+      in the same category as iterators. This is logical, considering that the 
+      optional closure matches the expression following it zero (0) or (1) time. 
+      Taking this further, we may want to have a generalized iteration operator. 
+      To some this may seem to be a case of overkill. Yet there are grammars that 
+      are impractical and cumbersome, if not impossible, for the basic EBNF iteration 
+      syntax to specify. Examples: </font></div>
+    <ol>
+      <li> 
+        <div align="left"><font size="4" color="#000000">A file name may have 
+          a maximum of 255 characters only. </font></div>
+      </li>
+      <li> 
+        <div align="left"><font size="4" color="#000000">A specific bitmap file 
+          format has exactly 4096 RGB color information.</font></div>
+      </li>
+      <li><font color="#000000" size="4">A 32 bit binary string (1..32 1s or 0s).</font></li>
+    </ol>
+    <div align="left"> 
+      <p><font size="4" color="#000000">Other than the Kleene star (<font face="Courier New, Courier, mono">*</font>), 
+        the Positive closure (<font face="Courier New, Courier, mono">+</font>), 
+        and the optional <font face="Courier New, Courier, mono">(!)</font>, a 
+        more flexible mechanism for iteration is provided for by the framework:</font></p>
+    </div>
+    <blockquote> 
+      <div align="left"> 
+        <table width="103%" border="0">
+          <tr> 
+            <td width="39%" height="35"><font size="4" face="Courier New, Courier, mono" color="#000000">a.Repeat();</font></td>
+            <td width="61%" height="35"><font size="4" color="#000000">Repeat 
+              a, zero or more times. <br>
+              Same as <font face="Courier New, Courier, mono">a.Repeat(0, more);</font> 
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="39%" height="32"><font size="4" face="Courier New, Courier, mono" color="#000000">a.Repeat(n);</font></td>
+            <td width="61%" height="32"><font size="4" color="#000000">Repeat 
+              a, exactly n times.</font></td>
+          </tr>
+          <tr> 
+            <td width="39%" height="33"><font size="4" face="Courier New, Courier, mono" color="#000000">a.Repeat(n1, 
+              n2);</font></td>
+            <td width="61%" height="33"><font size="4" color="#000000">Repeat 
+              a, at least n1 times and at most n2 times.</font></td>
+          </tr>
+          <tr> 
+            <td width="39%" height="33"><font size="4" face="Courier New, Courier, mono" color="#000000">a.Repeat(n, 
+              more);</font></td>
+            <td width="61%" height="33"><font size="4" color="#000000">Repeat 
+              a, n or more times.</font></td>
+          </tr>
+          <tr> 
+            <td width="39%" height="33"><font size="4" face="Courier New, Courier, mono" color="#000000">a(n);</font></td>
+            <td width="61%" height="33"><font size="4" color="#000000">Repeat 
+              a, exactly n times. <br>
+              Same as <font face="Courier New, Courier, mono">a.Repeat(n);</font> 
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="39%" height="33"><font size="4" face="Courier New, Courier, mono" color="#000000">a(n, 
+              to);</font></td>
+            <td width="61%" height="33"><font size="4" color="#000000">Repeat 
+              a, at least n1 times and at most n2 times. <br>
+              Same as <font face="Courier New, Courier, mono">a.Repeat(n1, n2);</font> 
+              </font></td>
+          </tr>
+          <tr> 
+            <td width="39%" height="33"><font size="4" face="Courier New, Courier, mono" color="#000000">a(n, 
+              more);</font></td>
+            <td width="61%" height="33"><font size="4" color="#000000">Repeat 
+              a, n or more.<br>
+              Same as <font face="Courier New, Courier, mono">a.Repeat(n, more);</font> 
+              </font></td>
+          </tr>
+        </table>
+      </div>
+      <div align="left"></div>
+      <div align="left"></div>
+      <blockquote> 
+        <div align="left"> </div>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <h1><font color="#000000">The Production Rule:</font></h1>
+  <blockquote> 
+    <div align="left"><font size="4" face="Courier New, Courier, mono" color="#000000">Rule</font><font size="4" color="#000000"> 
+      is a class that captures the type and behavior of any primitive or composite 
+      parser that is assigned to it either via its assignment operator or its 
+      copy constructor. In effect, a rule allows an arbitrarily complex composite 
+      parser to be named. Naming of a rule allows it to be referenced in another 
+      compositional expression. Essentially, Rule 'IS-A' (inherits from) Parser 
+      and adheres to Parser's conceptual interface.<br>
+      <br>
+      </font></div>
+    <div align="left"><font size="4" color="#000000">The type and behavior of 
+      a parser assigned to a rule is encoded in a conventional polymorphic class 
+      (AbstractParser). The rule's assignment and copy constructor dynamically 
+      creates a concrete instance of AbstractParser. The rule's assignment and 
+      copy constructor are both member templates parameterized by the type of 
+      the parser passed. Example:</font></div>
+    <blockquote> 
+      <div align="left"> 
+        <pre><font face="Courier New, Courier, mono" size="4" color="#000000">Rule<>   aRule = *(a | b) & +(c | d | e);</font></pre>
+      </div>
+    </blockquote>
+    <div align="left"><font size="4" color="#000000">The type and functionality 
+      of the right-hand expression, which may be arbitrarily complex, is encoded 
+      in the rule named aRule <font size="3">[<a href="#N8">N8</a>]</font>.<br>
+      <br>
+      </font></div>
+    <div align="left"><font size="4" color="#000000">Forward declarations<font face="Courier New, Courier, mono">:</font></font></div>
+    <blockquote> 
+      <div align="left"><font size="4" color="#000000">Rules may be declared before 
+        being defined to allow cyclic structures typically found in BNF declarations. 
+        Example:</font></div>
+      <div align="left"> 
+        <pre><font size="4" face="Courier New, Courier, mono" color="#000000">    Rule<>   a, b, c;
+			
+    a = b | a;
+    b = c | a;</font></pre>
+      </div>
+    </blockquote>
+    <div align="left"><font size="4" color="#000000">Recursion:</font></div>
+    <blockquote> 
+      <div align="left"><font size="4" color="#000000">The right-hand side of 
+        a rule may reference other rules, including itself. The limitation is 
+        that direct or indirect left recursion is not allowed <font size="3">[<a href="#N14">N14</a>]</font> 
+        (this is an unchecked run-time error that results in an infinite loop). 
+        This is typical of LL(k) parsers. Example:<br>
+        <br>
+        </font></div>
+      <div align="left"> 
+        <pre><font face="Courier New, Courier, mono" size="4" color="#000000">    a = a | b;    //    infinite loop!</font> </pre>
+      </div>
+    </blockquote>
+    <p><font size="4" color="#000000">Redefinition:</font></p>
+    <blockquote> 
+      <p><font size="4" color="#000000">Redefinition of rules is not allowed. 
+        This could have been enforced statically by not supplying a default constructor 
+        or an assignment operator. Yet forward declared rules would not have been 
+        possible. The caveat is that redefinition is caught only at run time <font size="3">[<a href="#N9">N9</a>]</font>:</font></p>
+      <pre><font face="Courier New, Courier, mono" size="4" color="#000000">    a = b | c;
+    a = b;        //    run-time error</font></pre>
+    </blockquote>
+    <p><font size="4" color="#000000">Undefined Rules:</font></p>
+    <blockquote> 
+      <p><font size="4" color="#000000">An undefined rule matches nothing. This 
+        can be used to turn on/off extensions to a language at the parser level 
+        <font size="3">[<a href="#N19">N19</a>]</font>. For example:</font></p>
+      <blockquote> 
+        <pre><font size="4" color="#000000" face="Courier New, Courier, mono">r = feature_a | feature_b;
+if (allow_feature_b)
+    feature_b = /*...define feature_b...*/;</font></pre>
+      </blockquote>
+      <p><font size="4" color="#000000">If the flag </font><font size="4" color="#000000" face="Courier New, Courier, mono">allow_feature_b 
+        </font><font size="4" color="#000000">is <font face="Courier New, Courier, mono">false</font>, 
+        <font face="Courier New, Courier, mono">feature_b</font> will be left 
+        undefined and will match nothing when parsing proceeds. So, the rule r 
+        will have only one alternative.</font></p>
+    </blockquote>
+    <p><font size="4" color="#000000">Rationale:</font></p>
+    <blockquote> 
+      <p><font size="4" color="#000000">Rules straddle the border between static 
+        and dynamic C++. In effect, a rule transforms compile-time polymorphism 
+        (using templates) into run-time polymorphism (using virtual functions). 
+        This is necessary due to C++'s inability to automatically declare a variable 
+        of a type deduced from an arbitrarily complex expression in the right-hand 
+        side (rhs) of an assignment <font size="3">[<a href="#N15">N15</a>]</font>. 
+        Basically, we want to do something like:</font></p>
+      <pre><font size="4" face="Courier New, Courier, mono" color="#000000">    T   rule = an_arbitrarily_complex_expression;</font></pre>
+      <p> <font size="4" color="#000000">without having to know or care about 
+        the resulting type of the right-hand side of the assignment expression. 
+        Apart from this, we also need a facility to forward declare an unknown 
+        type:</font></p>
+      <pre><font size="4" face="Courier New, Courier, mono" color="#000000">    T   rule;
+    ...
+    rule = a | b;</font><font size="4" color="#000000">       </font></pre>
+      <p><font size="4" color="#000000">These limitations lead us to this implementation 
+        of rules. This comes at the expense of the overhead of a virtual function 
+        call, once through each invocation of a rule.</font></p>
+    </blockquote>
+  </blockquote>
+  <h1><font color="#000000"><a name="scanner"></a>The Scanner:</font></h1>
+  <blockquote> 
+    <p><font size="4" color="#000000">Already mentioned in passing, the Spirit 
+      parser compiler, unlike traditional parser generators, can handle parsing 
+      tasks at both the character as well as the phrase level <font size="3">[<a href="#N3">N3</a>]</font>. 
+      There is no separate lexical analyzer. There is perfect integration between 
+      the character and the phrase levels.</font></p>
+    <p><font size="4" color="#000000">The Scanner wraps an iterator and a white 
+      space parser (or filter, if you may). The scanner extracts data from the 
+      input stream and filters this data to exclude white spaces as recognized 
+      by the white space filter. The scanner invokes this filter when tasked to 
+      scan the next character from the input. The scanner conforms to a standard 
+      STL constant (immutable) forward iterator.</font></p>
+    <p><font size="4" color="#000000">The scanner is not a full-blown lexical 
+      analyzer. It does not extract tokens such as reserved words and operators. 
+      Nor does it extract numbers and literal strings <font size="3">[<a href="#N11">N10</a>]</font>.</font></p>
+    <p><font size="4" color="#000000">Here's an example that demonstrates the 
+      scanner in action <font size="3">[<a href="#N12">N11</a>]</font>: </font></p>
+    <pre><font face="Courier New, Courier, mono" size="4" color="#000000">    Scanner<>  scanner(iter, space);</font></pre>
+    <p><font size="4" color="#000000">The identifier <font face="Courier New, Courier, mono">iter</font> 
+      is an iterator to some data that the scanner will be working on. The identifier 
+      <font face="Courier New, Courier, mono"><a href="#space">space</a></font> 
+      is one of the predefined parser primitives in the framework. The space parser 
+      matches white spaces as defined in the <font face="Courier New, Courier, mono">std::isspace(ch)</font> 
+      standard function. After having defined our scanner, we may now pass this 
+      to any <font face="Courier New, Courier, mono">Parse(...)</font> function. 
+      This will make the parser involved skip white spaces:</font></p>
+    <pre><font face="Courier New, Courier, mono" size="4" color="#000000">    parser.Parse(scanner);    // White spaces are skipped</font></pre>
+    <p><font size="4" color="#000000">The Scanner class is parameterized by the 
+      type of white space production and the type of the iterator that it wraps. 
+      Although the type of the scanner's white space production defaults to <font face="Courier New, Courier, mono">Space_</font>, 
+      one can definitely supply a more specific or elaborate white space skipping 
+      scheme for the scanner to use. To illustrate this, say we want C/C++ style 
+      comments to be considered as white space in addition to spaces, tabs, newlines 
+      and carriage returns, we may define a production rule, </font><font size="4" face="Courier New, Courier, mono" color="#000000">ignore</font><font size="4" color="#000000">:</font></p>
+    <blockquote> 
+      <pre><font size="4" color="#000000" face="Courier New, Courier, mono">ignore = space | comment;
+comment = &quot;//&quot; &gt;&gt; *(anychar - (ch_p('\0') | '\n' | '\r'));
+        | &quot;/*&quot; &gt;&gt; *(anychar - (ch_p('\0') | &quot;*/&quot;)) &gt;&gt; &quot;*/&quot;;</font></pre>
+    </blockquote>
+    <p><font size="4" color="#000000">Now we can use this rule to create our scanner. 
+      Thus:</font></p>
+    <blockquote> 
+      <pre><font size="4" color="#000000" face="Courier New, Courier, mono">Scanner&lt;Rule&lt;&gt; &gt; scanner(iter, ignore);<br>parser.Parse(scanner);    // White spaces and comments are skipped</font></pre>
+    </blockquote>
+    <p><font size="4" color="#000000">As mentioned, the scanner conforms to an 
+      STL forward iterator. Any forward iterator may be used in place of a scanner 
+      and passed to a Parse function. Doing so will force the parser to work on 
+      the character level (white spaces are not skipped). If we will work solely 
+      at the character level, it is best to bypass the scanner this way instead 
+      of sprinkling the code with <a href="#Lexeme">Lexeme</a> directives.</font></p>
+    <p><font size="4" color="#000000">On the other hand, the scanner can wrap 
+      any standard conforming iterator (as mentioned, at least a forward iterator 
+      is required). This gives us the flexibility to use a string, vector or even 
+      a list, for example, as input to our parser, instead of the default char*.</font></p>
+  </blockquote>
+  <h1><font color="#000000">Directives:</font></h1>
+  <blockquote> 
+    <table width="90%" border="0" align="center">
+      <tr> 
+        <td width="39%"><font size="4" color="#000000">Parser directives have 
+          the form:</font></td>
+        <td width="61%"><font face="Courier New, Courier, mono" size="4" color="#000000">Directive[expression].</font></td>
+      </tr>
+    </table>
+    <p><font size="4" color="#000000">A directive modifies the behavior of its 
+      enclosed expression, essentially 'decorating' it (Decorator Pattern <font size="3">[<a href="#R5">R5</a>]</font>). 
+      The framework pre-defines a few directives. Clients of the framework are 
+      free to define their own directives as needed.</font></p>
+    <p><font size="4" color="#000000">Predefined directives:</font></p>
+    <ol>
+      <li><font size="4" color="#000000"><a name="Lexeme"></a>Lexeme:<br>
+        <br>
+        Turns off white space skipping. By default the parser ignores white spaces 
+        and all things considered as white spaces, possibly including comments 
+        as parameterized by the scanner passed into the parser's <font face="Courier New, Courier, mono">Parse(...)</font> 
+        member function.<br>
+        <br>
+        Situations where we want to work at the character level instead of the 
+        phrase level call for a special construct. Rules can be directed to work 
+        at the character level by enclosing the pertinent parts of the grammar 
+        inside the <font face="Courier New, Courier, mono">Lexeme</font> directive. 
+        <br>
+        <br>
+        </font></li>
+      <li><font size="4" color="#000000">Longest:<br>
+        <br>
+        Alternatives in the Spirit parser compiler are short-circuited <font size="3">[<a href="#N5">N5</a>]</font>. 
+        Sometimes, this is not what is desired. The <font face="Courier New, Courier, mono">Longest</font> 
+        directive instructs the parser not to short-circuit alternatives enclosed 
+        inside this directive, but instead makes the parser try all possible alternatives 
+        and choose the one matching the longest portion of the input stream. <br>
+        <br>
+        </font></li>
+      <li><font size="4" color="#000000">Shortest:<br>
+        <br>
+        Opposite of the Longest directive.<br>
+        </font></li>
+    </ol>
+    <p><font size="4" color="#000000">Now, going back to our original example, 
+      the observant reader might notice that the <font face="Courier New, Courier, mono">integer</font> 
+      rule was left undefined. Although its definition is quite obvious, here's 
+      how it is actually defined in the context of the framework. Continuing our 
+      original example:</font></p>
+    <pre><font face="Courier New, Courier, mono" size="4" color="#000000">    integer = Lexeme[ !(ch_p(</font><font color="#000000">'+')<font face="Courier New, Courier, mono" size="4"> | '-') >> +digit ];</font></font>
+</pre>
+    <p> <font size="4" color="#000000">where <font face="Courier New, Courier, mono"><a href="#digit">digit</a></font> 
+      is another predefined parser that calls the <font face="Courier New, Courier, mono">std::isdigit(ch)</font> 
+      standard function.</font></p>
+    <p><font size="4" color="#000000">Optionally, we can take advantage of the 
+      numeric parser int_p:</font></p>
+    <pre><font face="Courier New, Courier, mono" size="4" color="#000000">    int n;
+    integer = int_p(n)</font><font color="#000000"><font face="Courier New, Courier, mono" size="4">;</font></font>
+</pre>
+    <p><font size="4" color="#000000">Alas, we have our complete grammar specification:</font></p>
+    <pre><font face="Courier New, Courier, mono" size="4" color="#000000">    Rule<>    integer, group, expr1, expr2, expr;
+
+    integer   = Lexeme[ !(ch_p(</font><font color="#000000">'+')<font face="Courier New, Courier, mono" size="4"> | '-'</font></font><font face="Courier New, Courier, mono" size="4" color="#000000">) >> +digit ];
+    group     = '(' >> expr >> ')';
+    expr1     = integer | group;
+    expr2     = expr1 >> *(('*' >> expr1) | ('/' >> expr1));
+    expr      = expr2 >> *(('+' >> expr2) | ('-' >> expr2));</font></pre>
+    <p><font size="4" color="#000000">Yes, it's a calculator. This production 
+      rule <font face="Courier New, Courier, mono">expr</font> in our grammar 
+      specification, traditionally called the start symbol <font size="3">[<a href="#N13">N12</a>]</font>, 
+      can accept inputs such as:</font></p>
+    <pre><font size="4" face="Courier New, Courier, mono" color="#000000">    12345
+    -12345
+    +12345
+    1 + 2
+    1 * 2
+    1/2 + 3/4
+    1 + 2 + 3 + 4
+    1 * 2 * 3 * 4
+    (1 + 2) * (3 + 4)
+    (-1 + 2) * (3 + -4)
+    1 + ((6 * 200) - 20) / 6
+    (1 + (2 + (3 + (4 + 5))))</font></pre>
+  </blockquote>
+  <h1><font color="#000000">Semantic actions:</font></h1>
+  <blockquote> 
+    <blockquote> 
+      <table width="90%" border="0">
+        <tr> 
+          <td width="44%"><font size="4" color="#000000">Semantic actions have 
+            the form: </font></td>
+          <td width="56%"><font face="Courier New, Courier, mono" size="4" color="#000000">expression[action]</font></td>
+        </tr>
+      </table>
+    </blockquote>
+    <p><font size="4" color="#000000">Ultimately, after having defined our grammar 
+      and generating a corresponding parser, we more often than not need to produce 
+      some output or do some work besides syntax analysis. Unless of course what 
+      we want is merely to check for the conformance of an input with our grammar, 
+      which is very seldom the case.</font></p>
+    <p><font size="4" color="#000000">What we need is a mechanism that will instruct 
+      the parser on what should be done as it traverses the grammar while in the 
+      process of parsing an input stream. This mechanism is put in place through 
+      semantic actions.</font><font color="#000000"><br>
+      <br>
+      <font size="4">Semantic actions may be attached to any expression at any 
+      level within the parser hierarchy. An action is a C/C++ function or function 
+      object that will be called if a match is found in the particular context 
+      where it is attached. The action function may be serve as a hook into the 
+      parser and may be used to, for example:</font></font></p>
+    <ol>
+      <li><font size="4" color="#000000">Generate output from the parser (ASTs, 
+        for example);</font></li>
+      <li><font size="4" color="#000000">Report warnings or errors; or</font></li>
+      <li><font size="4" color="#000000">Manage symbol tables.</font></li>
+    </ol>
+    <p><font size="4" color="#000000">A semantic action can be any free function 
+      or function object that <font face="Courier New, Courier, mono"><derived></font>is 
+      compatible with the conceptual interface:</font></p>
+    <blockquote> 
+      <pre><font size="4" face="Courier New, Courier, mono" color="#000000">template <typename iterator>&lt;typename Iterator&gt;
+bool Action(Iterator scanner, Iterator last);</font></pre>
+    </blockquote>
+    <p><font size="4" color="#000000">Example:</font></p>
+    <pre><font size="4" face="Courier New, Courier, mono" color="#000000">    void
+    myAction(char const* begin, char const* end)
+    {
+        std::string(begin, end);
+        std::cout &lt;&lt; string &lt;&lt; std::endl;
+    }
+
+    Rule<>   myRule = (a | b | *(c >> d))[&amp;myAction];</font></pre>
+    <p><font size="4" color="#000000">The function </font><font size="4" face="Courier New, Courier, mono" color="#000000">myAction</font> 
+      <font size="4" color="#000000">will be called whenever the expression:</font></p>
+    <pre><font size="4" face="Courier New, Courier, mono" color="#000000">    a | b | *(c >> d)</font></pre>
+    <p><font size="4" color="#000000">matches a portion of the input stream upon 
+      parsing. Two iterators (<font face="Courier New, Courier, mono">begin</font> 
+      and <font face="Courier New, Courier, mono">end</font>) are passed into 
+      the function. These iterators point to the start and end, respectively, 
+      of the portion of input stream where the match is found.</font></p>
+    <p><font size="4" color="#000000">Here now is our calculator enhanced with 
+      semantic actions:</font> </p>
+    <blockquote> 
+      <pre><font face="Courier New, Courier, mono" size="4" color="#000000">void	doInt(char const* str, char const* end)
+{
+    std::string	s(str, end);
+    std::cout << s << std::endl;
+}
+
+void    doAdd(char const*, char const*)     { cout << "ADD\n"; }
+void    doSubt(char const*, char const*)    { cout << "SUBT\n"; }
+void    doMult(char const*, char const*)    { cout << "MULT\n"; }
+void    doDiv(char const*, char const*)     { cout << "DIV\n"; }
+
+Rule<>  expr;
+Rule<>  integer = Lexeme[ (!(ch_p('+') | '-') >> +digit)[&doInt] ];
+Rule<>  group   = '(' >> expr >> ')';
+Rule<>  expr1   = integer | group;
+Rule<>  expr2   = expr1 >> *(('*' >> expr1)[&doMult] | ('/' >> expr1)[&doDiv]);
+expr            = expr2 >> *(('+' >> expr2)[&doAdd] | ('-' >> expr2)[&doSubt]);</font></pre>
+    </blockquote>
+    <p><font size="4" color="#000000">Feeding in the expression <font face="Courier New, Courier, mono">&quot;(-1 
+      + 2) * (3 + -4)&quot;, for example, </font> to the rule <font face="Courier New, Courier, mono">expr</font> 
+      will produce the expected output:</font></p>
+    <blockquote> 
+      <pre><font face="Courier New, Courier, mono" size="4" color="#000000">-1
+2
+ADD
+3
+-4
+ADD
+MULT</font></pre>
+    </blockquote>
+    <p><font size="4" color="#000000">which, by the way, is the Reverse Polish 
+      Notation (RPN) of the given expression, reminiscent of some primitive calculators 
+      and the language Forth. </font></p>
+  </blockquote>
+  <h1><font color="#000000">Future Directions:</font></h1>
+</blockquote>
+<blockquote> 
+  <blockquote> 
+    <p><font size="4" color="#000000">Spirit is an on-going development. It is 
+      designed as a parser for the common programmer. Daily programming chores 
+      necessitate parsing more and more. Most of the time, sometimes without realizing 
+      it, we are coding a parser by hand. Many stay away from full blown applications 
+      such as YACC because of the jumbo-jet syndrome. Spirit's intent is to be 
+      a library-based parser in between regex and a full-blown parser. Further 
+      developments will focus on this prime motivation.</font></p>
+  </blockquote>
+  <ol>
+    <ol>
+      <li><font size="4" color="#000000">Character and String sets. A pre-release 
+        version of Spirit actually had character sets. That was before support 
+        for character types other than 8 bits (16 and 32 bits) was considered. 
+        While Spirit is usable as is, the performance of the framework will definitely 
+        be improved with the addition of character and string sets.</font><font color="#000000"><br>
+        <br>
+        </font></li>
+      <li><font size="4" color="#000000">Perfect hash keyword lookup. For fixed 
+        string lookup, a perfect hash lookup table will give a O(1) performance. 
+        This is particularly suited for keywords and operators.<br>
+        <br>
+        </font></li>
+      <li><font size="4" color="#000000">More predefined parsers. Parsers for 
+        comments, delimited lists, strings, character literals, identifiers, and 
+        other commonly used utilities.<br>
+        <br>
+        </font></li>
+      <li><font size="4" color="#000000">Semantic predicates. Borrowed from PCCTS, 
+        this will allow finer algorithmic control over the disambiguation of alternatives. 
+        This is much like Spirit's semantic actions but geared towards syntax, 
+        rather than semantics. <br>
+        <br>
+        </font></li>
+      <li><font size="4" color="#000000">Symbol tables. Support for contexts, 
+        namespaces for the management of identifiers. <br>
+        <br>
+        </font></li>
+      <li><font size="4" color="#000000">ASTs. Abstract syntax tree generation.<br>
+        <br>
+        </font></li>
+      <li><font size="4" color="#000000">Parallel semantic action framework. A 
+        semantic action framework based on functional programming techniques in 
+        C++. This will be a separate entity and built as a layer on top of Spirit. 
+        Spirit will not rely on this nor even know of its existence. The semantic 
+        action facility of Spirit is the bare metal where a more extensive foundation 
+        will be laid down.</font></li>
+    </ol>
+  </ol>
+  <blockquote> 
+    <h1><font color="#000000">Wrap up:</font></h1>
+    <p><font size="4" color="#000000">Accompanying the framework are a couple 
+      of test programs that follow up what we have started. There are four (4) 
+      short programs (calc1.cpp, calc2.cpp, feat.cpp and micro.cpp) that demonstrate 
+      the use and capabilities of the Spirit framework. The first two are basically 
+      refinements of our calculator example. The second program (calc2.cpp) is 
+      of particular interest because it implements a byte-code compiler and interpreter 
+      for our simple calculator. The program feat.cpp is a test program that determines 
+      if the compiled program is working as expected. The outputs of both calc1.cpp 
+      and feat.cpp may be checked against calc1.txt and feat.txt, respectively, 
+      to ensure that the framework is working well. Finally, micro.cpp demonstrates 
+      the micro-parser functionality and the numeric parsers in action.</font></p>
+    <p><font size="4" color="#000000">The framework itself is small. There are 
+      twelve (12) header files (apart from configuration files). The <spirit.h> 
+      <font face="Courier New, Courier, mono">&lt;Spirit.h&gt;</font> file is 
+      the master header file that includes all the necessary headers in the framework. 
+      The framework does not rely on any code or library except the standard C++ 
+      libraries.</font></p>
+    <blockquote> 
+      <p><font size="4" color="#000000">Spirit.h<br>
+        Spirit_Action.h<br>
+        Spirit_Basics.h<br>
+        Spirit_Composite.h<br>
+        Spirit_Directives.h<br>
+        Spirit_Iterators.h<br>
+        Spirit_Numerics.h<br>
+        Spirit_Operators.h<br>
+        Spirit_Parser.h<br>
+        Spirit_Primitives.h<br>
+        Spirit_Rule.h<br>
+        Spirit_Scanner.h </font></p>
+    </blockquote>
+    <p><font size="4" color="#000000">I believe there are a couple of new innovations 
+      introduced in the Spirit framework worth looking into. The modeling of parsers 
+      as hierarchical composite objects coupled with the notion of composition 
+      of simple objects to create more complex objects as applied to parsers is 
+      one of the first of its kind. Another innovation is the application of template 
+      meta-programming techniques, expression templates in particular, to parsing. 
+      </font></p>
+    <p><font size="4" color="#000000">After version Spirit 1.0 was released, I 
+      had the chance, thanks to Greg Colvin of Boost, to look into a prior work 
+      of Dr. Damian Conway <font size="3">[<a href="#R10">R10</a>]</font>. It 
+      came to my surprise that Spirit shares some similarities with Dr. Conway's 
+      work <font size="3">[<a href="#N16">N16</a>]</font>, albeit using modern 
+      C++ features and techniques such as static polymorphism through partial 
+      template specializations versus dynamic dispatch through virtual functions. 
+      Still, in some ways, Spirit could benefit from learning more about Dr. Conway's 
+      work especially with its implementation of deferred expressions <font size="3">[<a href="#R11">R11</a>]</font> 
+      which admitedly is superior to Spirit's semantic actions. </font></p>
+    <p><font size="4" color="#000000">What else? Ah yes, one more tidbit: the 
+      abundance of oparators such as parser intersection <font face="Courier New, Courier, mono">&</font>, 
+      difference <font face="Courier New, Courier, mono">-</font>, and xor <font face="Courier New, Courier, mono">^</font> 
+      might also prove to be an interesting research area. It has been noted that 
+      intersections allow us to define languages that are not context free <font size="3">[<a href="#N6">N6</a>]</font>. 
+      What about xor <font face="Courier New, Courier, mono">^</font>?</font></p>
+    <p><font size="4" color="#000000">So far we have just scratched the surface 
+      of what we can do with the Spirit parser compiler. What we have so far is 
+      a prototype that demonstrates the concept. There are still avenues to explore 
+      that ultimately lead towards this new frontier. I invite you now to trek 
+      this exciting journey with me. Have fun!</font></p>
+  </blockquote>
+  <h1><font color="#000000">Annotations:</font></h1>
+  <ol>
+    <li><font color="#000000"><a name="N1"></a><font size="4">The comma operator 
+      as in <font face="Courier New, Courier, mono">a, b</font> seems to be a 
+      better candidate, syntax-wise. But then the problem is with its precedence. 
+      It has the lowest precedence in C/C++, which makes it virtually useless. 
+      There was some talk in <a href="http://www.boost.org">Boost's</a> mailing 
+      list about the possibility of writing a template meta-program that overrides 
+      the precedence of the comma operator. Yet I found that there is no way, 
+      using any meta-program, to distinguish explicit grouping using parentheses. 
+      From the viewpoint of the meta-program, <font face="Courier New, Courier, mono">r 
+      = a, b | c;</font> is the same as <font face="Courier New, Courier, mono">r 
+      = a, (b | c);</font>.<br>
+      <br>
+      The initial release of Spirit [V1.0] has caused a bit of commotion and controversy 
+      over the <font size="4"><font face="Courier New, Courier, mono">&gt;&gt;</font> 
+      and the prefix <font face="Courier New, Courier, mono">*</font> and <font face="Courier New, Courier, mono">+</font> 
+      operators</font>. <font size="4">While some find the operators liveable, 
+      likeable, and even lovable, </font>some respected people in the field find 
+      them confusing and unacceptable. Some have strong opinions while some are 
+      somewhat neutral but with varied preferences. The author maintains that 
+      we cannot possibly view the syntax issue in a strictly logical perspective 
+      because subjectivity inevitably enters into the issue. It is not about right 
+      or wrong. Ultimately, it is<font size="4"> plainly and sim</font>ply a matter 
+      of preference.<br>
+      <br>
+      </font></font></li>
+    <li><font size="4" color="#000000"><a name="N2"></a>This technique is known 
+      as the "Curiously Recurring Template Pattern" in meta-programming circles 
+      <font size="3">[<a href="#R3">R3</a>]</font>.<br>
+      <br>
+      </font></li>
+    <li><font size="4" color="#000000"><a name="N3"></a>Typical parsers regard 
+      characters (symbols that form words) and phrases (words that form sentences) 
+      as separate domains. Entities such as reserved words, operators, literal 
+      strings, numerical constants, etc., which constitute the terminals of a 
+      grammar are extracted first in a separate lexical analysis stage.<br>
+      <br>
+      </font></li>
+    <li><font color="#000000"><a name="N4"></a><font size="4">The complement operator 
+      <font face="Courier New, Courier, mono">~</font> was originally put into 
+      consideration. Yet further understanding of its value and meaning leads 
+      us to uncertainty. The basic problem stems from the fact that <font face="Courier New, Courier, mono">~a</font> 
+      will yield <font face="Courier New, Courier, mono">U-a</font>, where <font face="Courier New, Courier, mono">U</font> 
+      is the universal set of all strings. Might this be a another fertile ground 
+      for future exploration?<br>
+      <br>
+      </font></font></li>
+    <li><font size="4" color="#000000"><a name="N5"></a>Alternative operands are 
+      tried one by one on a first come first served basis starting from the leftmost 
+      operand. After a successfully matched alternative is found, the parser concludes 
+      its search, essentially short-circuiting the search for other potentially 
+      viable candidates. This short-circuiting implicitly gives the highest priority 
+      to the leftmost alternative.<br>
+      <br>
+      Short-circuiting is done in the same manner as C or C++'s logical expressions; 
+      e.g. if <font face="Courier New, Courier, mono">(x < 3 || y < 2)</font> 
+      where, if <font face="Courier New, Courier, mono">x</font> evaluates to 
+      be less than <font face="Courier New, Courier, mono">3</font>, the <font face="Courier New, Courier, mono">y 
+      < 2</font> test is not done anymore. In addition to providing an implicit 
+      priority rule for alternatives which is necessary, given the non-deterministic 
+      nature of the Spirit parser compiler, short-circuiting improves the execution 
+      time.<br>
+      <br>
+      </font></li>
+    <li><font color="#000000"><a name="N6"></a><font size="4">Some researchers 
+      assert that the intersections let us define languages that are not context 
+      free <font size="3">[<a href="#R4">R4</a>]</font>. "The theory of defining 
+      a language as the intersection of a finite number of context free languages 
+      was developed by Leu and Weiner in 1973".<br>
+      <br>
+      </font></font></li>
+    <li><font color="#000000"><a name="N7"></a><font size="4">C++ forbids the 
+      overloading of operators on primitives such as ints, chars and pointers 
+      (e.g. char*). At least one of the operands should be a user-defined object.<br>
+      <br>
+      </font></font></li>
+    <li><font color="#000000"><a name="N8"></a><font size="4">Rule is a template 
+      class. The default has the form: Rule<>.<br>
+      <br>
+      </font></font></li>
+    <li><font size="4" color="#000000"><a name="N9"></a>We could have allowed 
+      this by making use of the new definitions as alternatives to the old. Yet 
+      this comes at the expense of additional checks and template instantiations. 
+      We pay for this even if we don't use the feature.<br>
+      <br>
+      </font></li>
+    <li> 
+      <p><font size="4" color="#000000"><a name="N11"></a>Although the Spirit 
+        parser compiler does not need a separate lexical analyzer, there is no 
+        reason why we cannot have one. One can always have as many parser layers 
+        as needed. In theory, one may create a preprocessor, a lexical analyzer 
+        and a parser proper, all using the same framework.<br>
+        <br>
+        </font></p>
+    </li>
+    <li><font size="4" color="#000000"><a name="N12"></a>Scanner is a template 
+      class. The default has the form: Scanner <>.<br>
+      <br>
+      </font></li>
+    <li><font size="4" color="#000000"><a name="N13"></a>Typically, parsers have 
+      what is called a start symbol, chosen to be the root of the grammar where 
+      parsing starts. The Spirit parser compiler has no notion of a start symbol. 
+      Any rule can be a start symbol.<br>
+      <br>
+      </font></li>
+    <li><font size="4" color="#000000"><a name="N13"></a>The sequencing operator 
+      <font face="Courier New, Courier, mono">&gt;&gt;</font> can alternatively 
+      be thought of as the <b>sequential-and</b> operator. An expression<font face="Courier New, Courier, mono">:</font></font><font color="#000000"><br>
+      </font>
+      <blockquote> 
+        <pre><font size="4" color="#000000"><font face="Courier New, Courier, mono">a &amp;&amp; b</font></font></pre>
+      </blockquote>
+      <p><font size="4" color="#000000">reads as: match a <b>and</b> b in sequence. 
+        Continuing this logic, we can also have a <b>sequential-or</b> operator 
+        where the expression<font face="Courier New, Courier, mono">:</font></font></p>
+      <blockquote> 
+        <pre><font size="4" color="#000000"><font face="Courier New, Courier, mono">a || b;</font></font></pre>
+      </blockquote>
+      <p><font size="4" color="#000000">reads as: match a <b>or</b> b and in sequence. 
+        That is, if both a and b match, it must be in sequence; this is equivalent 
+        to a | b | a &gt;&gt; b. </font></p>
+    </li>
+    <li><font color="#000000"><a name="N14"></a><font size="4">There are ways 
+      to rewrite the meta-program hierarchy to circumvent this limitation. This 
+      will be implemented in a future release of Spirit in the form of a directive.</font></font><font size="4" color="#000000"><br>
+      <br>
+      </font></li>
+    <li><font color="#000000"><a name="N15"></a><font size="4">David Abrahams 
+      proposed in comp.std.c++ to reuse the auto keyword for this purpose. Example:</font></font> 
+    </li>
+    <blockquote> 
+      <p><font size="4" color="#000000"><font face="Courier New, Courier, mono">auto 
+        r = </font></font><font size="4" face="Courier New, Courier, mono" color="#000000">an_arbitrarily_complex_expression;</font><font size="4" color="#000000"> 
+        </font></p>
+    </blockquote>
+    <li><font color="#000000"><a name="N16"></a><font size="4">Greg Colvin noted 
+      Spirit's similarities to a prior work of Dr. Damian Conway <font size="3">[<a href="#R10">R10</a>]</font>. 
+      Any similarity to Dr. Conway's work is purely coincidental. Yet, after reading 
+      Dr. Conway's papers, I have to acknowledge that some similarities do exist.<br>
+      <br>
+      </font></font></li>
+    <li><font size="4" color="#000000"><a name="N17"></a>In reality, these are 
+      actually objects that create parsers.<br>
+      <br>
+      </font></li>
+    <li><font size="4" color="#000000"><a name="N18"></a>The numeric parsers interface 
+      was suggested by Vesa Karvonen. Vesa envisions the use of such a facility 
+      in implementing micro-parsers. Such facilities &quot;make implementing micro-parsers 
+      an order of magnitude more intuitive and simpler compared to traditional 
+      methods&quot;.<br>
+      <br>
+      </font></li>
+    <li><font size="4" color="#000000"><a name="N19"></a>Adding new productions. 
+      Some BNF variants allow:</font> 
+      <blockquote> 
+        <pre><font size="4" color="#000000"><font face="Courier New, Courier, mono">r ::= a
+r ::= b</font></font></pre>
+      </blockquote>
+      <p><font size="4" color="#000000">which is equivalent to:</font></p>
+      <blockquote> 
+        <pre><font size="4" color="#000000"><font face="Courier New, Courier, mono">r ::= a | </font>b</font></pre>
+      </blockquote>
+      <p><font size="4" color="#000000">Douglas Gregor noted that allowing the 
+        addition of new productions would be extremely useful to be able to, for 
+        instance, turn on/off extensions to a language at the parser level. Example:</font></p>
+      <blockquote> 
+        <pre><font face="Courier New, Courier, mono" size="4" color="#000000">if (allow_typeof)
+    typespec = TYPEOF &gt;&gt; '(' &gt;&gt; expr &gt;&gt; ')'
+             | TYPEOF &gt;&gt; '(' &gt;&gt; type_id &gt;&gt; ')';
+
+if (allow_template_typedefs)
+    type_decl = template_header typedef;</font></pre>
+      </blockquote>
+      <p> <font color="#000000"><br>
+        <font size="4">Essentially, the declarative nature of (E)BNF productions 
+        when inlined with imperative C++ statements yield an uncanny mix. The 
+        C++ assignment operator substituting as BNF's ::= operator when applied 
+        to the addition of new productions might cause confusion. <br>
+        <br>
+        The |= operator, as suggested by George Heintzelman, may be used for this 
+        purpose. Yet this too might cause confusion as one might expect &amp;=, 
+        -= and ^= to be equally applicable.<br>
+        <br>
+        Also, after some deliberation, both cases impose runtime</font> <font size="4">and</font> 
+        <font size="4">code size penalty <font size="3">[<a href="#N9">N9</a>]</font>.</font></font></p>
+    </li>
+  </ol>
+  <h1><font color="#000000">References:</font></h1>
+  <ol>
+    <li><font color="#000000"><a name="R1"></a>Todd Veldhuizen. "<a href="http://www.extreme.indiana.edu/%7Etveldhui/papers/Expression-Templates/exprtmpl.html">Expression 
+      Templates</a>". C++ Report, June 1995.</font></li>
+    <li><font color="#000000"><a name="R2"></a>Peter Naur (ed.). "<a href="http://www.masswerk.at/algol60/report.htm">Report 
+      on the Algorithmic Language ALGOL 60</a>". CACM, May 1960.</font></li>
+    <li><font color="#000000"><a name="R3"></a>James Coplien. "Curiously Recurring 
+      Template Pattern". C++ Report, Feb. 1995.</font></li>
+    <li><font color="#000000"><a name="R4"></a>Richard J. Botting, Ph.D. "XBNF" 
+      (citing Leu-Weiner, 1973). <a href="http://www.csci.csusb.edu/dick/maths/intro_ebnf.html">www.csci.csusb.edu/dick/maths/intro_ebnf.html</a>, 
+      California State University, San Bernardino,1998.</font></li>
+    <li><font color="#000000"><a name="R5"></a>Erich Gamma, Richard Helm, Ralph 
+      Jhonson, and John Vlissides. Design Patterns, Elements of Reusable Object-Oriented 
+      Software. Addison-Wesley, 1995.</font></li>
+    <li><font color="#000000">ISO/IEC. "<a href="http://www.cl.cam.ac.uk/%7Emgk25/iso-14977.pdf">ISO-EBNF</a>", 
+      ISO/IEC 14977: 1996(E).</font></li>
+    <li><font color="#000000">Dick Grune and Ceriel Jacobs. <a href="http://www.cs.vu.nl/%7Edick/PTAPG.html">Parsing 
+      Techniques: A Practical Guide</a>. Ellis Horwood Ltd.: West Sussex, England, 
+      1990. (electronic copy, 1998)</font></li>
+    <li><font color="#000000">T. J. Parr, H. G. Dietz, and W. E. Cohen. <a href="http://www.antlr.org/papers/pcctsbk.pdf">PCCTS 
+      Reference Manual (Version 1.00)</a>. School of Electrical Engineering, Purdue 
+      University, West Lafayette, August 1991.</font></li>
+    <li><font color="#000000">Adrian Johnstone and Elizabeth Scott. <a href="ftp://ftp.cs.rhul.ac.uk/pub/rdp">RDP, 
+      A Recursive Descent Compiler Compiler</a>. Technical Report CSD TR 97 25, 
+      Dept. of Computer Science, Egham, Surrey, England, Dec. 20, 1997. </font></li>
+    <li><font color="#000000"><a name="R10"></a>Damian Conway. <a href="http://www.csse.monash.edu.au/%7Edamian/papers/#Embedded_Input_Parsing_for_C">Parsing 
+      with C++ Classes</a>. ACM SIGPLAN Notices, 29:1, 1994. </font></li>
+    <li><font color="#000000"><a name="R11"></a>Damian Conway. <a href="http://www.csse.monash.edu.au/%7Edamian/papers/#Embedded_Input_Parsing_for_C">Parsing 
+      with C++ deferred expressions</a>. ACM SIGPLAN Notices, 29:1, 1994.</font></li>
+  </ol>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp;</p>
+  <p>&nbsp; </p>
+  <p>&nbsp;</p>
+  <blockquote> 
+    <blockquote> 
+      <p>&nbsp;</p>
+    </blockquote>
+    <div align="left"></div>
+  </blockquote>
+</blockquote>
+</body>
+</html>

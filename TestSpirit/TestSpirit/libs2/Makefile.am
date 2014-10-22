@@ -1,0 +1,2 @@
+SUBDIRS = doc example test
+
