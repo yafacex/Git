@@ -28,7 +28,6 @@ public:
     ~TestEfficience(){};
     
     int N_;
-//    int N_;
     std::vector<int> cao;
     long clk ;
     int i=0;
@@ -84,14 +83,14 @@ public:
                     //            printf("haha %x %x %x\n",p,h,*h);
                     ++itr;
                     ++sert;
-                    (*itr) = 0;
+                    (*itr) += 5;
                     //            printf("after:%x\n",p);
                 }
             }
         }
         
         
-        printf("A:%ld-''''%ld\n",(gettime()-clk),sert);
+        printf("A:time:%ld-''''cnt:%ld\n",(gettime()-clk),sert);
     }
     void noTemplate2(){
         printf("Origin\n");
@@ -99,71 +98,50 @@ public:
         sert = 0;
         for (int z = 0; z<zOuter; ++z) {
             for (int k=0; k<outer; ++k) {
-                for (i=0; i<N_; ++i) {
+                for(int i = 0;i<N_;++i){
                     ++sert;
-                    b[i]=0;
+                    b[i] = 5;
                 }
             }
         }
         
-        printf("C:%ld-''''%ld\n",(gettime()-clk),sert);
+        printf("C:time:%ld-''''cnt:%ld\n",(gettime()-clk),sert);
     }
     void withTemplate(){
-        std::find(cao.begin(), cao.end(), 2);
-        
-        
         printf("withTemplate\n");
-        vector<int>::iterator eitr = cao.end();
         clk = gettime();
-        i=10;
         sert =0;
         for (int z = 0; z<zOuter; ++z) {
             for (int k = 0; k<outer; ++k) {
-                vector<int>::iterator itr = cao.begin();;
-                while(itr!=eitr){
-                    ++itr;
-                    (*itr) = 0;
-                    //            printf("gaga");
-                    //            i++;
+                for(vector<int>::iterator itr = cao.begin(); itr != cao.end(); ++itr){
+                    (*itr) = 5;
                     ++sert;
                 }
             }
         }
-        printf("B:%ld-''''%ld\n",(gettime()-clk),sert);
+        printf("B:time:%ld-''''%ld\n",(gettime()-clk),sert);
     }
     void test(){
-        outer = 2;//getRand(99999, 999999);
-        zOuter = 2;//getRand(2, 5);
-        N_ = 2;//getRand(3333, 5555);
+        outer = getRand(99999, 999999);
+        zOuter = getRand(22, 55);
+        N_ = getRand(33, 55);
         
         a = (itrr*)malloc(sizeof(itrr)*N_);
         b = (int*)malloc(sizeof(int)*N_);
         
         for (i=0;i<N_; ++i) {
-//            printf("ii:%d\n",i);
             int* pp = new int();
-            
-            Int64 ai =(Int64)pp;
-//            printf(":%x\n",ai);
-            
             *pp = i;
             a[i].p = pp;
-//            printf(":::::::%d\n",*(a[i].p));
         }
         pEnd = &a[N_-1];
-//        a[N_-1]=NULL;
         
-//        printf("end:%x\n",pEnd);
-        for (int i =0; i<N_-1; ++i) {
+        for (int i =0; i<N_; ++i) {
             cao.push_back(i);
         }
         
-        
-        
     
-    noTemplate();
-        
-        
+//        noTemplate();
         withTemplate();
         noTemplate2();
 

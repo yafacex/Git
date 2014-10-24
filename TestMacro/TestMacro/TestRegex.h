@@ -67,19 +67,58 @@ public:
         }while(true);
     }
     
+    public:
     TestRegex(){
-        locMap res,searched;
-        TestRegex::heuristicSearch2d(3, 4, res,searched, 4, cao);
+        testMatch();
+        testSearch();
     };
     ~TestRegex(){};
-    void test(){
-        boost::regex reg("\\d{3}([a-zA-Z]+).(\\d{2}|N/A)\\s\\1");
-        std::string correct="123Hello N/A Hello";
-        std::string incorrect="123Hello 12 hello";
-        assert(boost::regex_match(correct,reg)==true);
-        assert(boost::regex_match(incorrect,reg)==false);
-        
+    void testMatch(){
+//        regex reg("([a-z]|[0-9])+");
+        std::string regstr = "[a|b|c]+";
+        boost::regex expression(regstr);
+        string str = "aaabbbbcccc";
+        bool b = regex_match(str.c_str(), expression,match_all);
+        if (b){
+            printf("find\n");
+        }else{
+            printf("not find\n");
+        }
     };
+    void testSearch(){
+        regex reg("[0|2|5]+");
+        string str = "wl is 250,use 502 to paste";
+        smatch res;
+        string::const_iterator itrBegin = str.begin();
+        string::const_iterator itrEnd = str.end();
+        while(regex_search(itrBegin, itrEnd, res, reg)){
+            if(res[0].matched){
+                string str1 = res[0].str();
+                printf("search0:%s\n",str1.c_str());
+            }
+//            {
+//                string first = &res[0].first.operator*();
+//                string second = &res[0].first.operator*();
+//                printf("[0]first is \n%s\n",first.c_str());
+//                printf("[0]second is \n%s\n",second.c_str());
+//            }
+//            {
+//                string first = &res[1].first.operator*();
+//                string second = &res[1].first.operator*();
+//                printf("[1]first is \n%s\n",first.c_str());
+//                printf("[1]second is \n%s\n",second.c_str());
+//            }
+//            if(res[1].matched){
+//                string str1 = res[0].str();
+//                printf("search1:%s\n",str1.c_str());
+//            }
+//            if(res[2].matched){
+//                string str1 = res[0].str();
+//                printf("search2:%s\n",str1.c_str());
+//            }
+            itrBegin = res[0].second;
+        };
+    }
 };
 
 #endif

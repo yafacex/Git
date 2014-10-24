@@ -264,15 +264,15 @@ int main(int argc, const char * argv[])
 //    clock_t clk3 = clock();
 //    printf("[%d %d]-- [%d %d]",clk2 - clk1,n1,clk3 - clk2,n2);
     
-//    TestEfficience ef;
+    TestEfficience ef;
 //    testBoost tb;
-    TestSignal sig;
+//    TestSignal sig;
 //    find_if(a.begin(),a.end(),std::mem_fun(&kao::caoa));
 //    find_if(a.begin(), a.end(), bool [](int v){
 //        return true;
 //    });
 //    TestTest test;
-//    TestRegex regex;
+    TestRegex regex;
     
 //    TestRefGet refGet;
 }

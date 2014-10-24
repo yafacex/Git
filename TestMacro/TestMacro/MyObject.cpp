@@ -6,4 +6,3 @@
 //  Copyright (c) 2014年 yafacex. All rights reserved.
 //
 
-#include "MyObject.h"
