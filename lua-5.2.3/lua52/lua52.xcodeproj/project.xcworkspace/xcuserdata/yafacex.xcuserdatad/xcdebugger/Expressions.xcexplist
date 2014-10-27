@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "open_func:lparser.c">
+      </ContextState>
+      <ContextState
+         contextName = "f_parser:ldo.c">
+      </ContextState>
+      <ContextState
+         contextName = "getCallInfoByValue:lstate.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "&amp;val[1]">
+            </PersistentString>
+            <PersistentString
+               value = "val-1">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "next:llex.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "int(ls-&gt;z-&gt;n)">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "llex:llex.c">
+      </ContextState>
+      <ContextState
+         contextName = "luaL_setfuncs:lauxlib.c">
+      </ContextState>
+      <ContextState
+         contextName = "lua_setfield:lapi.c">
+      </ContextState>
+      <ContextState
+         contextName = "lua_newstate:lstate.c">
+      </ContextState>
+      <ContextState
+         contextName = "main:lua.c">
+      </ContextState>
+      <ContextState
+         contextName = "explist:lparser.c">
+      </ContextState>
+      <ContextState
+         contextName = "funcargs:lparser.c">
+      </ContextState>
+      <ContextState
+         contextName = "dbgL:lstate.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "L">
+            </PersistentString>
+            <PersistentString
+               value = "val-&gt;value_.f">
+            </PersistentString>
+            <PersistentString
+               value = "val">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "addk:lcode.c">
+      </ContextState>
+      <ContextState
+         contextName = "luaL_traceback:lauxlib.c">
+      </ContextState>
+      <ContextState
+         contextName = "luaV_settable:lvm.c">
+      </ContextState>
+      <ContextState
+         contextName = "luaK_code:lcode.c">
+      </ContextState>
+      <ContextState
+         contextName = "simpleexp:lparser.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "ls-&gt;t.seminfo.ts">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "lua_pcallk:lapi.c">
+      </ContextState>
+      <ContextState
+         contextName = "suffixedexp:lparser.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "(char)ls-&gt;t.token">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "luaY_parser:lparser.c">
+      </ContextState>
+      <ContextState
+         contextName = "lua_pushcclosure:lapi.c">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
