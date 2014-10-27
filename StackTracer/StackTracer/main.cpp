@@ -10,6 +10,10 @@
 #include <unistd.h>
 #include <signal.h>
 #include <vector>
+#include <pthread.h>
+#include <sys/ptrace.h>
+#include "TestThread.h"
+#include "TestPTrace.h"
 
 //#define _STRUCT_UCONTEXT	struct ucontext
 //#endif /* __DARWIN_UNIX03 */
@@ -128,6 +132,7 @@ void doDivZero(){
     int a = 0;
     a = 1 / a;
 }
+
 int main(int argc, const char * argv[])
 {
     stack_t curStk,lastStk;
@@ -141,7 +146,9 @@ int main(int argc, const char * argv[])
     curSigAct.sa_flags = SA_ONSTACK | SA_SIGINFO;
     sigaction(SIGSEGV, &curSigAct, &lastSigAct);
     
-    doNullPtr();
+//    TestThread thread;
+    TestPTrace trace;
+//    doNullPtr();
     return 0;
 }
 

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E105395C19F7A19D000882C8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E105395B19F7A19D000882C8 /* main.cpp */; };
 		E105395E19F7A19D000882C8 /* StackTracer.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E105395D19F7A19D000882C8 /* StackTracer.1 */; };
+		E198B7D519FE35BF00821D21 /* TestThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E198B7D319FE35BF00821D21 /* TestThread.cpp */; };
+		E198B7D819FE37CC00821D21 /* TestPTrace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E198B7D619FE37CC00821D21 /* TestPTrace.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,10 @@
 		E105395819F7A19D000882C8 /* StackTracer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = StackTracer; sourceTree = BUILT_PRODUCTS_DIR; };
 		E105395B19F7A19D000882C8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E105395D19F7A19D000882C8 /* StackTracer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = StackTracer.1; sourceTree = "<group>"; };
+		E198B7D319FE35BF00821D21 /* TestThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestThread.cpp; sourceTree = "<group>"; };
+		E198B7D419FE35BF00821D21 /* TestThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestThread.h; sourceTree = "<group>"; };
+		E198B7D619FE37CC00821D21 /* TestPTrace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestPTrace.cpp; sourceTree = "<group>"; };
+		E198B7D719FE37CC00821D21 /* TestPTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPTrace.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,10 @@
 			children = (
 				E105395B19F7A19D000882C8 /* main.cpp */,
 				E105395D19F7A19D000882C8 /* StackTracer.1 */,
+				E198B7D319FE35BF00821D21 /* TestThread.cpp */,
+				E198B7D419FE35BF00821D21 /* TestThread.h */,
+				E198B7D619FE37CC00821D21 /* TestPTrace.cpp */,
+				E198B7D719FE37CC00821D21 /* TestPTrace.h */,
 			);
 			path = StackTracer;
 			sourceTree = "<group>";
@@ -118,6 +128,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E105395C19F7A19D000882C8 /* main.cpp in Sources */,
+				E198B7D519FE35BF00821D21 /* TestThread.cpp in Sources */,
+				E198B7D819FE37CC00821D21 /* TestPTrace.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +240,7 @@
 				E105396319F7A19D000882C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

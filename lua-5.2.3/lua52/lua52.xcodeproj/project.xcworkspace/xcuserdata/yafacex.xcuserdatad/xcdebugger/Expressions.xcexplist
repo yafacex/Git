@@ -3,7 +3,15 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "open_func:lparser.c">
+         contextName = "lua_pushcclosure:lapi.c">
+      </ContextState>
+      <ContextState
+         contextName = "luaV_execute:lvm.c">
+         <PersistentStrings>
+            <PersistentString
+               value = "(int)L-&gt;hookmask">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "f_parser:ldo.c">
@@ -49,6 +57,12 @@
          contextName = "funcargs:lparser.c">
       </ContextState>
       <ContextState
+         contextName = "luaL_traceback:lauxlib.c">
+      </ContextState>
+      <ContextState
+         contextName = "addk:lcode.c">
+      </ContextState>
+      <ContextState
          contextName = "dbgL:lstate.c">
          <PersistentStrings>
             <PersistentString
@@ -63,13 +77,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "addk:lcode.c">
-      </ContextState>
-      <ContextState
-         contextName = "luaL_traceback:lauxlib.c">
-      </ContextState>
-      <ContextState
          contextName = "luaV_settable:lvm.c">
+      </ContextState>
+      <ContextState
+         contextName = "lua_pcallk:lapi.c">
       </ContextState>
       <ContextState
          contextName = "luaK_code:lcode.c">
@@ -83,9 +94,6 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "lua_pcallk:lapi.c">
-      </ContextState>
-      <ContextState
          contextName = "suffixedexp:lparser.c">
          <PersistentStrings>
             <PersistentString
@@ -97,7 +105,7 @@
          contextName = "luaY_parser:lparser.c">
       </ContextState>
       <ContextState
-         contextName = "lua_pushcclosure:lapi.c">
+         contextName = "open_func:lparser.c">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -17,6 +17,8 @@
 #include "lauxlib.h"
 #include "lualib.h"
 
+#include "lstate.h"
+
 
 #if !defined(LUA_PROMPT)
 #define LUA_PROMPT		"> "
@@ -476,9 +478,67 @@ static int pmain (lua_State *L) {
   return 1;
 }
 
+void lua_stacktrace(lua_State* L)
+{
+    lua_Debug entry;
+    int depth = 0;
+    
+    while (lua_getstack(L, depth, &entry))
+    {
+        int status = lua_getinfo(L, "Sln", &entry);
+        
+        if (status > 0) {
+            printf("%s %s(%d): %s\n",
+                   entry.what ? entry.what : "?",
+                   entry.short_src,
+                   entry.currentline,
+                   entry.name ? entry.name : "?");
+        }
+        depth++;
+    }
+}
+
+void lua_local_trace(){
+//    db_getlocal();
+}
+
+void showInfo(lua_State *L, lua_Debug *ar){
+    printf("\n======RunHook=======\n");
+//    printf("name\tis %s\n",ar->name);
+//    if(ar->what)printf("what\tis %s\n",ar->what);
+//    printf("src\tis %s\n",ar->source);
+//    printf("curLine\tis %d\n",ar->currentline);
+    
+    lua_stacktrace(L);
+    return;
+    
+    const char* type = NULL;
+    type = lua_typename(L, lua_type(L, -1));
+    if (type) {
+        printf("type is %s\n",type);
+    }
+    type = lua_typename(L, lua_type(L, -2));
+    if (type) {
+        printf("type is %s\n",type);
+    }
+    
+    return;
+    
+    int n = 1;
+    do{
+        const char* name = lua_getlocal(L, ar, n);
+        if (name) {
+            printf("local name is:%s\n",name);
+            ++n;
+        }else{
+            break;
+        }
+    }while(1);
+}
 
 int main (int argc, char **argv) {
     lua_State* L = luaL_newstate();
+    lua_sethook(L, showInfo, LUA_MASKLINE, 1);
     luaL_openlibs(L);
     luaL_dofile(L, "./test.lua");
     lua_close(L);
