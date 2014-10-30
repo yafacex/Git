@@ -30,9 +30,10 @@
 #include <strings.h>
 #include <string.h>
 #include <sys/stat.h>
-//#include <pthread.h>
+#include <string>
 #include <sys/wait.h>
 #include <stdlib.h>
+using namespace std;
 
 #define ISspace(x) isspace((int)(x))
 
@@ -507,8 +508,40 @@ void unimplemented(int client)
 
 /**********************************************************************/
 
+void createHtml(const char * dirPath){
+    string mydir = dirPath;
+    string::size_type pos = 0;
+    string::size_type resPos = 0;
+    while ((pos = mydir.find("/",pos)) != string::npos){
+        resPos = pos;
+        pos += 1;
+    };
+    string dir = mydir.substr(0,resPos);
+    printf("dir %ld\t%s\n",pos,dir.c_str());
+    dir += "/htdocs2";
+    int dirRes = mkdir(dir.c_str(), ALLPERMS);
+    if (dirRes == -1) {
+        printf(" %s \n Directory is Already Made!\n",dir.c_str());
+    }
+    string file = dir + "/index.html";
+    FILE* fp = fopen(file.c_str(), "w");
+    char* fileContent =
+#include "IndexHtml.h"
+    char* fc = {fileContent};
+    int i = 0;
+    while (fc[i] != '\0') {
+        ++i;
+    }
+    if (fp) {
+        fwrite(fc, sizeof(char),i , fp);
+        fclose(fp);
+    }
+    printf("\n%s\n",fc);
+}
+
 int main(int argc, const char * argv[])
 {
+    createHtml(argv[0]);
     int server_sock = -1;
     u_short port = 0;
     int client_sock = -1;

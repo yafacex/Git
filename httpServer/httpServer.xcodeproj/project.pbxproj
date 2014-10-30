@@ -28,6 +28,7 @@
 		E15466F41A01F337005427A3 /* httpServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = httpServer; sourceTree = BUILT_PRODUCTS_DIR; };
 		E15466F71A01F337005427A3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E15466F91A01F337005427A3 /* httpServer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = httpServer.1; sourceTree = "<group>"; };
+		E15467161A023CFE005427A3 /* IndexHtml.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndexHtml.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 			children = (
 				E15466F71A01F337005427A3 /* main.cpp */,
 				E15466F91A01F337005427A3 /* httpServer.1 */,
+				E15467161A023CFE005427A3 /* IndexHtml.h */,
 			);
 			path = httpServer;
 			sourceTree = "<group>";
@@ -227,6 +229,7 @@
 				E15466FF1A01F337005427A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
