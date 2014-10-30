@@ -7,35 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E11C090619FA801F00E6F1EE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E11C090519FA801F00E6F1EE /* main.cpp */; };
-		E11C090819FA801F00E6F1EE /* TinyHttpd.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E11C090719FA801F00E6F1EE /* TinyHttpd.1 */; };
-		E11C0B3B19FA841700E6F1EE /* httpd.c in Sources */ = {isa = PBXBuildFile; fileRef = E11C0B3919FA841700E6F1EE /* httpd.c */; };
-		E11C0B3C19FA841700E6F1EE /* simpleclient.c in Sources */ = {isa = PBXBuildFile; fileRef = E11C0B3A19FA841700E6F1EE /* simpleclient.c */; };
+		E15466F81A01F337005427A3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E15466F71A01F337005427A3 /* main.cpp */; };
+		E15466FA1A01F337005427A3 /* httpServer.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = E15466F91A01F337005427A3 /* httpServer.1 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E11C090019FA801F00E6F1EE /* CopyFiles */ = {
+		E15466F21A01F337005427A3 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				E11C090819FA801F00E6F1EE /* TinyHttpd.1 in CopyFiles */,
+				E15466FA1A01F337005427A3 /* httpServer.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E11C090219FA801F00E6F1EE /* TinyHttpd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TinyHttpd; sourceTree = BUILT_PRODUCTS_DIR; };
-		E11C090519FA801F00E6F1EE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		E11C090719FA801F00E6F1EE /* TinyHttpd.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TinyHttpd.1; sourceTree = "<group>"; };
-		E11C0B3919FA841700E6F1EE /* httpd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = httpd.c; sourceTree = "<group>"; };
-		E11C0B3A19FA841700E6F1EE /* simpleclient.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = simpleclient.c; sourceTree = "<group>"; };
+		E15466F41A01F337005427A3 /* httpServer */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = httpServer; sourceTree = BUILT_PRODUCTS_DIR; };
+		E15466F71A01F337005427A3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E15466F91A01F337005427A3 /* httpServer.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = httpServer.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E11C08FF19FA801F00E6F1EE /* Frameworks */ = {
+		E15466F11A01F337005427A3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,94 +41,90 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E11C08F919FA801F00E6F1EE = {
+		E15466EB1A01F337005427A3 = {
 			isa = PBXGroup;
 			children = (
-				E11C090419FA801F00E6F1EE /* TinyHttpd */,
-				E11C090319FA801F00E6F1EE /* Products */,
+				E15466F61A01F337005427A3 /* httpServer */,
+				E15466F51A01F337005427A3 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E11C090319FA801F00E6F1EE /* Products */ = {
+		E15466F51A01F337005427A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E11C090219FA801F00E6F1EE /* TinyHttpd */,
+				E15466F41A01F337005427A3 /* httpServer */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E11C090419FA801F00E6F1EE /* TinyHttpd */ = {
+		E15466F61A01F337005427A3 /* httpServer */ = {
 			isa = PBXGroup;
 			children = (
-				E11C0B3919FA841700E6F1EE /* httpd.c */,
-				E11C0B3A19FA841700E6F1EE /* simpleclient.c */,
-				E11C090519FA801F00E6F1EE /* main.cpp */,
-				E11C090719FA801F00E6F1EE /* TinyHttpd.1 */,
+				E15466F71A01F337005427A3 /* main.cpp */,
+				E15466F91A01F337005427A3 /* httpServer.1 */,
 			);
-			path = TinyHttpd;
+			path = httpServer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E11C090119FA801F00E6F1EE /* TinyHttpd */ = {
+		E15466F31A01F337005427A3 /* httpServer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E11C090B19FA801F00E6F1EE /* Build configuration list for PBXNativeTarget "TinyHttpd" */;
+			buildConfigurationList = E15466FD1A01F337005427A3 /* Build configuration list for PBXNativeTarget "httpServer" */;
 			buildPhases = (
-				E11C08FE19FA801F00E6F1EE /* Sources */,
-				E11C08FF19FA801F00E6F1EE /* Frameworks */,
-				E11C090019FA801F00E6F1EE /* CopyFiles */,
+				E15466F01A01F337005427A3 /* Sources */,
+				E15466F11A01F337005427A3 /* Frameworks */,
+				E15466F21A01F337005427A3 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TinyHttpd;
-			productName = TinyHttpd;
-			productReference = E11C090219FA801F00E6F1EE /* TinyHttpd */;
+			name = httpServer;
+			productName = httpServer;
+			productReference = E15466F41A01F337005427A3 /* httpServer */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E11C08FA19FA801F00E6F1EE /* Project object */ = {
+		E15466EC1A01F337005427A3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = yafacex;
 			};
-			buildConfigurationList = E11C08FD19FA801F00E6F1EE /* Build configuration list for PBXProject "TinyHttpd" */;
+			buildConfigurationList = E15466EF1A01F337005427A3 /* Build configuration list for PBXProject "httpServer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = E11C08F919FA801F00E6F1EE;
-			productRefGroup = E11C090319FA801F00E6F1EE /* Products */;
+			mainGroup = E15466EB1A01F337005427A3;
+			productRefGroup = E15466F51A01F337005427A3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E11C090119FA801F00E6F1EE /* TinyHttpd */,
+				E15466F31A01F337005427A3 /* httpServer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E11C08FE19FA801F00E6F1EE /* Sources */ = {
+		E15466F01A01F337005427A3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E11C0B3C19FA841700E6F1EE /* simpleclient.c in Sources */,
-				E11C0B3B19FA841700E6F1EE /* httpd.c in Sources */,
-				E11C090619FA801F00E6F1EE /* main.cpp in Sources */,
+				E15466F81A01F337005427A3 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		E11C090919FA801F00E6F1EE /* Debug */ = {
+		E15466FB1A01F337005427A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -170,7 +162,7 @@
 			};
 			name = Debug;
 		};
-		E11C090A19FA801F00E6F1EE /* Release */ = {
+		E15466FC1A01F337005427A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -202,14 +194,14 @@
 			};
 			name = Release;
 		};
-		E11C090C19FA801F00E6F1EE /* Debug */ = {
+		E15466FE1A01F337005427A3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
-		E11C090D19FA801F00E6F1EE /* Release */ = {
+		E15466FF1A01F337005427A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -219,24 +211,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E11C08FD19FA801F00E6F1EE /* Build configuration list for PBXProject "TinyHttpd" */ = {
+		E15466EF1A01F337005427A3 /* Build configuration list for PBXProject "httpServer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E11C090919FA801F00E6F1EE /* Debug */,
-				E11C090A19FA801F00E6F1EE /* Release */,
+				E15466FB1A01F337005427A3 /* Debug */,
+				E15466FC1A01F337005427A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E11C090B19FA801F00E6F1EE /* Build configuration list for PBXNativeTarget "TinyHttpd" */ = {
+		E15466FD1A01F337005427A3 /* Build configuration list for PBXNativeTarget "httpServer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E11C090C19FA801F00E6F1EE /* Debug */,
-				E11C090D19FA801F00E6F1EE /* Release */,
+				E15466FE1A01F337005427A3 /* Debug */,
+				E15466FF1A01F337005427A3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E11C08FA19FA801F00E6F1EE /* Project object */;
+	rootObject = E15466EC1A01F337005427A3 /* Project object */;
 }

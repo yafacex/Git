@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>TinyHttpd.xcscheme</key>
+		<key>httpClient.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>E11C090119FA801F00E6F1EE</key>
+		<key>E15467081A01F59E005427A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

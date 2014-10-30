@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E11C090119FA801F00E6F1EE"
-               BuildableName = "TinyHttpd"
-               BlueprintName = "TinyHttpd"
-               ReferencedContainer = "container:TinyHttpd.xcodeproj">
+               BlueprintIdentifier = "E15466F31A01F337005427A3"
+               BuildableName = "httpServer"
+               BlueprintName = "httpServer"
+               ReferencedContainer = "container:httpServer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E11C090119FA801F00E6F1EE"
-            BuildableName = "TinyHttpd"
-            BlueprintName = "TinyHttpd"
-            ReferencedContainer = "container:TinyHttpd.xcodeproj">
+            BlueprintIdentifier = "E15466F31A01F337005427A3"
+            BuildableName = "httpServer"
+            BlueprintName = "httpServer"
+            ReferencedContainer = "container:httpServer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -51,10 +51,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E11C090119FA801F00E6F1EE"
-            BuildableName = "TinyHttpd"
-            BlueprintName = "TinyHttpd"
-            ReferencedContainer = "container:TinyHttpd.xcodeproj">
+            BlueprintIdentifier = "E15466F31A01F337005427A3"
+            BuildableName = "httpServer"
+            BlueprintName = "httpServer"
+            ReferencedContainer = "container:httpServer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -69,10 +69,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E11C090119FA801F00E6F1EE"
-            BuildableName = "TinyHttpd"
-            BlueprintName = "TinyHttpd"
-            ReferencedContainer = "container:TinyHttpd.xcodeproj">
+            BlueprintIdentifier = "E15466F31A01F337005427A3"
+            BuildableName = "httpServer"
+            BlueprintName = "httpServer"
+            ReferencedContainer = "container:httpServer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
