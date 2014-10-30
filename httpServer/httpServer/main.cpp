@@ -518,7 +518,7 @@ void createHtml(const char * dirPath){
     };
     string dir = mydir.substr(0,resPos);
     printf("dir %ld\t%s\n",pos,dir.c_str());
-    dir += "/htdocs2";
+    dir += "/htdocs";
     int dirRes = mkdir(dir.c_str(), ALLPERMS);
     if (dirRes == -1) {
         printf(" %s \n Directory is Already Made!\n",dir.c_str());
