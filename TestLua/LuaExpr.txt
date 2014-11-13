@@ -1,0 +1,86 @@
+exp ::= prefixexp
+exp ::= nil | false | true
+exp ::= Number
+exp ::= String
+exp ::= function
+exp ::= tableconstructor
+exp ::= `...´
+exp ::= exp binop exp
+exp ::= unop exp
+prefixexp ::= var | functioncall | `(´ exp `)´
+
+
+function ::= function funcbody
+funcbody ::= `(´ [parlist] `)´ block end
+
+stat ::= function funcname funcbody
+stat ::= local function Name funcbody
+funcname ::= Name {`.´ Name} [`:´ Name]
+
+var ::= Name
+var ::= prefixexp `[´ exp `]´
+var ::= prefixexp `.´ Name
+
+block ::= chunk
+chunk ::= {stat [`;´]}
+stat ::= do block end
+
+<Assign>
+stat ::= varlist `=´ explist
+varlist ::= var {`,´ var}
+explist ::= exp {`,´ exp}
+settable_event(_env, "x", val)
+
+<Control>
+stat ::= while exp do block end
+stat ::= repeat block until exp
+stat ::= if exp then block {elseif exp then block} [else block] end
+stat ::= return [explist]
+stat ::= break
+stat ::= for Name `=´ exp `,´ exp [`,´ exp] do block end  ==> for v = e1, e2, e3 do block end
+stat ::= for namelist in explist do block end  ==> for var_1, ···, var_n in explist do block end
+namelist ::= Name {`,´ Name}
+
+<Declaration>
+stat ::= local namelist [`=´ explist]
+
+<Arithmetic>
++ - * /     NO[+= *= /= -= ++ --]
+
+<RelationShip>
+ ==    ~=    <     >     <=    >=
+
+<Logical>
+and or not
+
+<Concat>
+..    just for string !!!!!!!!!!!!!!!!!!!!!!!!!
+
+<Length>
+#     until nil
+
+<<Precidence>>
+	or
+	and
+	<     >     <=    >=    ~=    ==
+	..
+	+     -
+	*     /     %
+	not   #     - (unary)
+	^
+
+///Equal Expr////////
+var["Name"]:
+var ::= prefixexp `.´ Name
+
+_env.x
+gettable_event(_env, "x")
+
+//get the variable named x
+gettable_event(_env, "x")
+
+
+///////Chunks///////////
+ The unit of execution of Lua is called a chunk. A chunk is simply a sequence of statements, which are executed sequentially. Each statement can be optionally followed by a semicolon:
+	chunk ::= {stat [`;´]}
+There are no empty statements and thus ';;' is not legal. 
