@@ -1,0 +1,36 @@
+﻿生成启动时间为 2014/11/14 16:20:12。
+     1>项目“F:\MyGit\Git\TestToLuaPP\tolua++-1.0.93\win32\vc7\toluapp.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I..\..\include /Zi /nologo /W3 /WX- /O2 /Oy- /D WIN32 /D NDEBUG /D _CONSOLE /D _MBCS /Gm- /EHsc /MT /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"withLua51_Release\\" /Fd"withLua51_Release\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\src\bin\tolua.c ..\..\src\bin\toluabind.c ..\..\src\lib\tolua_event.c ..\..\src\lib\tolua_is.c ..\..\src\lib\tolua_map.c ..\..\src\lib\tolua_push.c ..\..\src\lib\tolua_to.c
+         tolua.c
+         toluabind.c
+         tolua_event.c
+         tolua_is.c
+     1>..\..\src\lib\tolua_is.c(119): warning C4114: 多次使用同一类型限定符
+         tolua_map.c
+     1>..\..\src\lib\tolua_map.c(395): warning C4996: 'strncat': This function or variable may be unsafe. Consider using strncat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 E:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(182) : 参见“strncat”的声明
+     1>..\..\src\lib\tolua_map.c(398): warning C4090: “函数”: 不同的“const”限定符
+     1>..\..\src\lib\tolua_map.c(525): warning C4996: 'strncat': This function or variable may be unsafe. Consider using strncat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 E:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(182) : 参见“strncat”的声明
+     1>..\..\src\lib\tolua_map.c(526): warning C4996: 'strncat': This function or variable may be unsafe. Consider using strncat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 E:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\include\string.h(182) : 参见“strncat”的声明
+         tolua_push.c
+         tolua_to.c
+         正在生成代码...
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.CppBuild.targets(1137,5): warning MSB8012: TargetPath(F:\MyGit\Git\TestToLuaPP\tolua++-1.0.93\win32\vc7\withLua51_Release\toluapp.exe) does not match the Linker's OutputFile property value (F:\MyGit\Git\TestToLuaPP\tolua++-1.0.93\bin\tolua++.exe). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.CppBuild.targets(1139,5): warning MSB8012: TargetName(toluapp) does not match the Linker's OutputFile property value (tolua++). This may cause your project to build incorrectly. To correct this, please make sure that $(OutDir), $(TargetName) and $(TargetExt) property values match the value specified in %(Link.OutputFile).
+       Link:
+         E:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\bin\tolua++.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:..\..\lib lua51.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"withLua51_Release\toluapp.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"withLua51_Release\toluapp.lib" /MACHINE:X86 /SAFESEH withLua51_Release\tolua.obj
+         withLua51_Release\tolua_event.obj
+         withLua51_Release\tolua_is.obj
+         withLua51_Release\tolua_map.obj
+         withLua51_Release\tolua_push.obj
+         withLua51_Release\tolua_to.obj
+         withLua51_Release\toluabind.obj
+         toluapp.vcxproj -> F:\MyGit\Git\TestToLuaPP\tolua++-1.0.93\win32\vc7\withLua51_Release\toluapp.exe
+     1>已完成生成项目“F:\MyGit\Git\TestToLuaPP\tolua++-1.0.93\win32\vc7\toluapp.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.49

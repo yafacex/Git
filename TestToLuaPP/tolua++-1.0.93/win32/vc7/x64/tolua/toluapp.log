@@ -1,0 +1,151 @@
+﻿生成启动时间为 2014/11/14 16:13:47。
+     1>项目“F:\MyGit\Git\TestToLuaPP\tolua++-1.0.93\win32\vc7\toluapp.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /I../../include /Zi /nologo /W1 /WX- /O2 /Gm- /EHsc /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\tolua\\" /Fd"x64\tolua\vc110.pdb" /Gd /TC /errorReport:prompt ..\..\src\bin\tolua.c ..\..\src\bin\toluabind.c ..\..\src\lib\tolua_event.c ..\..\src\lib\tolua_is.c ..\..\src\lib\tolua_map.c ..\..\src\lib\tolua_push.c ..\..\src\lib\tolua_to.c
+         tolua.c
+         toluabind.c
+         tolua_event.c
+         tolua_is.c
+     1>..\..\src\lib\tolua_is.c(119): warning C4114: 多次使用同一类型限定符
+         tolua_map.c
+     1>..\..\src\lib\tolua_map.c(398): warning C4090: “函数”: 不同的“const”限定符
+         tolua_push.c
+         tolua_to.c
+         正在生成代码...
+       Link:
+         E:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"F:\MyGit\Git\TestToLuaPP\tolua++-1.0.93\win32\vc7\x64\tolua\toluapp.exe" /NOLOGO /LIBPATH:../../lib lua51.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:"F:\MyGit\Git\TestToLuaPP\tolua++-1.0.93\win32\vc7\x64\tolua\toluapp.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\MyGit\Git\TestToLuaPP\tolua++-1.0.93\win32\vc7\x64\tolua\toluapp.lib" /MACHINE:X64 x64\tolua\tolua.obj
+         x64\tolua\tolua_event.obj
+         x64\tolua\tolua_is.obj
+         x64\tolua\tolua_map.obj
+         x64\tolua\tolua_push.obj
+         x64\tolua\tolua_to.obj
+         x64\tolua\toluabind.obj
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_gettop
+     1>tolua_to.obj : error LNK2001: 无法解析的外部符号 lua_gettop
+     1>toluabind.obj : error LNK2019: 无法解析的外部符号 lua_gettop，该符号在函数 tolua_tolua_open 中被引用
+     1>tolua.obj : error LNK2001: 无法解析的外部符号 lua_gettop
+     1>tolua_event.obj : error LNK2001: 无法解析的外部符号 lua_gettop
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_gettop
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_gettop
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_settop
+     1>tolua_to.obj : error LNK2001: 无法解析的外部符号 lua_settop
+     1>toluabind.obj : error LNK2001: 无法解析的外部符号 lua_settop
+     1>tolua.obj : error LNK2019: 无法解析的外部符号 lua_settop，该符号在函数 add_extra 中被引用
+     1>tolua_event.obj : error LNK2001: 无法解析的外部符号 lua_settop
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_settop
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_settop
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_pushvalue
+     1>tolua.obj : error LNK2019: 无法解析的外部符号 lua_pushvalue，该符号在函数 main 中被引用
+     1>tolua_event.obj : error LNK2001: 无法解析的外部符号 lua_pushvalue
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_pushvalue
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_pushvalue
+     1>tolua.obj : error LNK2019: 无法解析的外部符号 lua_objlen，该符号在函数 add_extra 中被引用
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_pushstring
+     1>tolua.obj : error LNK2019: 无法解析的外部符号 lua_pushstring，该符号在函数 add_extra 中被引用
+     1>tolua_event.obj : error LNK2001: 无法解析的外部符号 lua_pushstring
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_pushstring
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_pushstring
+     1>tolua.obj : error LNK2019: 无法解析的外部符号 lua_getfield，该符号在函数 add_extra 中被引用
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_getfield
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_getfield
+     1>tolua.obj : error LNK2019: 无法解析的外部符号 lua_createtable，该符号在函数 main 中被引用
+     1>tolua_event.obj : error LNK2001: 无法解析的外部符号 lua_createtable
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_createtable
+     1>tolua.obj : error LNK2019: 无法解析的外部符号 lua_settable，该符号在函数 main 中被引用
+     1>tolua_event.obj : error LNK2001: 无法解析的外部符号 lua_settable
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_settable
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_settable
+     1>tolua.obj : error LNK2019: 无法解析的外部符号 lua_setfield，该符号在函数 main 中被引用
+     1>tolua.obj : error LNK2019: 无法解析的外部符号 lua_rawseti，该符号在函数 add_extra 中被引用
+     1>tolua.obj : error LNK2019: 无法解析的外部符号 luaL_newstate，该符号在函数 main 中被引用
+     1>tolua.obj : error LNK2019: 无法解析的外部符号 luaL_openlibs，该符号在函数 main 中被引用
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_remove，该符号在函数 class_eq_event 中被引用
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_remove
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_insert，该符号在函数 class_call_event 中被引用
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_insert
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_insert
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_insert
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_isnumber，该符号在函数 class_index_event 中被引用
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_isnumber
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_iscfunction，该符号在函数 class_index_event 中被引用
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_isuserdata，该符号在函数 class_eq_event 中被引用
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_isuserdata
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_isuserdata
+     1>tolua_to.obj : error LNK2001: 无法解析的外部符号 lua_isuserdata
+     1>tolua_to.obj : error LNK2001: 无法解析的外部符号 lua_type
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_type，该符号在函数 class_call_event 中被引用
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_type
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_type
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_type
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_rawequal，该符号在函数 class_index_event 中被引用
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_rawequal
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_rawequal
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_tocfunction，该符号在函数 tolua_ismodulemetatable 中被引用
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_touserdata，该符号在函数 class_gc_event 中被引用
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_touserdata
+     1>tolua_to.obj : error LNK2001: 无法解析的外部符号 lua_touserdata
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_pushnil，该符号在函数 class_gc_event 中被引用
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_pushnil
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_pushnil
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_pushlstring，该符号在函数 class_gc_event 中被引用
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_pushlstring
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_pushlstring
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_pushcclosure，该符号在函数 class_gc_event 中被引用
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_pushcclosure
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_pushboolean，该符号在函数 class_eq_event 中被引用
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_pushboolean
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_pushboolean
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_pushlightuserdata，该符号在函数 class_gc_event 中被引用
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_pushlightuserdata
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_pushlightuserdata
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_gettable，该符号在函数 class_index_event 中被引用
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_gettable
+     1>tolua_to.obj : error LNK2001: 无法解析的外部符号 lua_gettable
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_rawget，该符号在函数 class_call_event 中被引用
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_rawget
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_rawget
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_rawget
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_getmetatable，该符号在函数 class_eq_event 中被引用
+     1>tolua_is.obj : error LNK2001: 无法解析的外部符号 lua_getmetatable
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_getmetatable
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_getmetatable
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_getfenv，该符号在函数 class_index_event 中被引用
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_getfenv
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_rawset，该符号在函数 class_gc_event 中被引用
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_rawset
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_rawset
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_setmetatable，该符号在函数 class_index_event 中被引用
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_setmetatable
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_setmetatable
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_setfenv，该符号在函数 storeatubox 中被引用
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 lua_setfenv
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_setfenv
+     1>tolua_event.obj : error LNK2019: 无法解析的外部符号 lua_call，该符号在函数 class_call_event 中被引用
+     1>tolua_is.obj : error LNK2019: 无法解析的外部符号 lua_replace，该符号在函数 push_table_instance 中被引用
+     1>tolua_is.obj : error LNK2019: 无法解析的外部符号 lua_isstring，该符号在函数 lua_isusertable 中被引用
+     1>tolua_is.obj : error LNK2019: 无法解析的外部符号 lua_typename，该符号在函数 tolua_typename 中被引用
+     1>tolua_is.obj : error LNK2019: 无法解析的外部符号 lua_toboolean，该符号在函数 lua_isusertype 中被引用
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_toboolean
+     1>tolua_to.obj : error LNK2001: 无法解析的外部符号 lua_toboolean
+     1>tolua_is.obj : error LNK2019: 无法解析的外部符号 lua_tolstring，该符号在函数 lua_isusertable 中被引用
+     1>tolua_to.obj : error LNK2001: 无法解析的外部符号 lua_tolstring
+     1>tolua_is.obj : error LNK2019: 无法解析的外部符号 lua_pushnumber，该符号在函数 tolua_isbooleanarray 中被引用
+     1>tolua_push.obj : error LNK2001: 无法解析的外部符号 lua_pushnumber
+     1>tolua_to.obj : error LNK2001: 无法解析的外部符号 lua_pushnumber
+     1>tolua_is.obj : error LNK2019: 无法解析的外部符号 lua_concat，该符号在函数 lua_isusertable 中被引用
+     1>tolua_is.obj : error LNK2019: 无法解析的外部符号 luaL_error，该符号在函数 tolua_error 中被引用
+     1>tolua_map.obj : error LNK2001: 无法解析的外部符号 luaL_error
+     1>tolua_map.obj : error LNK2019: 无法解析的外部符号 lua_pcall，该符号在函数 tolua_dobuffer 中被引用
+     1>tolua_map.obj : error LNK2019: 无法解析的外部符号 lua_gc，该符号在函数 tolua_bnd_releaseownership 中被引用
+     1>tolua_map.obj : error LNK2019: 无法解析的外部符号 lua_error，该符号在函数 tolua_bnd_setpeer 中被引用
+     1>tolua_map.obj : error LNK2019: 无法解析的外部符号 lua_next，该符号在函数 mapsuper 中被引用
+     1>tolua_map.obj : error LNK2019: 无法解析的外部符号 luaL_newmetatable，该符号在函数 tolua_newmetatable 中被引用
+     1>tolua_map.obj : error LNK2019: 无法解析的外部符号 luaL_loadbuffer，该符号在函数 tolua_dobuffer 中被引用
+     1>tolua_push.obj : error LNK2019: 无法解析的外部符号 lua_newuserdata，该符号在函数 tolua_pushusertype 中被引用
+     1>tolua_to.obj : error LNK2019: 无法解析的外部符号 lua_tonumber，该符号在函数 tolua_tofieldnumber 中被引用
+     1>F:\MyGit\Git\TestToLuaPP\tolua++-1.0.93\win32\vc7\x64\tolua\toluapp.exe : fatal error LNK1120: 50 个无法解析的外部命令
+     1>已完成生成项目“F:\MyGit\Git\TestToLuaPP\tolua++-1.0.93\win32\vc7\toluapp.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.38
