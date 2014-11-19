@@ -139,18 +139,36 @@ end
 function testInherit()
 	local classA = class();
 	classA.var1 = 250;
+
 	function classA:funcA()
 		print("classA:funcA");
 	end
 
 	local classB = class(classA);
-	classB:funcA();
-	print("classB var1 "..classB.var1);
+	-- print("这样写是定义不是调用");
+	-- classB:funcA();
+	-- print("classB var1 "..classB.var1);
+
+	function classB:funcA()
+		print("classB:funcA");
+	end
+
+	function classA:ctor()
+	end
+
+	function classB:ctor()
+	end
+
+	local a = classA.new();
+	local b = classB.new();
+	a.funcA();
+	b.funcA();
+
 end
 
 
 function testOverride()
-	classA = class();
+	local classA = class();
 
 	function classA:ctor()
 		-- body
@@ -161,16 +179,16 @@ function testOverride()
 		print("classA:funcA");
 	end
 
-	classB = class(classA)
+	local classB = class(classA)
 	function classB:ctor()
 	end
 	function classB:funcA()
 		print("classB:funcA");
 	end
-	
+
 	local b = classB.new();
 	b:funcA();
-
+	b.funcA();
 	print("classB var1 "..b.var1);
 end
 function testSelf( )
@@ -184,11 +202,12 @@ function testSelf( )
 	cls.name = "WLGQ";
 	cls:funcA()
 
+
 	-- [坑]attempt to index local 'self' (a nil value)
 	-- cls.funcA();
 end
--- testInherit();
-testOverride();
+testInherit();
+-- testOverride();
 -- testSelf();
 
 
