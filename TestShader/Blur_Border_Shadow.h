@@ -58,7 +58,7 @@ void initAdjacents(){\n\
 }\n\
 void blur() {\n\
 	u_resolution = 256;\n\
-	u_radius = 1;\n\
+	u_radius = 0.2;\n\
 	u_direction = vec2(0,0);\n\
 	//this will be our RGBA sum\n\
 	vec4 sum = vec4(0.0);\n\
@@ -79,36 +79,39 @@ void blur() {\n\
 	\n\
 	\n\
 	//apply blurring, using a 9-tap filter with predefined gaussian weights\n\
-	float n = 5;\n\
+	float n = 3;\n\
 	float x=0;\n\
 	float y=0;\n\
-	float o = 1000000000;\n\
+	float o = 10;\n\
 	float gs = 0;\n\
 	float total = 0;\n\
-	for(float i = 1-n ; i <= n ; ++i){\n\
-		x = i; \n\
-		y = n;\n\
-		gs = getGaussian2d(x,y,o,n); \n\
-		total += gs;\n\
-		sum += texture2D(CC_Texture0, vec2(tc.x + x*blur, tc.y + y*blur)) * gs;\n\
-	}\n\
-	for(float i = n-1 ; i >= -n ; --i){\n\
-		x = n; y = i;\n\
-		gs = getGaussian2d(x,y,o,n); \n\
-		total += gs;\n\
-		sum += texture2D(CC_Texture0, vec2(tc.x + x*blur, tc.y + y*blur)) * gs;\n\
-	}\n\
-	for(float i = n-1 ; i >= -n ; --i){\n\
-		x = i; y = -n;\n\
-		gs = getGaussian2d(x,y,o,n); \n\
-		total += gs;\n\
-		sum += texture2D(CC_Texture0, vec2(tc.x + x*blur, tc.y + y*blur)) * gs;\n\
-	}\n\
-	for(float i = -n+1 ; i <= n ; ++i){\n\
-		x = -n; y = i;\n\
-		gs = getGaussian2d(x,y,o,n); \n\
-		total += gs;\n\
-		sum += texture2D(CC_Texture0, vec2(tc.x + x*blur, tc.y + y*blur)) * gs;\n\
+	while(n >= 1){\n\
+		for(float i = 1-n ; i <= n ; ++i){\n\
+			x = i; \n\
+			y = n;\n\
+			gs = getGaussian2d(x,y,o,n); \n\
+			total += gs;\n\
+			sum += texture2D(CC_Texture0, vec2(tc.x + x*blur, tc.y + y*blur)) * gs;\n\
+		}\n\
+		for(float i = n-1 ; i >= -n ; --i){\n\
+			x = n; y = i;\n\
+			gs = getGaussian2d(x,y,o,n); \n\
+			total += gs;\n\
+			sum += texture2D(CC_Texture0, vec2(tc.x + x*blur, tc.y + y*blur)) * gs;\n\
+		}\n\
+		for(float i = n-1 ; i >= -n ; --i){\n\
+			x = i; y = -n;\n\
+			gs = getGaussian2d(x,y,o,n); \n\
+			total += gs;\n\
+			sum += texture2D(CC_Texture0, vec2(tc.x + x*blur, tc.y + y*blur)) * gs;\n\
+		}\n\
+		for(float i = -n+1 ; i <= n ; ++i){\n\
+			x = -n; y = i;\n\
+			gs = getGaussian2d(x,y,o,n); \n\
+			total += gs;\n\
+			sum += texture2D(CC_Texture0, vec2(tc.x + x*blur, tc.y + y*blur)) * gs;\n\
+		}\n\
+		n = n - 1;\n\
 	}\n\
 	x = 0; y = 0;\n\
 	gs = getGaussian2d(x,y,o,n); \n\
