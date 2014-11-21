@@ -24,8 +24,16 @@ function testClosureFunc( ... )
 	innerFunc();
 end
 
+function testPassOneTable( ... )
+	-- print("仅传一个table当函数参数时，括号可以省略")
+	local function funca(a)
+		print("in funca")
+	end
+	funca{a = 1,b =2, c =3}
+end
 -- testFuncAsValue();
-testClosureFunc();
+-- testClosureFunc();
+testPassOneTable();
 
 
 
