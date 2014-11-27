@@ -33,13 +33,13 @@ function class(super, classname)
 				local result = false
 
 				-- First Check Interface
-				for interface,v in pairs(class_type.interface) do
-					if result == false then
-						if interface[k] then
-							result = interface[k]
-						end
-					end
-				end
+				-- for interface,v in pairs(class_type.interface) do
+				-- 	if result == false then
+				-- 		if interface[k] then
+				-- 			result = interface[k]
+				-- 		end
+				-- 	end
+				-- end
 
 				if result then
 					return result
@@ -48,7 +48,7 @@ function class(super, classname)
 				-- Then Check Parent
 				if k and _class[super] then
 				    local ret = _class[super][k]
-				    vtbl[k] = ret                      -- remove this if lua running on back-end server
+				    -- vtbl[k] = ret                      -- remove this if lua running on back-end server
 				    return ret
 				else return nil end
 			end
@@ -78,51 +78,51 @@ function class(super, classname)
 		-------------------------
 		--- Declare Variabel Check
 		--------------------------
-		function obj:declare(variableName, value, ...)
-			assert(type(variableName) == "string", "function declare 's variableName paramter is nil !")
-			assert(value ~= nil, "function declare 's value paramter is nil !")
-			assert(#{...} == 0)
+		-- function obj:declare(variableName, value, ...)
+		-- 	assert(type(variableName) == "string", "function declare 's variableName paramter is nil !")
+		-- 	assert(value ~= nil, "function declare 's value paramter is nil !")
+		-- 	assert(#{...} == 0)
 
-			assert(not self[variableName], "variable \"" .. variableName .. "\" Already Declared !")
-			self[variableName] = value
-		end
+		-- 	assert(not self[variableName], "variable \"" .. variableName .. "\" Already Declared !")
+		-- 	self[variableName] = value
+		-- end
         return obj
     end
 	
-	class_type.is = function(self_ptr, compare_class, ...)
-		assert(self_ptr)
-		assert(compare_class)
+	-- class_type.is = function(self_ptr, compare_class, ...)
+	-- 	assert(self_ptr)
+	-- 	assert(compare_class)
 
-		if not compare_class or not self_ptr then 
-			return false 
-		end
+	-- 	if not compare_class or not self_ptr then 
+	-- 		return false 
+	-- 	end
 
-		local raw_class = self_ptr.class
-		while raw_class do
-			if raw_class == compare_class then return true end
-			raw_class = raw_class.super
-		end
-		return false
-	end
+	-- 	local raw_class = self_ptr.class
+	-- 	while raw_class do
+	-- 		if raw_class == compare_class then return true end
+	-- 		raw_class = raw_class.super
+	-- 	end
+	-- 	return false
+	-- end
 
 	-------------------------------------------
 	--  Implement An Interface( Or Procotol Called In Cocos2d-x)
 	--  -----------------------------------------------------
-	class_type.interface = {}
-	class_type.implement = function(interface, ...)
-		assert(interface, "Interface Is Nil !!")
-		assert(#{...} == 0)
+	-- class_type.interface = {}
+	-- class_type.implement = function(interface, ...)
+	-- 	assert(interface, "Interface Is Nil !!")
+	-- 	assert(#{...} == 0)
 
-		assert(_class[interface], "Interface Not Exist !!")
+	-- 	assert(_class[interface], "Interface Not Exist !!")
 
-		-- Check If Already Added To Talbe class_type.interface
-		if class_type.interface[interface] then
-			assert(false, "Interface Already Implemented !")
-		end
+	-- 	-- Check If Already Added To Talbe class_type.interface
+	-- 	if class_type.interface[interface] then
+	-- 		assert(false, "Interface Already Implemented !")
+	-- 	end
 
-		class_type.interface[interface] = true
-	end
-	class_type.superClass = super;
+	-- 	class_type.interface[interface] = true
+	-- end
+	-- class_type.superClass = super;
 	return class_type
 end
 
@@ -142,6 +142,7 @@ function testInherit()
 
 	function classA:funcA()
 		print("classA:funcA");
+
 	end
 
 	local classB = class(classA);
@@ -206,9 +207,47 @@ function testSelf( )
 	-- [坑]attempt to index local 'self' (a nil value)
 	-- cls.funcA();
 end
-testInherit();
+
+function testInherit_3depth()
+	local classA = class();
+	function classA:func()
+		print("classA:func",self.var);
+	end
+	function classA:ctor()
+		self.var = 1
+	end
+
+
+	local classB = class(classA);
+	-- function classB:func()
+	-- 	print("classB:func");
+	-- end
+	function classB:ctor()
+		self.var = 2
+	end
+
+
+	local classC = class(classB)
+	-- function classC:func()
+	-- 	print("classC:func");
+	-- end
+	function classC:ctor()
+		self.var = 3
+	end
+
+
+	local a = classA.new();
+	local b = classB.new();
+	local c = classC.new();
+	a:func();
+	b:func();
+	c:func();
+
+end
+-- testInherit();
 -- testOverride();
 -- testSelf();
+testInherit_3depth();
 
 
 
