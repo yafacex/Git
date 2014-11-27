@@ -7,8 +7,10 @@ setmetatable(_G, {
 		end
 		trueGlobalTable[k] = v
 		--写入类名
+		print("type",type(v))
 		if type(v) == "table" and v then 
 			v.___classname = tostring(k) or "unkown class"
+			print("classname:",v.___classname)
 		end
 	end,
 
@@ -87,6 +89,7 @@ function class(super, classname)
 			end
 			debug:printObject(vtbl,k)
 			debug:printObject(t,k)
+			debug:printObject(class_type,k)
 			vtbl[k] = v 
 		end,			
 		__index = function(t,k) 
@@ -152,7 +155,7 @@ end
 --- YafaceX Test
 ----------------------------------------------
 function testInherit_3depth()
-	local classA = class();
+	classA = class();
 	function classA:func()
 		print("classA:func",self.var);
 	end
@@ -161,7 +164,7 @@ function testInherit_3depth()
 	end
 
 
-	local classB = class(classA);
+	classB = class(classA);
 	-- function classB:func()
 	-- 	print("classB:func");
 	-- end
@@ -170,7 +173,7 @@ function testInherit_3depth()
 	end
 
 
-	local classC = class(classB)
+	classC = class(classB)
 	-- function classC:func()
 	-- 	print("classC:func");
 	-- end
