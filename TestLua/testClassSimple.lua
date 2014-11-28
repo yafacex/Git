@@ -81,28 +81,27 @@ function class(super, classname)
 	local vtbl = {}
 	_class[class_type] = vtbl
   	class_type.___classname = classname;
-    -- class_type is one proxy indeed. (return class type, but operate vtbl)
-    -- class_type.super = super;
 
     -- 类实例get/set重定向到 虚函数表 的哈希表
 	setmetatable(class_type, {
 		__newindex= function(t,k,v)
 
-			-- Check If Already Defined !
 			if rawget(vtbl, k) then
 				print(debug.traceback());
 				assert(false, "Class 's Memeber \"" .. tostring(k) .. "\" Already Defined Before, This May Cause Error !")
 			end
-			-- debug:printObject(vtbl,k)
-			-- debug:printObject(t,k)
 			vtbl[k] = v 
 
 			print("\n##","ClassSetBegin :　",k,tostring(v))
-			print("I am ",tostring(class_type))
+			print("My class_type is: ",tostring(class_type))
 			debug:printObject(vtbl,"My vtbl")
-			debug:printObject(class_type,"Me")
+			debug:printObject(class_type,"My Table")
 			debug:printObject(_class[super],"Super's vtbl")
 			print("@@","ClassSetEnd\n")
+
+			if k == "___classname" then
+				print("mark",tostring(class_type).." = "..v)
+			end
 		end,			
 		__index = function(t,k) 
 			print("\nBefore Vtbl Get :",k)
@@ -114,25 +113,30 @@ function class(super, classname)
 
 	class_type.super = super;
 
-    -- when first invoke the method belong to parent,retrun value of parent
-    -- and set the value to child
     -- 虚函数表重定向 get , 直接从super的虚函数表里拿值(函数) 
 	if super then
 		setmetatable(vtbl, { 
 			__index= function(t, k)
-
-				-- local result = false
-				-- if result then
-				-- 	return result
-				-- end
-
-				-- Then Check Parent
+				--  1]	注意class_type.new里把__index=_class[class_type]指向了这里（_class[class_type]其实就是vtbl），
+				--		所以Object的get方法们会走这里
+				--	2]	但是__index=_class[class_type]这个写法，还是只有找不到key的时候才会走这里
+				--	3]	注意class_type.new里没把__newindex覆写，所以self.var=1还是走了Object的rawset,
+				--		所以get成员变量不会触发这里（如果key找到了）,走的rawget
+				--  4]	函数声明的时候其实是对Class进行的set,声明进来的函数们存在vtbl里了，
+				--		所以Object的rawget找不到，会走到这里
+				--	5]	下面这个local ret = _class[super][k]是精髓，这里虽然没写子类找不到func去父类找的逻辑，
+				--		但是__index的特性里隐含了。一句_class[super][k]直接就向上遍历了父类，直到找到key为止。
 				if k and _class[super] then
 				    local ret = _class[super][k]
-				    print("Do Vtbl Super",k,tostring(ret))
-				    if ret then
-				    	debug.debug()
-				    end
+				    print("\n\nDo   Super",k,
+				    	",\nRet is",tostring(ret),
+				    	",\nMy class_type is:",tostring(class_type),
+				    	",\nMy Vtbl is:",tostring(t),
+				    	",\nSuper class_type is:",tostring(super),
+				    	"\n")
+				    -- if ret then
+				    -- 	debug.debug()
+				    -- end
 				    return ret
 				else 
 					print("No Super")
@@ -148,7 +152,6 @@ function class(super, classname)
 			__index = _class[class_type]
 		})
         
-        -- deal constructor recursively
         -- 倒序构造
         print("Begin new()")
         local inherit_list = {}
@@ -184,7 +187,7 @@ end
 function testInherit_3depth()
 	classA = class();
 	function classA:func()
-		print("classA:func",self.var);
+		print("classA:func");
 	end
 	function classA:ctor()
 		self.var = 1
@@ -192,11 +195,11 @@ function testInherit_3depth()
 
 
 	classB = class(classA);
-	-- function classB:func()
-	-- 	print("classB:func");
-	-- end
+	function classB:func()
+		print("classB:func "..self.var);
+	end
 	function classB:ctor()
-		self.var = 2
+		-- self.var = 2
 	end
 
 
@@ -205,7 +208,7 @@ function testInherit_3depth()
 	-- 	print("classC:func");
 	-- end
 	function classC:ctor()
-		self.var = 3
+		-- self.var = 3
 	end
 
 
