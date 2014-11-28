@@ -7,10 +7,10 @@ setmetatable(_G, {
 		end
 		trueGlobalTable[k] = v
 		--写入类名
-		print("type",type(v))
+		print("_G type",type(v))
 		if type(v) == "table" and v then 
 			v.___classname = tostring(k) or "unkown class"
-			print("classname:",v.___classname)
+			print("_G classname:",v.___classname)
 		end
 	end,
 
@@ -39,6 +39,8 @@ function debug:printObject(obj,name)
     if type(obj) == "table" then
       if obj.class and obj.class.___classname then
         io.write("<"..obj.class.___classname..">\n")
+       else
+       	io.write("<"..tostring(obj)..">")
       end
       if depth == 1  then _printTab(depth) end
       io.write("{\n")
@@ -63,22 +65,26 @@ function debug:printObject(obj,name)
     end
   end
 
-  local depth=1;
+  local depth=0;
   io.open("stdin")
   _printTab(depth)
   _print(obj,depth)
-  io.write("\n")
+  io.write("\n\n")
   io.close()
 end
 
 local _class={}
 function class(super, classname)
 
-	local class_type = { ctor = false, super = super}    -- 'ctor' field must be here
+	-- local class_type = { ctor = false, super = super}    -- 'ctor' field must be here
+	local class_type = {};-- = {super = super}    -- 'ctor' field must be here
 	local vtbl = {}
 	_class[class_type] = vtbl
   	class_type.___classname = classname;
     -- class_type is one proxy indeed. (return class type, but operate vtbl)
+    -- class_type.super = super;
+
+    -- 类实例get/set重定向到 虚函数表 的哈希表
 	setmetatable(class_type, {
 		__newindex= function(t,k,v)
 
@@ -87,33 +93,51 @@ function class(super, classname)
 				print(debug.traceback());
 				assert(false, "Class 's Memeber \"" .. tostring(k) .. "\" Already Defined Before, This May Cause Error !")
 			end
-			debug:printObject(vtbl,k)
-			debug:printObject(t,k)
-			debug:printObject(class_type,k)
+			-- debug:printObject(vtbl,k)
+			-- debug:printObject(t,k)
 			vtbl[k] = v 
+
+			print("\n##","ClassSetBegin :　",k,tostring(v))
+			print("I am ",tostring(class_type))
+			debug:printObject(vtbl,"My vtbl")
+			debug:printObject(class_type,"Me")
+			debug:printObject(_class[super],"Super's vtbl")
+			print("@@","ClassSetEnd\n")
 		end,			
 		__index = function(t,k) 
-
-			return vtbl[k] 
+			print("\nBefore Vtbl Get :",k)
+			local ret = vtbl[k]
+			print("After Vtbl Get\n")
+			return ret
 		end,
 	})
 
+	class_type.super = super;
+
     -- when first invoke the method belong to parent,retrun value of parent
     -- and set the value to child
+    -- 虚函数表重定向 get , 直接从super的虚函数表里拿值(函数) 
 	if super then
 		setmetatable(vtbl, { 
 			__index= function(t, k)
 
-				local result = false
-				if result then
-					return result
-				end
+				-- local result = false
+				-- if result then
+				-- 	return result
+				-- end
 
 				-- Then Check Parent
 				if k and _class[super] then
 				    local ret = _class[super][k]
+				    print("Do Vtbl Super",k,tostring(ret))
+				    if ret then
+				    	debug.debug()
+				    end
 				    return ret
-				else return nil end
+				else 
+					print("No Super")
+					return nil 
+				end
 			end
 		})
 	end
@@ -125,6 +149,8 @@ function class(super, classname)
 		})
         
         -- deal constructor recursively
+        -- 倒序构造
+        print("Begin new()")
         local inherit_list = {}
 		local class_ptr = class_type
 		while class_ptr do
@@ -136,6 +162,7 @@ function class(super, classname)
 		    for i = inherit_length, 1, -1 do inherit_list[i].ctor(obj, ...) end
 		end
         
+        print("End new()")
         obj.class = class_type              -- must be here, because some class constructor change class property.
 
         return obj
@@ -182,12 +209,16 @@ function testInherit_3depth()
 	end
 
 
+	print("\n\n\n\tInitOver\n\n\n")
 	local a = classA.new();
 	local b = classB.new();
 	local c = classC.new();
-	a:func();
+	print("\n\n\n\tCtorOver\n\n\n")
+	-- a:func();
 	-- b:func();
-	-- c:func();
+	print("Before c:func()")
+	c:func();
+	print("After c:func()")
 
 end
 

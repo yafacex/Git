@@ -1,0 +1,290 @@
+_G type	function
+_G type	function
+_G type	function
+
+##	ClassSetBegin :　	super	nil
+I am 	table: 0x00115ae0
+TABLE[My vtbl]
+<table: 0x00115b08>{
+}
+
+TABLE[Me]
+
+Before Vtbl Get :	class
+After Vtbl Get
+
+<table: 0x00115ae0>{
+}
+
+TABLE[Super's vtbl]
+
+
+@@	ClassSetEnd
+
+
+##	ClassSetBegin :　	new	function: 0x0011c328
+I am 	table: 0x00115ae0
+TABLE[My vtbl]
+<table: 0x00115b08>{
+  new = function: 0x0011c328
+}
+
+TABLE[Me]
+
+Before Vtbl Get :	class
+After Vtbl Get
+
+<table: 0x00115ae0>{
+}
+
+TABLE[Super's vtbl]
+
+
+@@	ClassSetEnd
+
+_G type	table
+
+##	ClassSetBegin :　	___classname	classA
+I am 	table: 0x00115ae0
+TABLE[My vtbl]
+<table: 0x00115b08>{
+  ___classname = "classA"
+  new = function: 0x0011c328
+}
+
+TABLE[Me]
+
+Before Vtbl Get :	class
+After Vtbl Get
+
+<table: 0x00115ae0>{
+}
+
+TABLE[Super's vtbl]
+
+
+@@	ClassSetEnd
+
+
+Before Vtbl Get :	___classname
+After Vtbl Get
+
+_G classname:	classA
+
+##	ClassSetBegin :　	func	function: 0x0011c7a0
+I am 	table: 0x00115ae0
+TABLE[My vtbl]
+<table: 0x00115b08>{
+  func = function: 0x0011c7a0
+  ___classname = "classA"
+  new = function: 0x0011c328
+}
+
+TABLE[Me]
+
+Before Vtbl Get :	class
+After Vtbl Get
+
+<table: 0x00115ae0>{
+}
+
+TABLE[Super's vtbl]
+
+
+@@	ClassSetEnd
+
+
+##	ClassSetBegin :　	ctor	function: 0x0011ca20
+I am 	table: 0x00115ae0
+TABLE[My vtbl]
+<table: 0x00115b08>{
+  func = function: 0x0011c7a0
+  ctor = function: 0x0011ca20
+  ___classname = "classA"
+  new = function: 0x0011c328
+}
+
+TABLE[Me]
+
+Before Vtbl Get :	class
+After Vtbl Get
+
+<table: 0x00115ae0>{
+}
+
+TABLE[Super's vtbl]
+
+
+@@	ClassSetEnd
+
+
+##	ClassSetBegin :　	super	table: 0x00115ae0
+I am 	table: 0x0011cc68
+TABLE[My vtbl]
+<table: 0x0011cc90>{
+  super = 
+Before Vtbl Get :	class
+After Vtbl Get
+
+<table: 0x00115ae0>  {
+  }
+}
+
+TABLE[Me]
+
+Before Vtbl Get :	class
+After Vtbl Get
+
+<table: 0x0011cc68>{
+}
+
+TABLE[Super's vtbl]
+<table: 0x00115b08>{
+  func = function: 0x0011c7a0
+  ctor = function: 0x0011ca20
+  ___classname = "classA"
+  new = function: 0x0011c328
+}
+
+@@	ClassSetEnd
+
+
+##	ClassSetBegin :　	new	function: 0x0011d150
+I am 	table: 0x0011cc68
+TABLE[My vtbl]
+Do Vtbl Super	class	nil
+<table: 0x0011cc90>{
+  new = function: 0x0011d150
+  super = 
+Before Vtbl Get :	class
+After Vtbl Get
+
+<table: 0x00115ae0>  {
+  }
+}
+
+TABLE[Me]
+
+Before Vtbl Get :	class
+Do Vtbl Super	class	nil
+After Vtbl Get
+
+<table: 0x0011cc68>{
+}
+
+TABLE[Super's vtbl]
+<table: 0x00115b08>{
+  func = function: 0x0011c7a0
+  ctor = function: 0x0011ca20
+  ___classname = "classA"
+  new = function: 0x0011c328
+}
+
+@@	ClassSetEnd
+
+_G type	table
+
+##	ClassSetBegin :　	___classname	classB
+I am 	table: 0x0011cc68
+TABLE[My vtbl]
+Do Vtbl Super	class	nil
+<table: 0x0011cc90>{
+  super = 
+Before Vtbl Get :	class
+After Vtbl Get
+
+<table: 0x00115ae0>  {
+  }
+  ___classname = "classB"
+  new = function: 0x0011d150
+}
+
+TABLE[Me]
+
+Before Vtbl Get :	class
+Do Vtbl Super	class	nil
+After Vtbl Get
+
+<table: 0x0011cc68>{
+}
+
+TABLE[Super's vtbl]
+<table: 0x00115b08>{
+  func = function: 0x0011c7a0
+  ctor = function: 0x0011ca20
+  ___classname = "classA"
+  new = function: 0x0011c328
+}
+
+@@	ClassSetEnd
+
+
+Before Vtbl Get :	___classname
+After Vtbl Get
+
+_G classname:	classB
+
+##	ClassSetBegin :　	ctor	function: 0x0011d610
+I am 	table: 0x0011cc68
+TABLE[My vtbl]
+Do Vtbl Super	class	nil
+<table: 0x0011cc90>{
+  ctor = function: 0x0011d610
+  super = 
+Before Vtbl Get :	class
+After Vtbl Get
+
+<table: 0x00115ae0>  {
+  }
+  ___classname = "classB"
+  new = function: 0x0011d150
+}
+
+TABLE[Me]
+
+Before Vtbl Get :	class
+Do Vtbl Super	class	nil
+After Vtbl Get
+
+<table: 0x0011cc68>{
+}
+
+TABLE[Super's vtbl]
+<table: 0x00115b08>{
+  func = function: 0x0011c7a0
+  ctor = function: 0x0011ca20
+  ___classname = "classA"
+  new = function: 0x0011c328
+}
+
+@@	ClassSetEnd
+
+
+##	ClassSetBegin :　	super	table: 0x0011cc68
+I am 	table: 0x0011d838
+TABLE[My vtbl]
+<table: 0x0011d860>{
+  super = 
+Before Vtbl Get :	class
+Do Vtbl Super	class	nil
+After Vtbl Get
+
+<table: 0x0011cc68>  {
+  }
+}
+
+TABLE[Me]
+
+Before Vtbl Get :	class
+After Vtbl Get
+
+<table: 0x0011d838>{
+}
+
+TABLE[Super's vtbl]
+Do Vtbl Super	class	nil
+<table: 0x0011cc90>{
+  ctor = function: 0x0011d610
+  super = 
+Before Vtbl Get :	class
+After Vtbl G
