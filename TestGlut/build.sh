@@ -1,2 +1,2 @@
-gcc -o haha.exe hello.c glut32.lib -lopengl32
-haha
+gcc -o haha.exe hello.c glut32.lib glew32.lib -lopengl32
+./haha

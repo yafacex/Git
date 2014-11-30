@@ -1,6 +1,7 @@
 #include <stdlib.h>  
-#include "GL/gl.h"  
-#include "GL/glut.h"  
+// #include <GL/gl.h>  
+#include <GL/glew.h>  
+#include <GL/glut.h> 
 #include <stdio.h>
 void display(void)  
 {  
@@ -24,7 +25,8 @@ void initOrtho (void)
    glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
 } 
 void initTxt(){
-  
+   const GLubyte* version = glGetString(GL_VERSION);
+   printf("%s\n", version);
 }
 
 void idle(void)
@@ -33,15 +35,21 @@ void idle(void)
 }
 int main(int argc, char** argv)  
 {  
-   glutInit(&argc, argv);  
-   glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
-   glutInitWindowSize (400, 400); 
-   glutInitWindowPosition (100, 100);
-   glutCreateWindow ("hello");
-   // initOrtho();
-   initTxt();
-   glutDisplayFunc(&display); 
-   glutIdleFunc(idle);
-   glutMainLoop();
+  GLenum bInit = glewInit();
+  if (GLEW_OK != bInit)
+  {
+      glutInit(&argc, argv);  
+      glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB);
+      glutInitWindowSize (400, 400); 
+      glutInitWindowPosition (100, 100);
+      glutCreateWindow ("hello");
+      // initOrtho();
+      initTxt();
+      glutDisplayFunc(&display); 
+      glutIdleFunc(idle);
+      glutMainLoop();
+      glCreateShader(GL_FRAGMENT_SHADER);
+      return 1;
+  }
    return 0;  
 }
