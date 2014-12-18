@@ -3,6 +3,7 @@
 #include <GL/glew.h>  
 #include <GL/glut.h> 
 #include <stdio.h>
+#include "YGL/ShaderMgr.h"
 void display(void)  
 {  
 
@@ -24,6 +25,9 @@ void initOrtho (void)
    glLoadIdentity();  
    glOrtho(0.0, 1.0, 0.0, 1.0, -1.0, 1.0);
 } 
+void initShader(){
+    
+}
 void initTxt(){
    const GLubyte* version = glGetString(GL_VERSION);
    printf("%s\n", version);

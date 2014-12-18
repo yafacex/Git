@@ -73,6 +73,27 @@ function debug:printObject(obj,name)
   io.close()
 end
 
+function tba(level,isMore)
+  local lv = 2;
+  while true do
+
+    local info = debug.getinfo(lv,"Sln");
+    if not info then break end
+
+    if lv >= level then
+      print("<"..lv..">FUNC:[".. (info.name or "NULL").."]\tFILE:" .. info.short_src .. "["..info.currentline.."]");
+      if lv == -1 or lv == level or (isMore and lv > level) then
+        if info.name ~= "require" and info.name ~= "self" then 
+          -- debug:printLocal(lv+1,-1,true);
+        end
+      end
+    end
+
+    lv = lv + 1
+  end
+end 
+
+
 local _class={}
 function class(super, classname)
 
@@ -148,8 +169,24 @@ function class(super, classname)
     
     class_type.new = function(...)
         local obj = { class = class_type }
+		local locals = {}	
         setmetatable(obj, { 
-			__index = _class[class_type]
+			__index = function (t,k)
+				print("Obj get:",k)
+				 local r = _class[class_type][k]
+				 if not r then
+				 	return locals[k];
+				 else
+				 	return r;
+				 end
+			end,
+			__newindex = function (t,k,v)
+				print("Obj set:",k,tostring(v))
+				locals[k] = v
+				if k == "var11" then
+					debug.debug()
+				end
+			end
 		})
         
         -- 倒序构造
@@ -222,6 +259,8 @@ function testInherit_3depth()
 	print("Before c:func()")
 	c:func();
 	print("After c:func()")
+	c.var11 = nil
+	print("After nil")
 
 end
 
