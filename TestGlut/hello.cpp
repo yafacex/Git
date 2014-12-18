@@ -3,7 +3,7 @@
 #include <GL/glew.h>  
 #include <GL/glut.h> 
 #include <stdio.h>
-#include "YGL/ShaderMgr.h"
+#include "YGL/SingleShader.h"
 void display(void)  
 {  
 
