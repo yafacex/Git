@@ -127,7 +127,7 @@ typedef struct State State;
 struct State
 {
 	int c;
-	State *out;
+	State *out0;
 	State *out1;
 	int lastlist;
 };
@@ -136,7 +136,7 @@ int nstate;
 
 /* Allocate and initialize State */
 State*
-state(int c, State *out, State *out1)
+createState(char c, State *out0, State *out1)
 {
 	State *s;
 	
@@ -144,7 +144,7 @@ state(int c, State *out, State *out1)
 	s = (State *)malloc(sizeof *s);
 	s->lastlist = 0;
 	s->c = c;
-	s->out = out;
+	s->out0 = out0;
 	s->out1 = out1;
 	return s;
 }
@@ -156,16 +156,16 @@ state(int c, State *out, State *out1)
  * next state for this fragment.
  */
 typedef struct Frag Frag;
-typedef union Ptrlist Ptrlist;
+typedef union StateList StateList;
 struct Frag
 {
 	State *start;
-	Ptrlist *out;
+	StateList *out;
 };
 
 /* Initialize Frag struct. */
 Frag
-frag(State *start, Ptrlist *out)
+frag(State *start, StateList *out)
 {
 	Frag n = { start, out };
 	return n;
@@ -174,30 +174,30 @@ frag(State *start, Ptrlist *out)
 /*
  * Since the out pointers in the list are always 
  * uninitialized, we use the pointers themselves
- * as storage for the Ptrlists.
+ * as storage for the StateLists.
  */
-union Ptrlist
+union StateList
 {
-	Ptrlist *next;
+	StateList *next;
 	State *s;
 };
 
 /* Create singleton list containing just outp. */
-Ptrlist*
+StateList*
 list1(State **outp)
 {
-	Ptrlist *l;
+	StateList *l;
 	
-	l = (Ptrlist*)outp;
+	l = (StateList*)outp;
 	l->next = NULL;
 	return l;
 }
 
 /* Patch the list of states at out to point to start. */
 void
-patch(Ptrlist *l, State *s)
+patch(StateList *l, State *s)
 {
-	Ptrlist *next;
+	StateList *next;
 	
 	for(; l; l=next){
 		next = l->next;
@@ -206,10 +206,10 @@ patch(Ptrlist *l, State *s)
 }
 
 /* Join the two lists l1 and l2, returning the combination. */
-Ptrlist*
-append(Ptrlist *l1, Ptrlist *l2)
+StateList*
+append(StateList *l1, StateList *l2)
 {
-	Ptrlist *oldl1;
+	StateList *oldl1;
 	
 	oldl1 = l1;
 	while(l1->next)
@@ -241,8 +241,9 @@ post2nfa(char *postfix)
 	for(p=postfix; *p; p++){
 		switch(*p){
 		default:
-			s = state(*p, NULL, NULL);
-			push(frag(s, list1(&s->out)));
+			s = createState(*p, NULL, NULL);
+			printf("s:%x,&s->out0:%x\n",s,&s->out0);
+			push(frag(s, list1(&s->out0)));
 			break;
 		case '.':	/* catenate */
 			e2 = pop();
@@ -253,23 +254,23 @@ post2nfa(char *postfix)
 		case '|':	/* alternate */
 			e2 = pop();
 			e1 = pop();
-			s = state(Split, e1.start, e2.start);
+			s = createState(Split, e1.start, e2.start);
 			push(frag(s, append(e1.out, e2.out)));
 			break;
 		case '?':	/* zero or one */
 			e = pop();
-			s = state(Split, e.start, NULL);
+			s = createState(Split, e.start, NULL);
 			push(frag(s, append(e.out, list1(&s->out1))));
 			break;
 		case '*':	/* zero or more */
 			e = pop();
-			s = state(Split, e.start, NULL);
+			s = createState(Split, e.start, NULL);
 			patch(e.out, s);
 			push(frag(s, list1(&s->out1)));
 			break;
 		case '+':	/* one or more */
 			e = pop();
-			s = state(Split, e.start, NULL);
+			s = createState(Split, e.start, NULL);
 			patch(e.out, s);
 			push(frag(e.start, list1(&s->out1)));
 			break;
@@ -295,7 +296,7 @@ struct List
 List l1, l2;
 static int listid;
 
-void addstate(List*, State*);
+void addcreateState(List*, State*);
 void step(List*, int, List*);
 
 /* Compute initial state list */
@@ -304,7 +305,7 @@ startlist(State *start, List *l)
 {
 	l->n = 0;
 	listid++;
-	addstate(l, start);
+	addcreateState(l, start);
 	return l;
 }
 
@@ -322,15 +323,15 @@ ismatch(List *l)
 
 /* Add s to l, following unlabeled arrows. */
 void
-addstate(List *l, State *s)
+addcreateState(List *l, State *s)
 {
 	if(s == NULL || s->lastlist == listid)
 		return;
 	s->lastlist = listid;
 	if(s->c == Split){
 		/* follow unlabeled arrows */
-		addstate(l, s->out);
-		addstate(l, s->out1);
+		addcreateState(l, s->out0);
+		addcreateState(l, s->out1);
 		return;
 	}
 	l->s[l->n++] = s;
@@ -352,7 +353,7 @@ step(List *clist, int c, List *nlist)
 	for(i=0; i<clist->n; i++){
 		s = clist->s[i];
 		if(s->c == c)
-			addstate(nlist, s->out);
+			addcreateState(nlist, s->out0);
 	}
 }
 
@@ -407,27 +408,3 @@ main(int argc, char **argv)
 			printf("%s\n", argv[i]);
 	return 0;
 }
-
-/*
- * Permission is hereby granted, free of charge, to any person
- * obtaining a copy of this software and associated
- * documentation files (the "Software"), to deal in the
- * Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute,
- * sublicense, and/or sell copies of the Software, and to
- * permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- * 
- * The above copyright notice and this permission notice shall
- * be included in all copies or substantial portions of the
- * Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY
- * KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
- * WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
- * PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE AUTHORS
- * OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
- * OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
- * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
- * SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
