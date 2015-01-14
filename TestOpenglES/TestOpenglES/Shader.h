@@ -8,7 +8,6 @@
 
 #ifndef TestOpenglView_Shader_h
 #define TestOpenglView_Shader_h
-//#include <
 #include <assert.h>
 class Shader{
 public:
