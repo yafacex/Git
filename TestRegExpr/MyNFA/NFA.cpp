@@ -7,8 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include<stdlib.h>
-#include<stdio.h>
+#include <map>
 #include <string.h>
 using namespace std;
 
@@ -41,6 +40,7 @@ public:
 	not support temporarily:
 		 range	[xx-xx] {m,n}
 	*/
+
 class Unit
 {
 public:
@@ -58,34 +58,141 @@ public:
 	char ch;
 };
 
+#define BadString ""
 class UnitParser
 {
 public:
 	UnitParser(){};
 	~UnitParser(){};
 	
-	bool isRepeat_Or_BaracketR(char ch){
-		return ch == '+' || ch == '*' || ch == '?' || ch == '|' || ch == ')';
-	}
-	bool isAlpha_BracketR(char ch){
-		return ch == ')' || (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
-	}
-	// return head of the unit tree
-	// ((ab)+)*
-	//因为repeat和|和)一定在字母或)后面，所以字母或)后面不是repeat和|和)的就是与了
-	Unit* parse(string expression)
-	{
+	/**
+		添加连接符部分
+	*/
+	bool isRepeat(char ch){
+		return ch == '+' || ch == '*' || ch == '?' ;
+	};
+	bool isAlphbet(char ch){
+		return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z');
+	};
+	bool isRepeat_Alphbet_BaracketR(char ch){
+		 return isRepeat(ch) || isAlphbet(ch) || ch == ')';
+	};
+	bool isAlphbet_BracketL(char ch){
+		return isAlphbet(ch) || ch == '(';	
+	};
+	string addConnection(string expression){
+		//把链接符号~添加进去
 		string processedExp = "";
-		char lastChar = '|';//任意repeat和|均可
+		char lastChar = '\0';
 		for_each(expression.begin(),expression.end(),[&](const char ch){
-			if (isAlpha_BracketR(lastChar) && !isRepeat_Or_BaracketR(ch)){
+			if (isRepeat_Alphbet_BaracketR(lastChar) && isAlphbet_BracketL(ch)){
 				processedExp.append(1,'~');
 			}
 			processedExp.append(1,ch);
 			lastChar = ch;
 		});
-		cout << processedExp << endl;
+		cout << "[addConnection] : " << processedExp << endl;
+		return processedExp;
+	};
+
+	/*
+		转后缀表达式部分
+	*/
+	bool isBracket(char ch){
+		return ch == '(' || ch == ')';
+	};
+	bool isAndOr(char ch){
+		return ch == '~' || ch == '|';
+	}
+	bool isOp(char ch){
+		return isRepeat(ch) || isBracket(ch);
+	};
+
+	void pushChar(char ch) {
+		charStack.push_back(ch);
+	};
+	void pushOp(char ch) {
+		opStack.push_back(ch);
+	};
+	char charTop() {
+		return charStack.back();
+	}
+	char popChar() {
+		char tmp = charTop();
+		charStack.pop_back();
+		return tmp;
+	};
+	char opTop() {
+		return opStack.back();
+	}
+	char popOp() {
+		char tmp = opTop();
+		opStack.pop_back();
+		return tmp;
+	};
+
+	bool popUtilBracketL(){
+		if(find(opStack.begin(),opStack.end(),'(') == opStack.end()){
+			cout << "No Matched Left Baracket,Bad Expression!" << endl;
+			return false;
+		}else{
+			char poped = '\0';
+			while(poped == '('){
+				charStack.push_back(opStack.back());
+				opStack.pop_back();
+			}
+			return true;
+		}
+	};
+	typedef 
+	map<char,map<char,char>> OpPriority;
+	void toPriority2dMap(){
+
+	}
+
+	string toPostExpression(string expression){
+
+		string passedStr = "";
+
+		for_each(expression.begin(),expression.end(),[&](const char ch){
+			passedStr.append(1,ch);
+			if (isOp(ch)){
+				if (isBracket(ch)){
+					if (ch == '('){
+						pushOp(ch);
+					}else{
+						bool popOK = popUtilBracketL();
+						if(!popOK){
+							cout << "Lack Of [(] before " << passedStr <<endl;
+							return BadString;
+						}
+					}
+				}else if (isRepeat(ch)){
+					charStack.push_back(ch);
+				}
+			}else if (isAlphbet(ch)){
+				pushChar(ch);
+			}else if (isAndOr(ch)){
+				char opTop = opTop();
+				if (isAndOr(opTop)){
+
+				}
+			}else{
+				cout << "Not Support Fuck Expression !" << endl;
+			}
+		});
+	};
+	// return head of the unit tree
+	// ((ab)+)*
+	Unit* parse(string expression)
+	{
+		expression = addConnection(expression);
+		string post = toPostExpression(expression);
+		return NULL;
 	};	
+
+	vector<char> charStack;
+	vector<char> opStack;
 };
 
 
