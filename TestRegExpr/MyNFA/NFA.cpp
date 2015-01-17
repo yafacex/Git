@@ -105,9 +105,11 @@ public:
 		return ch == '~' || ch == '|';
 	}
 	bool isOp(char ch){
-		return isRepeat(ch) || isBracket(ch);
+		return isRepeat(ch) || isBracket(ch) || isAndOr(ch);
 	};
-
+	bool isMiddleOp(char ch){
+		return isAndOr(ch);
+	};
 	void pushChar(char ch) {
 		charStack.push_back(ch);
 	};
@@ -144,11 +146,6 @@ public:
 			return true;
 		}
 	};
-	typedef 
-	map<char,map<char,char>> OpPriority;
-	void toPriority2dMap(){
-
-	}
 
 	string toPostExpression(string expression){
 
@@ -167,15 +164,18 @@ public:
 							return BadString;
 						}
 					}
-				}else if (isRepeat(ch)){
-					charStack.push_back(ch);
-				}
+				}else{
+					if (isMiddleOp(ch)){
+						pushOp(ch);
+					}else {
+						pushChar(ch);
+					}
+				} 
 			}else if (isAlphbet(ch)){
 				pushChar(ch);
-			}else if (isAndOr(ch)){
-				char opTop = opTop();
-				if (isAndOr(opTop)){
-
+				char top = opTop();
+				if(isMiddleOp(ch)){
+					pushChar(popOp());
 				}
 			}else{
 				cout << "Not Support Fuck Expression !" << endl;
