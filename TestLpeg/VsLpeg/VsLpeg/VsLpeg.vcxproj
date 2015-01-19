@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{5F74A1B8-C25D-4B7C-9CCF-02DD9F9C8427}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>VsLpeg</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>false</SDLCheck>
+      <AdditionalIncludeDirectories>$(SolutionDir)\..\lpeg-0.12.1;$(SolutionDir)\..\lua52;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\lpeg-0.12.1\lpcap.h" />
+    <ClInclude Include="..\..\lpeg-0.12.1\lpcode.h" />
+    <ClInclude Include="..\..\lpeg-0.12.1\lpprint.h" />
+    <ClInclude Include="..\..\lpeg-0.12.1\lptree.h" />
+    <ClInclude Include="..\..\lpeg-0.12.1\lptypes.h" />
+    <ClInclude Include="..\..\lpeg-0.12.1\lpvm.h" />
+    <ClInclude Include="..\..\lua52\lapi.h" />
+    <ClInclude Include="..\..\lua52\lauxlib.h" />
+    <ClInclude Include="..\..\lua52\lcode.h" />
+    <ClInclude Include="..\..\lua52\lctype.h" />
+    <ClInclude Include="..\..\lua52\ldebug.h" />
+    <ClInclude Include="..\..\lua52\ldo.h" />
+    <ClInclude Include="..\..\lua52\lfunc.h" />
+    <ClInclude Include="..\..\lua52\lgc.h" />
+    <ClInclude Include="..\..\lua52\llex.h" />
+    <ClInclude Include="..\..\lua52\llimits.h" />
+    <ClInclude Include="..\..\lua52\lmem.h" />
+    <ClInclude Include="..\..\lua52\lobject.h" />
+    <ClInclude Include="..\..\lua52\lopcodes.h" />
+    <ClInclude Include="..\..\lua52\lparser.h" />
+    <ClInclude Include="..\..\lua52\lstate.h" />
+    <ClInclude Include="..\..\lua52\lstring.h" />
+    <ClInclude Include="..\..\lua52\ltable.h" />
+    <ClInclude Include="..\..\lua52\ltm.h" />
+    <ClInclude Include="..\..\lua52\lua.h" />
+    <ClInclude Include="..\..\lua52\lua.hpp" />
+    <ClInclude Include="..\..\lua52\luaconf.h" />
+    <ClInclude Include="..\..\lua52\lualib.h" />
+    <ClInclude Include="..\..\lua52\lundump.h" />
+    <ClInclude Include="..\..\lua52\lvm.h" />
+    <ClInclude Include="..\..\lua52\lzio.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\lpeg-0.12.1\lpcap.c" />
+    <ClCompile Include="..\..\lpeg-0.12.1\lpcode.c" />
+    <ClCompile Include="..\..\lpeg-0.12.1\lpprint.c" />
+    <ClCompile Include="..\..\lpeg-0.12.1\lptree.c" />
+    <ClCompile Include="..\..\lpeg-0.12.1\lpvm.c" />
+    <ClCompile Include="..\..\lua52\lapi.c" />
+    <ClCompile Include="..\..\lua52\lauxlib.c" />
+    <ClCompile Include="..\..\lua52\lbaselib.c" />
+    <ClCompile Include="..\..\lua52\lbitlib.c" />
+    <ClCompile Include="..\..\lua52\lcode.c" />
+    <ClCompile Include="..\..\lua52\lcorolib.c" />
+    <ClCompile Include="..\..\lua52\lctype.c" />
+    <ClCompile Include="..\..\lua52\ldblib.c" />
+    <ClCompile Include="..\..\lua52\ldebug.c" />
+    <ClCompile Include="..\..\lua52\ldo.c" />
+    <ClCompile Include="..\..\lua52\ldump.c" />
+    <ClCompile Include="..\..\lua52\lfunc.c" />
+    <ClCompile Include="..\..\lua52\lgc.c" />
+    <ClCompile Include="..\..\lua52\linit.c" />
+    <ClCompile Include="..\..\lua52\liolib.c" />
+    <ClCompile Include="..\..\lua52\llex.c" />
+    <ClCompile Include="..\..\lua52\lmathlib.c" />
+    <ClCompile Include="..\..\lua52\lmem.c" />
+    <ClCompile Include="..\..\lua52\loadlib.c" />
+    <ClCompile Include="..\..\lua52\lobject.c" />
+    <ClCompile Include="..\..\lua52\lopcodes.c" />
+    <ClCompile Include="..\..\lua52\loslib.c" />
+    <ClCompile Include="..\..\lua52\lparser.c" />
+    <ClCompile Include="..\..\lua52\lstate.c" />
+    <ClCompile Include="..\..\lua52\lstring.c" />
+    <ClCompile Include="..\..\lua52\lstrlib.c" />
+    <ClCompile Include="..\..\lua52\ltable.c" />
+    <ClCompile Include="..\..\lua52\ltablib.c" />
+    <ClCompile Include="..\..\lua52\ltm.c" />
+    <ClCompile Include="..\..\lua52\luac.c" />
+    <ClCompile Include="..\..\lua52\lundump.c" />
+    <ClCompile Include="..\..\lua52\lvm.c" />
+    <ClCompile Include="..\..\lua52\lzio.c" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="VsLpeg.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\lpeg-0.12.1\lpeg.html" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

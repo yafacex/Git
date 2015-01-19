@@ -1,0 +1,44 @@
+﻿Build started 2015/1/19 17:38:06.
+     1>Project "F:\MyGit\Git\TestSpirit\VsSpirit\TestSpirit\TestSpirit\TestSpirit.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /IF:\MyGit\Git\TestSpirit\VsSpirit\TestSpirit\Includes /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\TestSpirit.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt TestSpirit.cpp
+         TestSpirit.cpp
+         %%% Does MSVC support partial specialization yet?
+         %%% Does MSVC put the C stdlib names in the std namespace yet?
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_config_msvc.h(266): error C2059: syntax error : '<'
+                 f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_config_msvc.h(267) : see reference to class template instantiation 'Spirit::Impl::If_<Condition_,Then_,Else_>' being compiled
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_config_msvc.h(266): error C2238: unexpected token(s) preceding ';'
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_directives.h(169): warning C4346: 'T::TypeA' : dependent name is not a type
+                 prefix with 'typename' to indicate a type
+                 f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_directives.h(175) : see reference to class template instantiation 'Spirit::Impl::ToLongest_Alternative<T>' being compiled
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_directives.h(169): error C2923: 'Spirit::Impl::ToLongest' : 'T::TypeA' is not a valid template type argument for parameter 'T'
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_directives.h(170): warning C4346: 'T::TypeB' : dependent name is not a type
+                 prefix with 'typename' to indicate a type
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_directives.h(170): error C2923: 'Spirit::Impl::ToLongest' : 'T::TypeB' is not a valid template type argument for parameter 'T'
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_directives.h(319): warning C4346: 'T::TypeA' : dependent name is not a type
+                 prefix with 'typename' to indicate a type
+                 f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_directives.h(325) : see reference to class template instantiation 'Spirit::Impl::ToShortest_Alternative<T>' being compiled
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_directives.h(319): error C2923: 'Spirit::Impl::ToShortest' : 'T::TypeA' is not a valid template type argument for parameter 'T'
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_directives.h(320): warning C4346: 'T::TypeB' : dependent name is not a type
+                 prefix with 'typename' to indicate a type
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_directives.h(320): error C2923: 'Spirit::Impl::ToShortest' : 'T::TypeB' is not a valid template type argument for parameter 'T'
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_rule.h(132): warning C4346: 'Spirit::Impl::IterOf<ScannerT>::Iterator' : dependent name is not a type
+                 prefix with 'typename' to indicate a type
+                 f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_rule.h(138) : see reference to class template instantiation 'Spirit::Impl::ConcreteParser_1<T,ScannerT>' being compiled
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_rule.h(132): error C2923: 'Spirit::Impl::AbstractParser' : 'Spirit::Impl::IterOf<ScannerT>::Iterator' is not a valid template type argument for parameter 'Iterator'
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_rule.h(132): error C2955: 'Spirit::Impl::AbstractParser' : use of class template requires template argument list
+                 f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_rule.h(113) : see declaration of 'Spirit::Impl::AbstractParser'
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_rule.h(151): warning C4346: 'Spirit::Impl::If_<Spirit::Impl::IsSameType<ScannerT,Iterator>::Test,Spirit::Impl::ConcreteParser_1<T,ScannerT>,Spirit::Impl::ConcreteParser_2<T,ScannerT,Iterator>>::Type' : dependent name is not a type
+                 prefix with 'typename' to indicate a type
+                 f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_rule.h(157) : see reference to class template instantiation 'Spirit::Impl::ConcreteParser<T,ScannerT,Iterator>' being compiled
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_rule.h(151): error C2146: syntax error : missing ';' before identifier 'Base'
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_rule.h(151): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_rule.h(231): warning C4346: 'Spirit::Impl::IterOf<T>::Iterator' : dependent name is not a type
+                 prefix with 'typename' to indicate a type
+                 f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_rule.h(246) : see reference to class template instantiation 'Spirit::Rule<ScannerT>' being compiled
+     1>f:\mygit\git\testspirit\vsspirit\testspirit\includes\spirit\spirit_rule.h(231): error C2923: 'Spirit::Impl::AbstractParser' : 'Spirit::Impl::IterOf<T>::Iterator' is not a valid template type argument for parameter 'Iterator'
+     1>Done Building Project "F:\MyGit\Git\TestSpirit\VsSpirit\TestSpirit\TestSpirit\TestSpirit.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.42

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="libLpeg">
+      <UniqueIdentifier>{5885fbd8-bcbc-444a-ae9d-bd88b8ef2a28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="libLua">
+      <UniqueIdentifier>{78a66bef-c6c0-4735-bbd5-d60fea783870}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lpeg-0.12.1\lpcap.h">
+      <Filter>libLpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lpeg-0.12.1\lpcode.h">
+      <Filter>libLpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lpeg-0.12.1\lpprint.h">
+      <Filter>libLpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lpeg-0.12.1\lptree.h">
+      <Filter>libLpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lpeg-0.12.1\lptypes.h">
+      <Filter>libLpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lpeg-0.12.1\lpvm.h">
+      <Filter>libLpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lapi.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lauxlib.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lcode.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lctype.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\ldebug.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\ldo.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lfunc.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lgc.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\llex.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\llimits.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lmem.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lobject.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lopcodes.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lparser.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lstate.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lstring.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\ltable.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\ltm.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lua.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lua.hpp">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\luaconf.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lualib.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lundump.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lvm.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\lua52\lzio.h">
+      <Filter>libLua</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VsLpeg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lpeg-0.12.1\lpcap.c">
+      <Filter>libLpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lpeg-0.12.1\lpcode.c">
+      <Filter>libLpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lpeg-0.12.1\lpprint.c">
+      <Filter>libLpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lpeg-0.12.1\lptree.c">
+      <Filter>libLpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lpeg-0.12.1\lpvm.c">
+      <Filter>libLpeg</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lapi.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lauxlib.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lbaselib.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lbitlib.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lcode.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lcorolib.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lctype.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\ldblib.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\ldebug.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\ldo.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\ldump.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lfunc.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lgc.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\linit.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\liolib.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\llex.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lmathlib.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lmem.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\loadlib.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lobject.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lopcodes.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\loslib.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lparser.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lstate.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lstring.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lstrlib.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\ltable.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\ltablib.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\ltm.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\luac.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lundump.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lvm.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\lua52\lzio.c">
+      <Filter>libLua</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\lpeg-0.12.1\lpeg.html" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VsLua", "VsLua\VsLua.vcxproj", "{27E02E91-C6C0-4638-84DF-84131A836CFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27E02E91-C6C0-4638-84DF-84131A836CFD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{27E02E91-C6C0-4638-84DF-84131A836CFD}.Debug|Win32.Build.0 = Debug|Win32
+		{27E02E91-C6C0-4638-84DF-84131A836CFD}.Release|Win32.ActiveCfg = Release|Win32
+		{27E02E91-C6C0-4638-84DF-84131A836CFD}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

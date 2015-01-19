@@ -1,0 +1,155 @@
+﻿Build started 2015/1/19 20:21:13.
+     1>Project "F:\MyGit\Git\TestLpeg\VsLpeg\VsLpeg\VsLpeg.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"F:\MyGit\Git\TestLpeg\VsLpeg\\..\lpeg-0.12.1" /IF:\MyGit\Git\TestLpeg\VsLpeg\\..\lua52 /ZI /nologo /W3 /WX- /sdl- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\VsLpeg.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"F:\MyGit\Git\TestLpeg\VsLpeg\\..\lpeg-0.12.1" /IF:\MyGit\Git\TestLpeg\VsLpeg\\..\lua52 /ZI /nologo /W3 /WX- /sdl- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt "..\..\lpeg-0.12.1\lpcap.c" "..\..\lpeg-0.12.1\lpcode.c" "..\..\lpeg-0.12.1\lpprint.c" "..\..\lpeg-0.12.1\lptree.c" "..\..\lpeg-0.12.1\lpvm.c" ..\..\lua52\lapi.c ..\..\lua52\lauxlib.c ..\..\lua52\lbaselib.c ..\..\lua52\lbitlib.c ..\..\lua52\lcode.c ..\..\lua52\lcorolib.c ..\..\lua52\lctype.c ..\..\lua52\ldblib.c ..\..\lua52\ldebug.c ..\..\lua52\ldo.c ..\..\lua52\ldump.c ..\..\lua52\lfunc.c ..\..\lua52\lgc.c ..\..\lua52\linit.c ..\..\lua52\liolib.c ..\..\lua52\llex.c ..\..\lua52\lmathlib.c ..\..\lua52\lmem.c ..\..\lua52\loadlib.c ..\..\lua52\lobject.c ..\..\lua52\lopcodes.c ..\..\lua52\loslib.c ..\..\lua52\lparser.c ..\..\lua52\lstate.c ..\..\lua52\lstring.c ..\..\lua52\lstrlib.c ..\..\lua52\ltable.c ..\..\lua52\ltablib.c ..\..\lua52\ltm.c ..\..\lua52\luac.c ..\..\lua52\lundump.c ..\..\lua52\lvm.c ..\..\lua52\lzio.c
+         lzio.c
+         lvm.c
+     1>f:\mygit\git\testlpeg\lua52\lvm.c(53): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+         lundump.c
+         luac.c
+     1>f:\mygit\git\testlpeg\lua52\luac.c(43): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(164) : see declaration of 'strerror'
+     1>f:\mygit\git\testlpeg\lua52\luac.c(178): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+         ltm.c
+         ltablib.c
+         ltable.c
+         lstrlib.c
+     1>f:\mygit\git\testlpeg\lua52\lstrlib.c(845): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>f:\mygit\git\testlpeg\lua52\lstrlib.c(847): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>f:\mygit\git\testlpeg\lua52\lstrlib.c(886): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(110) : see declaration of 'strcpy'
+     1>f:\mygit\git\testlpeg\lua52\lstrlib.c(914): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>f:\mygit\git\testlpeg\lua52\lstrlib.c(924): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>f:\mygit\git\testlpeg\lua52\lstrlib.c(934): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>f:\mygit\git\testlpeg\lua52\lstrlib.c(943): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+     1>f:\mygit\git\testlpeg\lua52\lstrlib.c(960): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+         lstring.c
+         lstate.c
+         lparser.c
+         loslib.c
+     1>f:\mygit\git\testlpeg\lua52\loslib.c(108): warning C4996: 'tmpnam': This function or variable may be unsafe. Consider using tmpnam_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(330) : see declaration of 'tmpnam'
+     1>f:\mygit\git\testlpeg\lua52\loslib.c(117): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(449) : see declaration of 'getenv'
+     1>f:\mygit\git\testlpeg\lua52\loslib.c(200): warning C4996: 'gmtime': This function or variable may be unsafe. Consider using gmtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\time.inl(99) : see declaration of 'gmtime'
+     1>f:\mygit\git\testlpeg\lua52\loslib.c(204): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\time.inl(112) : see declaration of 'localtime'
+         lopcodes.c
+         lobject.c
+     1>f:\mygit\git\testlpeg\lua52\lobject.c(209): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(357) : see declaration of 'sprintf'
+         loadlib.c
+     1>f:\mygit\git\testlpeg\lua52\loadlib.c(331): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>f:\mygit\git\testlpeg\lua52\loadlib.c(639): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(449) : see declaration of 'getenv'
+     1>f:\mygit\git\testlpeg\lua52\loadlib.c(641): warning C4996: 'getenv': This function or variable may be unsafe. Consider using _dupenv_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdlib.h(449) : see declaration of 'getenv'
+         lmem.c
+         lmathlib.c
+         llex.c
+         liolib.c
+     1>f:\mygit\git\testlpeg\lua52\liolib.c(220): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>f:\mygit\git\testlpeg\lua52\liolib.c(222): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(164) : see declaration of 'strerror'
+     1>f:\mygit\git\testlpeg\lua52\liolib.c(232): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>f:\mygit\git\testlpeg\lua52\liolib.c(258): warning C4996: 'tmpfile': This function or variable may be unsafe. Consider using tmpfile_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(324) : see declaration of 'tmpfile'
+     1>f:\mygit\git\testlpeg\lua52\liolib.c(352): warning C4996: 'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(237) : see declaration of 'fscanf'
+         linit.c
+         Generating Code...
+         Compiling...
+         lgc.c
+         lfunc.c
+         ldump.c
+         ldo.c
+         ldebug.c
+         ldblib.c
+         lctype.c
+         lcorolib.c
+         lcode.c
+         lbitlib.c
+         lbaselib.c
+         lauxlib.c
+     1>f:\mygit\git\testlpeg\lua52\lauxlib.c(216): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(164) : see declaration of 'strerror'
+     1>f:\mygit\git\testlpeg\lua52\lauxlib.c(218): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(164) : see declaration of 'strerror'
+     1>f:\mygit\git\testlpeg\lua52\lauxlib.c(588): warning C4996: 'strerror': This function or variable may be unsafe. Consider using strerror_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\string.h(164) : see declaration of 'strerror'
+     1>f:\mygit\git\testlpeg\lua52\lauxlib.c(642): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>f:\mygit\git\testlpeg\lua52\lauxlib.c(648): warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 c:\program files (x86)\microsoft visual studio 11.0\vc\include\stdio.h(233) : see declaration of 'freopen'
+         lapi.c
+         lpvm.c
+         lptree.c
+     1>f:\mygit\git\testlpeg\lpeg-0.12.1\lptree.c(58): warning C4244: '=' : conversion from 'lua_Number' to 'int', possible loss of data
+         lpprint.c
+         lpcode.c
+         lpcap.c
+         Generating Code...
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"F:\MyGit\Git\TestLpeg\VsLpeg\\..\lpeg-0.12.1" /IF:\MyGit\Git\TestLpeg\VsLpeg\\..\lua52 /ZI /nologo /W3 /WX- /sdl- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt VsLpeg.cpp
+         VsLpeg.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\MyGit\Git\TestLpeg\VsLpeg\Debug\VsLpeg.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\MyGit\Git\TestLpeg\VsLpeg\Debug\VsLpeg.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\MyGit\Git\TestLpeg\VsLpeg\Debug\VsLpeg.lib" /MACHINE:X86 Debug\lpcap.obj
+         Debug\lpcode.obj
+         Debug\lpprint.obj
+         Debug\lptree.obj
+         Debug\lpvm.obj
+         Debug\lapi.obj
+         Debug\lauxlib.obj
+         Debug\lbaselib.obj
+         Debug\lbitlib.obj
+         Debug\lcode.obj
+         Debug\lcorolib.obj
+         Debug\lctype.obj
+         Debug\ldblib.obj
+         Debug\ldebug.obj
+         Debug\ldo.obj
+         Debug\ldump.obj
+         Debug\lfunc.obj
+         Debug\lgc.obj
+         Debug\linit.obj
+         Debug\liolib.obj
+         Debug\llex.obj
+         Debug\lmathlib.obj
+         Debug\lmem.obj
+         Debug\loadlib.obj
+         Debug\lobject.obj
+         Debug\lopcodes.obj
+         Debug\loslib.obj
+         Debug\lparser.obj
+         Debug\lstate.obj
+         Debug\lstring.obj
+         Debug\lstrlib.obj
+         Debug\ltable.obj
+         Debug\ltablib.obj
+         Debug\ltm.obj
+         Debug\luac.obj
+         Debug\lundump.obj
+         Debug\lvm.obj
+         Debug\lzio.obj
+         Debug\stdafx.obj
+         Debug\VsLpeg.obj
+         VsLpeg.vcxproj -> F:\MyGit\Git\TestLpeg\VsLpeg\Debug\VsLpeg.exe
+     1>Done Building Project "F:\MyGit\Git\TestLpeg\VsLpeg\VsLpeg\VsLpeg.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.05
